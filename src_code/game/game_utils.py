@@ -56,10 +56,10 @@ def process_indications(config, game_id, player_id, player_name, player_type, pr
         if pass_capital_test == 'Fail':
             if is_novice:
                 sel_profit_margin = 100  # 10.0% for novice penalty
-                sel_loss_margin = 0     # No loss trend complexity for novice
+                sel_loss_trend_margin = 0     # No loss trend complexity for novice
             else:
                 sel_profit_margin = 80  # 8.0% for non-novice penalty
-                sel_loss_margin = 20    # 2.0% loss trend penalty for non-novice
+                sel_loss_trend_margin = 20    # 2.0% loss trend penalty for non-novice
             sel_mktg_expense = 0
             if player_type == 'user':
                 decisions_locked = False
@@ -68,30 +68,30 @@ def process_indications(config, game_id, player_id, player_name, player_type, pr
         else:
             if player_type == 'user' and selected is True:
                 sel_profit_margin = 50
-                sel_loss_margin = 0
+                sel_loss_trend_margin = 0
                 sel_mktg_expense = 0
                 decisions_locked = False
             else:
                 if profile == 'growth':
                     sel_profit_margin = random.randint(10, 50)  # Reverted to original range
-                    sel_loss_margin = random.randint(0, 10)    # Reverted to original range
+                    sel_loss_trend_margin = random.randint(0, 10)    # Reverted to original range
                     sel_mktg_expense = random.randint(0, 50)
                     decisions_locked = True
                 elif profile == 'profitability':
-                    sel_profit_margin = random.randint(30, 60)  # Reverted to original range
-                    sel_loss_margin = random.randint(0, 10)     # Reverted to original range
+                    sel_profit_margin = random.randint(30, 70)  # Reverted to original range
+                    sel_loss_trend_margin = random.randint(0, 10)     # Reverted to original range
                     sel_mktg_expense = random.randint(0, 20)
                     decisions_locked = True
                 elif profile == 'balanced':
-                    sel_profit_margin = random.randint(20, 50)  # Reverted to original range
-                    sel_loss_margin = random.randint(0, 10)     # Reverted to original range
+                    sel_profit_margin = random.randint(20, 60)  # Reverted to original range
+                    sel_loss_trend_margin = random.randint(0, 10)     # Reverted to original range
                     sel_mktg_expense = random.randint(0, 30)
                     decisions_locked = True
 
         decisions['decisions_locked'] = decisions_locked
         decisions['sel_profit_margin'] = sel_profit_margin
         decisions['sel_exp_ratio_mktg'] = sel_mktg_expense
-        decisions['sel_loss_trend_margin'] = sel_loss_margin
+        decisions['sel_loss_trend_margin'] = sel_loss_trend_margin
 
         reform_fact = []
         for yr in reversed(clm_yrs):
@@ -158,7 +158,7 @@ def process_indications(config, game_id, player_id, player_name, player_type, pr
                     else:
                         display_df.iloc[i, n] = 0
                 lcost = [(clm_yrs[len(clm_yrs) - q - 1], float(lc)) for q, lc in enumerate(display_df.iloc[i].values)]
-                est_values = perform_logistic_regression_indication(lcost, reform_fact, sel_loss_margin)
+                est_values = perform_logistic_regression_indication(lcost, reform_fact, sel_loss_trend_margin)
 
             elif categ == 'Trend Adj':
                 for o in range(len(acc_yrs)):
