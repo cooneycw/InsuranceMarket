@@ -66,10 +66,17 @@ def process_indications(config, game_id, player_id, player_name, player_type, pr
             else:
                 decisions_locked = True
         else:
-            if player_type == 'user' and selected is True:
-                sel_profit_margin = 50
-                sel_loss_trend_margin = 0
-                sel_mktg_expense = 0
+            if player_type == 'user':
+                if selected is True:
+                    sel_profit_margin = 50
+                    sel_loss_trend_margin = 0
+                    sel_mktg_expense = 0
+                else:
+                    # For selected=False, use existing decision values as defaults
+                    sel_profit_margin = decision_data.sel_profit_margin
+                    sel_loss_trend_margin = decision_data.sel_loss_trend_margin
+                    sel_mktg_expense = decision_data.sel_exp_ratio_mktg
+                # For selected=False, keep default values but still allow user input
                 decisions_locked = False
             else:
                 if profile == 'growth':
