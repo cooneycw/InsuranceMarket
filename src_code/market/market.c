@@ -1382,7 +1382,7 @@ struct __pyx_obj_8src_code_6market_6market_Market;
 struct __pyx_ctuple_int__and_double;
 typedef struct __pyx_ctuple_int__and_double __pyx_ctuple_int__and_double;
 
-/* "src_code/market/market.pyx":1355
+/* "src_code/market/market.pyx":1365
  * 
  * 
  * cdef (int, double) compare_price_c(list prices, list quotes, float price_srvc, float price_sens):             # <<<<<<<<<<<<<<
@@ -2565,7 +2565,7 @@ static double __pyx_f_8src_code_6market_6market_random_between(double, double); 
 static double __pyx_f_8src_code_6market_6market_simulate_claim(double, double, int); /*proto*/
 static double __pyx_f_8src_code_6market_6market_trunc_normal_c(float, float, float); /*proto*/
 static double __pyx_f_8src_code_6market_6market_normal_c(float, float); /*proto*/
-static float __pyx_f_8src_code_6market_6market_shop_ratio_c(float, float, float, float, float, float, float, float, float); /*proto*/
+static float __pyx_f_8src_code_6market_6market_shop_ratio_c(float, float, float, float, float, float, float, float, float, float); /*proto*/
 static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *, PyObject *, double, double, PyObject *); /*proto*/
 static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_price_c(PyObject *, PyObject *, float, float); /*proto*/
 static PyObject *__pyx_f_8src_code_6market_6market___pyx_unpickle_ClientAnnualData__set_state(struct __pyx_obj_8src_code_6market_6market_ClientAnnualData *, PyObject *); /*proto*/
@@ -2768,7 +2768,6 @@ static const char __pyx_k_sev_limit[] = "sev_limit";
 static const char __pyx_k_shop_base[] = "shop_base";
 static const char __pyx_k_shop_prob[] = "shop_prob";
 static const char __pyx_k_shop_sens[] = "shop_sens";
-static const char __pyx_k_shop_slpe[] = "shop_slpe";
 static const char __pyx_k_terr_prop[] = "terr_prop";
 static const char __pyx_k_triangles[] = "triangles";
 static const char __pyx_k_claim_data[] = "claim_data";
@@ -2979,6 +2978,8 @@ static const char __pyx_k_number_of_devl_yrs[] = "number_of_devl_yrs";
 static const char __pyx_k_process_financials[] = "process_financials";
 static const char __pyx_k_sel_exp_ratio_data[] = "sel_exp_ratio_data";
 static const char __pyx_k_sel_exp_ratio_mktg[] = "sel_exp_ratio_mktg";
+static const char __pyx_k_shop_slpe_decrease[] = "shop_slpe_decrease";
+static const char __pyx_k_shop_slpe_increase[] = "shop_slpe_increase";
 static const char __pyx_k_update_annual_data[] = "update_annual_data";
 static const char __pyx_k_CompanyDecisionData[] = "CompanyDecisionData";
 static const char __pyx_k_Company_record_canx[] = "Company.record_canx";
@@ -4270,7 +4271,8 @@ typedef struct {
   PyObject *__pyx_n_s_shop_base;
   PyObject *__pyx_n_s_shop_prob;
   PyObject *__pyx_n_s_shop_sens;
-  PyObject *__pyx_n_s_shop_slpe;
+  PyObject *__pyx_n_s_shop_slpe_decrease;
+  PyObject *__pyx_n_s_shop_slpe_increase;
   PyObject *__pyx_n_s_sml_adj;
   PyObject *__pyx_n_s_sml_factor;
   PyObject *__pyx_n_s_sort;
@@ -4316,6 +4318,7 @@ typedef struct {
   PyObject *__pyx_float_0_0;
   PyObject *__pyx_float_0_5;
   PyObject *__pyx_float_1_0;
+  PyObject *__pyx_float__001;
   PyObject *__pyx_float_0_01;
   PyObject *__pyx_int_0;
   PyObject *__pyx_int_1;
@@ -5129,7 +5132,8 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_shop_base);
   Py_CLEAR(clear_module_state->__pyx_n_s_shop_prob);
   Py_CLEAR(clear_module_state->__pyx_n_s_shop_sens);
-  Py_CLEAR(clear_module_state->__pyx_n_s_shop_slpe);
+  Py_CLEAR(clear_module_state->__pyx_n_s_shop_slpe_decrease);
+  Py_CLEAR(clear_module_state->__pyx_n_s_shop_slpe_increase);
   Py_CLEAR(clear_module_state->__pyx_n_s_sml_adj);
   Py_CLEAR(clear_module_state->__pyx_n_s_sml_factor);
   Py_CLEAR(clear_module_state->__pyx_n_s_sort);
@@ -5175,6 +5179,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_float_0_0);
   Py_CLEAR(clear_module_state->__pyx_float_0_5);
   Py_CLEAR(clear_module_state->__pyx_float_1_0);
+  Py_CLEAR(clear_module_state->__pyx_float__001);
   Py_CLEAR(clear_module_state->__pyx_float_0_01);
   Py_CLEAR(clear_module_state->__pyx_int_0);
   Py_CLEAR(clear_module_state->__pyx_int_1);
@@ -5966,7 +5971,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_shop_base);
   Py_VISIT(traverse_module_state->__pyx_n_s_shop_prob);
   Py_VISIT(traverse_module_state->__pyx_n_s_shop_sens);
-  Py_VISIT(traverse_module_state->__pyx_n_s_shop_slpe);
+  Py_VISIT(traverse_module_state->__pyx_n_s_shop_slpe_decrease);
+  Py_VISIT(traverse_module_state->__pyx_n_s_shop_slpe_increase);
   Py_VISIT(traverse_module_state->__pyx_n_s_sml_adj);
   Py_VISIT(traverse_module_state->__pyx_n_s_sml_factor);
   Py_VISIT(traverse_module_state->__pyx_n_s_sort);
@@ -6012,6 +6018,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_float_0_0);
   Py_VISIT(traverse_module_state->__pyx_float_0_5);
   Py_VISIT(traverse_module_state->__pyx_float_1_0);
+  Py_VISIT(traverse_module_state->__pyx_float__001);
   Py_VISIT(traverse_module_state->__pyx_float_0_01);
   Py_VISIT(traverse_module_state->__pyx_int_0);
   Py_VISIT(traverse_module_state->__pyx_int_1);
@@ -6833,7 +6840,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_shop_base __pyx_mstate_global->__pyx_n_s_shop_base
 #define __pyx_n_s_shop_prob __pyx_mstate_global->__pyx_n_s_shop_prob
 #define __pyx_n_s_shop_sens __pyx_mstate_global->__pyx_n_s_shop_sens
-#define __pyx_n_s_shop_slpe __pyx_mstate_global->__pyx_n_s_shop_slpe
+#define __pyx_n_s_shop_slpe_decrease __pyx_mstate_global->__pyx_n_s_shop_slpe_decrease
+#define __pyx_n_s_shop_slpe_increase __pyx_mstate_global->__pyx_n_s_shop_slpe_increase
 #define __pyx_n_s_sml_adj __pyx_mstate_global->__pyx_n_s_sml_adj
 #define __pyx_n_s_sml_factor __pyx_mstate_global->__pyx_n_s_sml_factor
 #define __pyx_n_s_sort __pyx_mstate_global->__pyx_n_s_sort
@@ -6879,6 +6887,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_float_0_0 __pyx_mstate_global->__pyx_float_0_0
 #define __pyx_float_0_5 __pyx_mstate_global->__pyx_float_0_5
 #define __pyx_float_1_0 __pyx_mstate_global->__pyx_float_1_0
+#define __pyx_float__001 __pyx_mstate_global->__pyx_float__001
 #define __pyx_float_0_01 __pyx_mstate_global->__pyx_float_0_01
 #define __pyx_int_0 __pyx_mstate_global->__pyx_int_0
 #define __pyx_int_1 __pyx_mstate_global->__pyx_int_1
@@ -31078,7 +31087,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_7Company_12process_mktg(stru
  *             exp_ratio_mktg = decision_obj.get_sel_exp_ratio_mktg()
  *         financial_data_obj = self.annual_data[year]['financial_data']             # <<<<<<<<<<<<<<
  *         # print(f'process_mktg {self.player_name} - year: {year} exp_ratio_mktg: {exp_ratio_mktg} ann_prem_prior: {financial_data_obj.ann_prem_prior}')
- *         financial_data_obj.mktg_var_expenses = (.01 * exp_ratio_mktg) * financial_data_obj.ann_prem_prior
+ *         financial_data_obj.mktg_var_expenses = (.001 * exp_ratio_mktg) * financial_data_obj.ann_prem_prior
  */
   if (unlikely(__pyx_v_self->annual_data == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
@@ -31095,11 +31104,11 @@ static PyObject *__pyx_pf_8src_code_6market_6market_7Company_12process_mktg(stru
   /* "src_code/market/market.pyx":572
  *         financial_data_obj = self.annual_data[year]['financial_data']
  *         # print(f'process_mktg {self.player_name} - year: {year} exp_ratio_mktg: {exp_ratio_mktg} ann_prem_prior: {financial_data_obj.ann_prem_prior}')
- *         financial_data_obj.mktg_var_expenses = (.01 * exp_ratio_mktg) * financial_data_obj.ann_prem_prior             # <<<<<<<<<<<<<<
+ *         financial_data_obj.mktg_var_expenses = (.001 * exp_ratio_mktg) * financial_data_obj.ann_prem_prior             # <<<<<<<<<<<<<<
  * 
  *     def get_company_quote_level(self, year):
  */
-  __pyx_t_3 = PyNumber_Multiply(__pyx_float__01, __pyx_v_exp_ratio_mktg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 572, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_float__001, __pyx_v_exp_ratio_mktg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 572, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_financial_data_obj, __pyx_n_s_ann_prem_prior); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 572, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -31139,7 +31148,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_7Company_12process_mktg(stru
 }
 
 /* "src_code/market/market.pyx":574
- *         financial_data_obj.mktg_var_expenses = (.01 * exp_ratio_mktg) * financial_data_obj.ann_prem_prior
+ *         financial_data_obj.mktg_var_expenses = (.001 * exp_ratio_mktg) * financial_data_obj.ann_prem_prior
  * 
  *     def get_company_quote_level(self, year):             # <<<<<<<<<<<<<<
  *         financial_data_obj = self.annual_data[year]['financial_data']
@@ -31262,7 +31271,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_7Company_14get_company_quote
   goto __pyx_L0;
 
   /* "src_code/market/market.pyx":574
- *         financial_data_obj.mktg_var_expenses = (.01 * exp_ratio_mktg) * financial_data_obj.ann_prem_prior
+ *         financial_data_obj.mktg_var_expenses = (.001 * exp_ratio_mktg) * financial_data_obj.ann_prem_prior
  * 
  *     def get_company_quote_level(self, year):             # <<<<<<<<<<<<<<
  *         financial_data_obj = self.annual_data[year]['financial_data']
@@ -44967,7 +44976,8 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(struct __pyx_obj_8src_code_6market_6market_Market *__pyx_v_self, int __pyx_v_new_year, PyObject *__pyx_v_sel_exp_ratio_mktg_min, PyObject *__pyx_v_sel_exp_ratio_mktg_max) {
   long __pyx_v_old_year;
   PyObject *__pyx_v_shop_base = NULL;
-  PyObject *__pyx_v_shop_slpe = NULL;
+  PyObject *__pyx_v_shop_slpe_increase = NULL;
+  PyObject *__pyx_v_shop_slpe_decrease = NULL;
   PyObject *__pyx_v_shop_sens = NULL;
   PyObject *__pyx_v_mktg_spend_ind = NULL;
   PyObject *__pyx_v_ann_prem_prior_ind = NULL;
@@ -45010,16 +45020,17 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
   float __pyx_t_16;
   float __pyx_t_17;
   float __pyx_t_18;
-  double __pyx_t_19;
-  int __pyx_t_20;
-  PyObject *__pyx_t_21 = NULL;
-  Py_ssize_t __pyx_t_22;
-  double __pyx_t_23;
-  PyObject *__pyx_t_24 = NULL;
+  float __pyx_t_19;
+  double __pyx_t_20;
+  int __pyx_t_21;
+  PyObject *__pyx_t_22 = NULL;
+  Py_ssize_t __pyx_t_23;
+  double __pyx_t_24;
   PyObject *__pyx_t_25 = NULL;
   PyObject *__pyx_t_26 = NULL;
   PyObject *__pyx_t_27 = NULL;
-  __pyx_ctuple_int__and_double __pyx_t_28;
+  PyObject *__pyx_t_28 = NULL;
+  __pyx_ctuple_int__and_double __pyx_t_29;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -45053,7 +45064,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
  *         sel_exp_ratio_mktg_min = 0.01 * sel_exp_ratio_mktg_min
  *         sel_exp_ratio_mktg_max = 0.01 * sel_exp_ratio_mktg_max             # <<<<<<<<<<<<<<
  *         shop_base = self.mkt_features['shop_base']
- *         shop_slpe = self.mkt_features['shop_slpe']
+ *         shop_slpe_increase = self.mkt_features['shop_slpe_increase']
  */
   __pyx_t_1 = PyNumber_Multiply(__pyx_float_0_01, __pyx_v_sel_exp_ratio_mktg_max); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1050, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -45064,8 +45075,8 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
  *         sel_exp_ratio_mktg_min = 0.01 * sel_exp_ratio_mktg_min
  *         sel_exp_ratio_mktg_max = 0.01 * sel_exp_ratio_mktg_max
  *         shop_base = self.mkt_features['shop_base']             # <<<<<<<<<<<<<<
- *         shop_slpe = self.mkt_features['shop_slpe']
- *         shop_sens =  self.mkt_features['shop_sens']
+ *         shop_slpe_increase = self.mkt_features['shop_slpe_increase']
+ *         shop_slpe_decrease = self.mkt_features['shop_slpe_decrease']
  */
   if (unlikely(__pyx_v_self->mkt_features == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
@@ -45079,78 +45090,59 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
   /* "src_code/market/market.pyx":1052
  *         sel_exp_ratio_mktg_max = 0.01 * sel_exp_ratio_mktg_max
  *         shop_base = self.mkt_features['shop_base']
- *         shop_slpe = self.mkt_features['shop_slpe']             # <<<<<<<<<<<<<<
+ *         shop_slpe_increase = self.mkt_features['shop_slpe_increase']             # <<<<<<<<<<<<<<
+ *         shop_slpe_decrease = self.mkt_features['shop_slpe_decrease']
  *         shop_sens =  self.mkt_features['shop_sens']
- *         mktg_spend_ind = self.get_mktg_spend_ind(new_year)
  */
   if (unlikely(__pyx_v_self->mkt_features == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(0, 1052, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->mkt_features, __pyx_n_s_shop_slpe); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1052, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->mkt_features, __pyx_n_s_shop_slpe_increase); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1052, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_v_shop_slpe = __pyx_t_1;
+  __pyx_v_shop_slpe_increase = __pyx_t_1;
   __pyx_t_1 = 0;
 
   /* "src_code/market/market.pyx":1053
  *         shop_base = self.mkt_features['shop_base']
- *         shop_slpe = self.mkt_features['shop_slpe']
+ *         shop_slpe_increase = self.mkt_features['shop_slpe_increase']
+ *         shop_slpe_decrease = self.mkt_features['shop_slpe_decrease']             # <<<<<<<<<<<<<<
+ *         shop_sens =  self.mkt_features['shop_sens']
+ *         mktg_spend_ind = self.get_mktg_spend_ind(new_year)
+ */
+  if (unlikely(__pyx_v_self->mkt_features == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(0, 1053, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->mkt_features, __pyx_n_s_shop_slpe_decrease); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1053, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_shop_slpe_decrease = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "src_code/market/market.pyx":1054
+ *         shop_slpe_increase = self.mkt_features['shop_slpe_increase']
+ *         shop_slpe_decrease = self.mkt_features['shop_slpe_decrease']
  *         shop_sens =  self.mkt_features['shop_sens']             # <<<<<<<<<<<<<<
  *         mktg_spend_ind = self.get_mktg_spend_ind(new_year)
  *         ann_prem_prior_ind = self.get_ann_prem_prior_ind(new_year)
  */
   if (unlikely(__pyx_v_self->mkt_features == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 1053, __pyx_L1_error)
+    __PYX_ERR(0, 1054, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->mkt_features, __pyx_n_s_shop_sens); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1053, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->mkt_features, __pyx_n_s_shop_sens); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1054, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_shop_sens = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1054
- *         shop_slpe = self.mkt_features['shop_slpe']
+  /* "src_code/market/market.pyx":1055
+ *         shop_slpe_decrease = self.mkt_features['shop_slpe_decrease']
  *         shop_sens =  self.mkt_features['shop_sens']
  *         mktg_spend_ind = self.get_mktg_spend_ind(new_year)             # <<<<<<<<<<<<<<
  *         ann_prem_prior_ind = self.get_ann_prem_prior_ind(new_year)
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_mktg_spend_ind); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1054, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1054, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = NULL;
-  __pyx_t_5 = 0;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_4);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
-      __pyx_t_5 = 1;
-    }
-  }
-  {
-    PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1054, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  }
-  __pyx_v_mktg_spend_ind = __pyx_t_1;
-  __pyx_t_1 = 0;
-
-  /* "src_code/market/market.pyx":1055
- *         shop_sens =  self.mkt_features['shop_sens']
- *         mktg_spend_ind = self.get_mktg_spend_ind(new_year)
- *         ann_prem_prior_ind = self.get_ann_prem_prior_ind(new_year)             # <<<<<<<<<<<<<<
- * 
- *         for client_id in self.client_dict.keys():
- */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_ann_prem_prior_ind); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1055, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_mktg_spend_ind); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1055, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1055, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -45175,10 +45167,45 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
+  __pyx_v_mktg_spend_ind = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "src_code/market/market.pyx":1056
+ *         shop_sens =  self.mkt_features['shop_sens']
+ *         mktg_spend_ind = self.get_mktg_spend_ind(new_year)
+ *         ann_prem_prior_ind = self.get_ann_prem_prior_ind(new_year)             # <<<<<<<<<<<<<<
+ * 
+ *         for client_id in self.client_dict.keys():
+ */
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_ann_prem_prior_ind); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1056, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1056, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = NULL;
+  __pyx_t_5 = 0;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_4)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+      __pyx_t_5 = 1;
+    }
+  }
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_t_3};
+    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1056, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  }
   __pyx_v_ann_prem_prior_ind = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1057
+  /* "src_code/market/market.pyx":1058
  *         ann_prem_prior_ind = self.get_ann_prem_prior_ind(new_year)
  * 
  *         for client_id in self.client_dict.keys():             # <<<<<<<<<<<<<<
@@ -45188,9 +45215,9 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
   __pyx_t_6 = 0;
   if (unlikely(__pyx_v_self->client_dict == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "keys");
-    __PYX_ERR(0, 1057, __pyx_L1_error)
+    __PYX_ERR(0, 1058, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_dict_iterator(__pyx_v_self->client_dict, 1, __pyx_n_s_keys, (&__pyx_t_7), (&__pyx_t_5)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1057, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_dict_iterator(__pyx_v_self->client_dict, 1, __pyx_n_s_keys, (&__pyx_t_7), (&__pyx_t_5)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1058, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_1);
   __pyx_t_1 = __pyx_t_2;
@@ -45198,19 +45225,19 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
   while (1) {
     __pyx_t_8 = __Pyx_dict_iter_next(__pyx_t_1, __pyx_t_7, &__pyx_t_6, &__pyx_t_2, NULL, NULL, __pyx_t_5);
     if (unlikely(__pyx_t_8 == 0)) break;
-    if (unlikely(__pyx_t_8 == -1)) __PYX_ERR(0, 1057, __pyx_L1_error)
+    if (unlikely(__pyx_t_8 == -1)) __PYX_ERR(0, 1058, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_XDECREF_SET(__pyx_v_client_id, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "src_code/market/market.pyx":1058
+    /* "src_code/market/market.pyx":1059
  * 
  *         for client_id in self.client_dict.keys():
  *             client_obj = self.get_client_obj(client_id)             # <<<<<<<<<<<<<<
  *             nco = client_obj.annual_data[new_year]
  *             oco = client_obj.annual_data[old_year]
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_client_obj); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1058, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_client_obj); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1059, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_4 = NULL;
     __pyx_t_8 = 0;
@@ -45228,189 +45255,198 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
       PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_v_client_id};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1058, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1059, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __Pyx_XDECREF_SET(__pyx_v_client_obj, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "src_code/market/market.pyx":1059
+    /* "src_code/market/market.pyx":1060
  *         for client_id in self.client_dict.keys():
  *             client_obj = self.get_client_obj(client_id)
  *             nco = client_obj.annual_data[new_year]             # <<<<<<<<<<<<<<
  *             oco = client_obj.annual_data[old_year]
  * 
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_client_obj, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1059, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_client_obj, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1060, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_2, __pyx_v_new_year, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1059, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_2, __pyx_v_new_year, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1060, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_XDECREF_SET(__pyx_v_nco, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1060
+    /* "src_code/market/market.pyx":1061
  *             client_obj = self.get_client_obj(client_id)
  *             nco = client_obj.annual_data[new_year]
  *             oco = client_obj.annual_data[old_year]             # <<<<<<<<<<<<<<
  * 
  *             # print(f'annual premium: {client_id} {oco.annual_prem} {nco.renewal_prem} {nco.company} {nco.pr_company}')
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_client_obj, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1060, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_client_obj, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1061, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_old_year, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1060, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_old_year, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1061, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_XDECREF_SET(__pyx_v_oco, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "src_code/market/market.pyx":1064
+    /* "src_code/market/market.pyx":1065
  *             # print(f'annual premium: {client_id} {oco.annual_prem} {nco.renewal_prem} {nco.company} {nco.pr_company}')
  * 
  *             nco.shop_prob = shop_ratio_c(old_price=oco.annual_prem, new_price=nco.renewal_prem,             # <<<<<<<<<<<<<<
  *                                          sel_exp_ratio_mktg_max=sel_exp_ratio_mktg_max,
  *                                          sel_exp_ratio_mktg_min=sel_exp_ratio_mktg_min,
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_oco, __pyx_n_s_annual_prem); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1064, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_oco, __pyx_n_s_annual_prem); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1065, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_9 = __pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_9 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1064, __pyx_L1_error)
+    __pyx_t_9 = __pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_9 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1065, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_renewal_prem); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1064, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_renewal_prem); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1065, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_10 = __pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_10 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1064, __pyx_L1_error)
+    __pyx_t_10 = __pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_10 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1065, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "src_code/market/market.pyx":1065
+    /* "src_code/market/market.pyx":1066
  * 
  *             nco.shop_prob = shop_ratio_c(old_price=oco.annual_prem, new_price=nco.renewal_prem,
  *                                          sel_exp_ratio_mktg_max=sel_exp_ratio_mktg_max,             # <<<<<<<<<<<<<<
  *                                          sel_exp_ratio_mktg_min=sel_exp_ratio_mktg_min,
  *                                          shop_base=shop_base,
  */
-    __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_v_sel_exp_ratio_mktg_max); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1065, __pyx_L1_error)
+    __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_v_sel_exp_ratio_mktg_max); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1066, __pyx_L1_error)
 
-    /* "src_code/market/market.pyx":1066
+    /* "src_code/market/market.pyx":1067
  *             nco.shop_prob = shop_ratio_c(old_price=oco.annual_prem, new_price=nco.renewal_prem,
  *                                          sel_exp_ratio_mktg_max=sel_exp_ratio_mktg_max,
  *                                          sel_exp_ratio_mktg_min=sel_exp_ratio_mktg_min,             # <<<<<<<<<<<<<<
  *                                          shop_base=shop_base,
- *                                          shop_slpe=shop_slpe,
+ *                                          shop_slpe_increase=shop_slpe_increase,
  */
-    __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_v_sel_exp_ratio_mktg_min); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1066, __pyx_L1_error)
+    __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_v_sel_exp_ratio_mktg_min); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1067, __pyx_L1_error)
 
-    /* "src_code/market/market.pyx":1067
+    /* "src_code/market/market.pyx":1068
  *                                          sel_exp_ratio_mktg_max=sel_exp_ratio_mktg_max,
  *                                          sel_exp_ratio_mktg_min=sel_exp_ratio_mktg_min,
  *                                          shop_base=shop_base,             # <<<<<<<<<<<<<<
- *                                          shop_slpe=shop_slpe,
- *                                          shop_sens=shop_sens,
+ *                                          shop_slpe_increase=shop_slpe_increase,
+ *                                          shop_slpe_decrease=shop_slpe_decrease,
  */
-    __pyx_t_13 = __pyx_PyFloat_AsFloat(__pyx_v_shop_base); if (unlikely((__pyx_t_13 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1067, __pyx_L1_error)
+    __pyx_t_13 = __pyx_PyFloat_AsFloat(__pyx_v_shop_base); if (unlikely((__pyx_t_13 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1068, __pyx_L1_error)
 
-    /* "src_code/market/market.pyx":1068
+    /* "src_code/market/market.pyx":1069
  *                                          sel_exp_ratio_mktg_min=sel_exp_ratio_mktg_min,
  *                                          shop_base=shop_base,
- *                                          shop_slpe=shop_slpe,             # <<<<<<<<<<<<<<
+ *                                          shop_slpe_increase=shop_slpe_increase,             # <<<<<<<<<<<<<<
+ *                                          shop_slpe_decrease=shop_slpe_decrease,
+ *                                          shop_sens=shop_sens,
+ */
+    __pyx_t_14 = __pyx_PyFloat_AsFloat(__pyx_v_shop_slpe_increase); if (unlikely((__pyx_t_14 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1069, __pyx_L1_error)
+
+    /* "src_code/market/market.pyx":1070
+ *                                          shop_base=shop_base,
+ *                                          shop_slpe_increase=shop_slpe_increase,
+ *                                          shop_slpe_decrease=shop_slpe_decrease,             # <<<<<<<<<<<<<<
  *                                          shop_sens=shop_sens,
  *                                          sum_ind_mktg_spend=mktg_spend_ind,
  */
-    __pyx_t_14 = __pyx_PyFloat_AsFloat(__pyx_v_shop_slpe); if (unlikely((__pyx_t_14 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1068, __pyx_L1_error)
+    __pyx_t_15 = __pyx_PyFloat_AsFloat(__pyx_v_shop_slpe_decrease); if (unlikely((__pyx_t_15 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1070, __pyx_L1_error)
 
-    /* "src_code/market/market.pyx":1069
- *                                          shop_base=shop_base,
- *                                          shop_slpe=shop_slpe,
+    /* "src_code/market/market.pyx":1071
+ *                                          shop_slpe_increase=shop_slpe_increase,
+ *                                          shop_slpe_decrease=shop_slpe_decrease,
  *                                          shop_sens=shop_sens,             # <<<<<<<<<<<<<<
  *                                          sum_ind_mktg_spend=mktg_spend_ind,
  *                                          sum_ind_prem=ann_prem_prior_ind)
  */
-    __pyx_t_15 = __pyx_PyFloat_AsFloat(__pyx_v_shop_sens); if (unlikely((__pyx_t_15 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1069, __pyx_L1_error)
+    __pyx_t_16 = __pyx_PyFloat_AsFloat(__pyx_v_shop_sens); if (unlikely((__pyx_t_16 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1071, __pyx_L1_error)
 
-    /* "src_code/market/market.pyx":1070
- *                                          shop_slpe=shop_slpe,
+    /* "src_code/market/market.pyx":1072
+ *                                          shop_slpe_decrease=shop_slpe_decrease,
  *                                          shop_sens=shop_sens,
  *                                          sum_ind_mktg_spend=mktg_spend_ind,             # <<<<<<<<<<<<<<
  *                                          sum_ind_prem=ann_prem_prior_ind)
  * 
  */
-    __pyx_t_16 = __pyx_PyFloat_AsFloat(__pyx_v_mktg_spend_ind); if (unlikely((__pyx_t_16 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1070, __pyx_L1_error)
+    __pyx_t_17 = __pyx_PyFloat_AsFloat(__pyx_v_mktg_spend_ind); if (unlikely((__pyx_t_17 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1072, __pyx_L1_error)
 
-    /* "src_code/market/market.pyx":1071
+    /* "src_code/market/market.pyx":1073
  *                                          shop_sens=shop_sens,
  *                                          sum_ind_mktg_spend=mktg_spend_ind,
  *                                          sum_ind_prem=ann_prem_prior_ind)             # <<<<<<<<<<<<<<
  * 
  *             nco.shop = random_indicator(nco.shop_prob)
  */
-    __pyx_t_17 = __pyx_PyFloat_AsFloat(__pyx_v_ann_prem_prior_ind); if (unlikely((__pyx_t_17 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1071, __pyx_L1_error)
+    __pyx_t_18 = __pyx_PyFloat_AsFloat(__pyx_v_ann_prem_prior_ind); if (unlikely((__pyx_t_18 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1073, __pyx_L1_error)
 
-    /* "src_code/market/market.pyx":1064
+    /* "src_code/market/market.pyx":1065
  *             # print(f'annual premium: {client_id} {oco.annual_prem} {nco.renewal_prem} {nco.company} {nco.pr_company}')
  * 
  *             nco.shop_prob = shop_ratio_c(old_price=oco.annual_prem, new_price=nco.renewal_prem,             # <<<<<<<<<<<<<<
  *                                          sel_exp_ratio_mktg_max=sel_exp_ratio_mktg_max,
  *                                          sel_exp_ratio_mktg_min=sel_exp_ratio_mktg_min,
  */
-    __pyx_t_18 = __pyx_f_8src_code_6market_6market_shop_ratio_c(__pyx_t_9, __pyx_t_10, __pyx_t_11, __pyx_t_12, __pyx_t_13, __pyx_t_14, __pyx_t_15, __pyx_t_16, __pyx_t_17); if (unlikely(__pyx_t_18 == ((float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1064, __pyx_L1_error)
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_t_18); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1064, __pyx_L1_error)
+    __pyx_t_19 = __pyx_f_8src_code_6market_6market_shop_ratio_c(__pyx_t_9, __pyx_t_10, __pyx_t_11, __pyx_t_12, __pyx_t_13, __pyx_t_14, __pyx_t_15, __pyx_t_16, __pyx_t_17, __pyx_t_18); if (unlikely(__pyx_t_19 == ((float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1065, __pyx_L1_error)
+    __pyx_t_2 = PyFloat_FromDouble(__pyx_t_19); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1065, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_nco, __pyx_n_s_shop_prob, __pyx_t_2) < 0) __PYX_ERR(0, 1064, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_nco, __pyx_n_s_shop_prob, __pyx_t_2) < 0) __PYX_ERR(0, 1065, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "src_code/market/market.pyx":1073
+    /* "src_code/market/market.pyx":1075
  *                                          sum_ind_prem=ann_prem_prior_ind)
  * 
  *             nco.shop = random_indicator(nco.shop_prob)             # <<<<<<<<<<<<<<
  *             if nco.shop == 0:
  *                 nco.company = oco.company
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_shop_prob); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1073, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_shop_prob); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1075, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_19 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_19 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1073, __pyx_L1_error)
+    __pyx_t_20 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_20 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1075, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __pyx_f_8src_code_6market_6market_random_indicator(__pyx_t_19); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1073, __pyx_L1_error)
+    __pyx_t_2 = __pyx_f_8src_code_6market_6market_random_indicator(__pyx_t_20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1075, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_nco, __pyx_n_s_shop, __pyx_t_2) < 0) __PYX_ERR(0, 1073, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_nco, __pyx_n_s_shop, __pyx_t_2) < 0) __PYX_ERR(0, 1075, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "src_code/market/market.pyx":1074
+    /* "src_code/market/market.pyx":1076
  * 
  *             nco.shop = random_indicator(nco.shop_prob)
  *             if nco.shop == 0:             # <<<<<<<<<<<<<<
  *                 nco.company = oco.company
  *                 nco.annual_prem = nco.renewal_prem
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_shop); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1074, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_shop); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1076, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_20 = (__Pyx_PyInt_BoolEqObjC(__pyx_t_2, __pyx_int_0, 0, 0)); if (unlikely((__pyx_t_20 < 0))) __PYX_ERR(0, 1074, __pyx_L1_error)
+    __pyx_t_21 = (__Pyx_PyInt_BoolEqObjC(__pyx_t_2, __pyx_int_0, 0, 0)); if (unlikely((__pyx_t_21 < 0))) __PYX_ERR(0, 1076, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (__pyx_t_20) {
+    if (__pyx_t_21) {
 
-      /* "src_code/market/market.pyx":1075
+      /* "src_code/market/market.pyx":1077
  *             nco.shop = random_indicator(nco.shop_prob)
  *             if nco.shop == 0:
  *                 nco.company = oco.company             # <<<<<<<<<<<<<<
  *                 nco.annual_prem = nco.renewal_prem
  *             elif nco.shop == 1:
  */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_oco, __pyx_n_s_company); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1075, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_oco, __pyx_n_s_company); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1077, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      if (__Pyx_PyObject_SetAttrStr(__pyx_v_nco, __pyx_n_s_company, __pyx_t_2) < 0) __PYX_ERR(0, 1075, __pyx_L1_error)
+      if (__Pyx_PyObject_SetAttrStr(__pyx_v_nco, __pyx_n_s_company, __pyx_t_2) < 0) __PYX_ERR(0, 1077, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "src_code/market/market.pyx":1076
+      /* "src_code/market/market.pyx":1078
  *             if nco.shop == 0:
  *                 nco.company = oco.company
  *                 nco.annual_prem = nco.renewal_prem             # <<<<<<<<<<<<<<
  *             elif nco.shop == 1:
  *                 marketing = self.get_mktg_spend_by_company(new_year)
  */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_renewal_prem); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1076, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_renewal_prem); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1078, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      if (__Pyx_PyObject_SetAttrStr(__pyx_v_nco, __pyx_n_s_annual_prem, __pyx_t_2) < 0) __PYX_ERR(0, 1076, __pyx_L1_error)
+      if (__Pyx_PyObject_SetAttrStr(__pyx_v_nco, __pyx_n_s_annual_prem, __pyx_t_2) < 0) __PYX_ERR(0, 1078, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "src_code/market/market.pyx":1074
+      /* "src_code/market/market.pyx":1076
  * 
  *             nco.shop = random_indicator(nco.shop_prob)
  *             if nco.shop == 0:             # <<<<<<<<<<<<<<
@@ -45420,90 +45456,90 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
       goto __pyx_L5;
     }
 
-    /* "src_code/market/market.pyx":1077
+    /* "src_code/market/market.pyx":1079
  *                 nco.company = oco.company
  *                 nco.annual_prem = nco.renewal_prem
  *             elif nco.shop == 1:             # <<<<<<<<<<<<<<
  *                 marketing = self.get_mktg_spend_by_company(new_year)
  *                 wprem = self.get_ann_prem_prior_by_company(new_year)
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_shop); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1077, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_shop); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1079, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_20 = (__Pyx_PyInt_BoolEqObjC(__pyx_t_2, __pyx_int_1, 1, 0)); if (unlikely((__pyx_t_20 < 0))) __PYX_ERR(0, 1077, __pyx_L1_error)
+    __pyx_t_21 = (__Pyx_PyInt_BoolEqObjC(__pyx_t_2, __pyx_int_1, 1, 0)); if (unlikely((__pyx_t_21 < 0))) __PYX_ERR(0, 1079, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (__pyx_t_20) {
+    if (__pyx_t_21) {
 
-      /* "src_code/market/market.pyx":1078
+      /* "src_code/market/market.pyx":1080
  *                 nco.annual_prem = nco.renewal_prem
  *             elif nco.shop == 1:
  *                 marketing = self.get_mktg_spend_by_company(new_year)             # <<<<<<<<<<<<<<
  *                 wprem = self.get_ann_prem_prior_by_company(new_year)
  *                 lottery_mult = self.mkt_features['lottery_mult']
  */
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_mktg_spend_by_company); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1078, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_mktg_spend_by_company); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1080, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1078, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1080, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_21 = NULL;
+      __pyx_t_22 = NULL;
       __pyx_t_8 = 0;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-        __pyx_t_21 = PyMethod_GET_SELF(__pyx_t_3);
-        if (likely(__pyx_t_21)) {
+        __pyx_t_22 = PyMethod_GET_SELF(__pyx_t_3);
+        if (likely(__pyx_t_22)) {
           PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-          __Pyx_INCREF(__pyx_t_21);
+          __Pyx_INCREF(__pyx_t_22);
           __Pyx_INCREF(function);
           __Pyx_DECREF_SET(__pyx_t_3, function);
           __pyx_t_8 = 1;
         }
       }
       {
-        PyObject *__pyx_callargs[2] = {__pyx_t_21, __pyx_t_4};
+        PyObject *__pyx_callargs[2] = {__pyx_t_22, __pyx_t_4};
         __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
-        __Pyx_XDECREF(__pyx_t_21); __pyx_t_21 = 0;
+        __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1078, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1080, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
       __Pyx_XDECREF_SET(__pyx_v_marketing, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "src_code/market/market.pyx":1079
+      /* "src_code/market/market.pyx":1081
  *             elif nco.shop == 1:
  *                 marketing = self.get_mktg_spend_by_company(new_year)
  *                 wprem = self.get_ann_prem_prior_by_company(new_year)             # <<<<<<<<<<<<<<
  *                 lottery_mult = self.mkt_features['lottery_mult']
  *                 lottery_prem_wt = self.mkt_features['lottery_prem_wt']
  */
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_ann_prem_prior_by_company); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1079, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_ann_prem_prior_by_company); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1081, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1079, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1081, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_21 = NULL;
+      __pyx_t_22 = NULL;
       __pyx_t_8 = 0;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-        __pyx_t_21 = PyMethod_GET_SELF(__pyx_t_3);
-        if (likely(__pyx_t_21)) {
+        __pyx_t_22 = PyMethod_GET_SELF(__pyx_t_3);
+        if (likely(__pyx_t_22)) {
           PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-          __Pyx_INCREF(__pyx_t_21);
+          __Pyx_INCREF(__pyx_t_22);
           __Pyx_INCREF(function);
           __Pyx_DECREF_SET(__pyx_t_3, function);
           __pyx_t_8 = 1;
         }
       }
       {
-        PyObject *__pyx_callargs[2] = {__pyx_t_21, __pyx_t_4};
+        PyObject *__pyx_callargs[2] = {__pyx_t_22, __pyx_t_4};
         __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
-        __Pyx_XDECREF(__pyx_t_21); __pyx_t_21 = 0;
+        __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1079, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1081, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
       __Pyx_XDECREF_SET(__pyx_v_wprem, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "src_code/market/market.pyx":1080
+      /* "src_code/market/market.pyx":1082
  *                 marketing = self.get_mktg_spend_by_company(new_year)
  *                 wprem = self.get_ann_prem_prior_by_company(new_year)
  *                 lottery_mult = self.mkt_features['lottery_mult']             # <<<<<<<<<<<<<<
@@ -45512,14 +45548,14 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
  */
       if (unlikely(__pyx_v_self->mkt_features == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 1080, __pyx_L1_error)
+        __PYX_ERR(0, 1082, __pyx_L1_error)
       }
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->mkt_features, __pyx_n_s_lottery_mult); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1080, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->mkt_features, __pyx_n_s_lottery_mult); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1082, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_XDECREF_SET(__pyx_v_lottery_mult, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "src_code/market/market.pyx":1081
+      /* "src_code/market/market.pyx":1083
  *                 wprem = self.get_ann_prem_prior_by_company(new_year)
  *                 lottery_mult = self.mkt_features['lottery_mult']
  *                 lottery_prem_wt = self.mkt_features['lottery_prem_wt']             # <<<<<<<<<<<<<<
@@ -45528,107 +45564,107 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
  */
       if (unlikely(__pyx_v_self->mkt_features == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 1081, __pyx_L1_error)
+        __PYX_ERR(0, 1083, __pyx_L1_error)
       }
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->mkt_features, __pyx_n_s_lottery_prem_wt); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1081, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->mkt_features, __pyx_n_s_lottery_prem_wt); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1083, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_XDECREF_SET(__pyx_v_lottery_prem_wt, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "src_code/market/market.pyx":1082
+      /* "src_code/market/market.pyx":1084
  *                 lottery_mult = self.mkt_features['lottery_mult']
  *                 lottery_prem_wt = self.mkt_features['lottery_prem_wt']
  *                 lottery_adj_prem_wt = len(wprem) / 25 * lottery_prem_wt             # <<<<<<<<<<<<<<
  *                 quotes = lottery_c(marketing=marketing,
  *                                    wprem=wprem,
  */
-      __pyx_t_22 = PyObject_Length(__pyx_v_wprem); if (unlikely(__pyx_t_22 == ((Py_ssize_t)-1))) __PYX_ERR(0, 1082, __pyx_L1_error)
-      __pyx_t_2 = PyFloat_FromDouble((((double)__pyx_t_22) / 25.0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1082, __pyx_L1_error)
+      __pyx_t_23 = PyObject_Length(__pyx_v_wprem); if (unlikely(__pyx_t_23 == ((Py_ssize_t)-1))) __PYX_ERR(0, 1084, __pyx_L1_error)
+      __pyx_t_2 = PyFloat_FromDouble((((double)__pyx_t_23) / 25.0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1084, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_3 = PyNumber_Multiply(__pyx_t_2, __pyx_v_lottery_prem_wt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1082, __pyx_L1_error)
+      __pyx_t_3 = PyNumber_Multiply(__pyx_t_2, __pyx_v_lottery_prem_wt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1084, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_XDECREF_SET(__pyx_v_lottery_adj_prem_wt, __pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "src_code/market/market.pyx":1083
+      /* "src_code/market/market.pyx":1085
  *                 lottery_prem_wt = self.mkt_features['lottery_prem_wt']
  *                 lottery_adj_prem_wt = len(wprem) / 25 * lottery_prem_wt
  *                 quotes = lottery_c(marketing=marketing,             # <<<<<<<<<<<<<<
  *                                    wprem=wprem,
  *                                    lottery_mult=lottery_mult,
  */
-      if (!(likely(PyList_CheckExact(__pyx_v_marketing))||((__pyx_v_marketing) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_v_marketing))) __PYX_ERR(0, 1083, __pyx_L1_error)
+      if (!(likely(PyList_CheckExact(__pyx_v_marketing))||((__pyx_v_marketing) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_v_marketing))) __PYX_ERR(0, 1085, __pyx_L1_error)
 
-      /* "src_code/market/market.pyx":1084
+      /* "src_code/market/market.pyx":1086
  *                 lottery_adj_prem_wt = len(wprem) / 25 * lottery_prem_wt
  *                 quotes = lottery_c(marketing=marketing,
  *                                    wprem=wprem,             # <<<<<<<<<<<<<<
  *                                    lottery_mult=lottery_mult,
  *                                    lottery_prem_wt=lottery_adj_prem_wt,
  */
-      if (!(likely(PyList_CheckExact(__pyx_v_wprem))||((__pyx_v_wprem) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_v_wprem))) __PYX_ERR(0, 1084, __pyx_L1_error)
+      if (!(likely(PyList_CheckExact(__pyx_v_wprem))||((__pyx_v_wprem) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_v_wprem))) __PYX_ERR(0, 1086, __pyx_L1_error)
 
-      /* "src_code/market/market.pyx":1085
+      /* "src_code/market/market.pyx":1087
  *                 quotes = lottery_c(marketing=marketing,
  *                                    wprem=wprem,
  *                                    lottery_mult=lottery_mult,             # <<<<<<<<<<<<<<
  *                                    lottery_prem_wt=lottery_adj_prem_wt,
  *                                    company=nco.company)
  */
-      __pyx_t_19 = __pyx_PyFloat_AsDouble(__pyx_v_lottery_mult); if (unlikely((__pyx_t_19 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1085, __pyx_L1_error)
+      __pyx_t_20 = __pyx_PyFloat_AsDouble(__pyx_v_lottery_mult); if (unlikely((__pyx_t_20 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1087, __pyx_L1_error)
 
-      /* "src_code/market/market.pyx":1086
+      /* "src_code/market/market.pyx":1088
  *                                    wprem=wprem,
  *                                    lottery_mult=lottery_mult,
  *                                    lottery_prem_wt=lottery_adj_prem_wt,             # <<<<<<<<<<<<<<
  *                                    company=nco.company)
  *                 nco.quote_companies = quotes
  */
-      __pyx_t_23 = __pyx_PyFloat_AsDouble(__pyx_v_lottery_adj_prem_wt); if (unlikely((__pyx_t_23 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1086, __pyx_L1_error)
+      __pyx_t_24 = __pyx_PyFloat_AsDouble(__pyx_v_lottery_adj_prem_wt); if (unlikely((__pyx_t_24 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1088, __pyx_L1_error)
 
-      /* "src_code/market/market.pyx":1087
+      /* "src_code/market/market.pyx":1089
  *                                    lottery_mult=lottery_mult,
  *                                    lottery_prem_wt=lottery_adj_prem_wt,
  *                                    company=nco.company)             # <<<<<<<<<<<<<<
  *                 nco.quote_companies = quotes
  * 
  */
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_company); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1087, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_company); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1089, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
 
-      /* "src_code/market/market.pyx":1083
+      /* "src_code/market/market.pyx":1085
  *                 lottery_prem_wt = self.mkt_features['lottery_prem_wt']
  *                 lottery_adj_prem_wt = len(wprem) / 25 * lottery_prem_wt
  *                 quotes = lottery_c(marketing=marketing,             # <<<<<<<<<<<<<<
  *                                    wprem=wprem,
  *                                    lottery_mult=lottery_mult,
  */
-      __pyx_t_2 = __pyx_f_8src_code_6market_6market_lottery_c(((PyObject*)__pyx_v_marketing), ((PyObject*)__pyx_v_wprem), __pyx_t_19, __pyx_t_23, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1083, __pyx_L1_error)
+      __pyx_t_2 = __pyx_f_8src_code_6market_6market_lottery_c(((PyObject*)__pyx_v_marketing), ((PyObject*)__pyx_v_wprem), __pyx_t_20, __pyx_t_24, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1085, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_XDECREF_SET(__pyx_v_quotes, ((PyObject*)__pyx_t_2));
       __pyx_t_2 = 0;
 
-      /* "src_code/market/market.pyx":1088
+      /* "src_code/market/market.pyx":1090
  *                                    lottery_prem_wt=lottery_adj_prem_wt,
  *                                    company=nco.company)
  *                 nco.quote_companies = quotes             # <<<<<<<<<<<<<<
  * 
  *                 quote_premiums = copy.deepcopy(quotes)
  */
-      if (__Pyx_PyObject_SetAttrStr(__pyx_v_nco, __pyx_n_s_quote_companies, __pyx_v_quotes) < 0) __PYX_ERR(0, 1088, __pyx_L1_error)
+      if (__Pyx_PyObject_SetAttrStr(__pyx_v_nco, __pyx_n_s_quote_companies, __pyx_v_quotes) < 0) __PYX_ERR(0, 1090, __pyx_L1_error)
 
-      /* "src_code/market/market.pyx":1090
+      /* "src_code/market/market.pyx":1092
  *                 nco.quote_companies = quotes
  * 
  *                 quote_premiums = copy.deepcopy(quotes)             # <<<<<<<<<<<<<<
  *                 price_compare = copy.deepcopy(quotes)
  *                 for company_i, company in enumerate(self.company_list):
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_copy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1090, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_copy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1092, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_deepcopy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1090, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_deepcopy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1092, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_3 = NULL;
@@ -45647,23 +45683,23 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
         PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_quotes};
         __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1090, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1092, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       }
       __Pyx_XDECREF_SET(__pyx_v_quote_premiums, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "src_code/market/market.pyx":1091
+      /* "src_code/market/market.pyx":1093
  * 
  *                 quote_premiums = copy.deepcopy(quotes)
  *                 price_compare = copy.deepcopy(quotes)             # <<<<<<<<<<<<<<
  *                 for company_i, company in enumerate(self.company_list):
  *                     if quote_premiums[company_i] == 1:
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_copy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1091, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_copy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1093, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_deepcopy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1091, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_deepcopy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1093, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_t_4 = NULL;
@@ -45682,14 +45718,14 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
         PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_v_quotes};
         __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1091, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1093, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
       __Pyx_XDECREF_SET(__pyx_v_price_compare, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "src_code/market/market.pyx":1092
+      /* "src_code/market/market.pyx":1094
  *                 quote_premiums = copy.deepcopy(quotes)
  *                 price_compare = copy.deepcopy(quotes)
  *                 for company_i, company in enumerate(self.company_list):             # <<<<<<<<<<<<<<
@@ -45698,66 +45734,66 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
  */
       __Pyx_INCREF(__pyx_int_0);
       __pyx_t_2 = __pyx_int_0;
-      __pyx_t_3 = __pyx_v_self->company_list; __Pyx_INCREF(__pyx_t_3); __pyx_t_22 = 0;
+      __pyx_t_3 = __pyx_v_self->company_list; __Pyx_INCREF(__pyx_t_3); __pyx_t_23 = 0;
       for (;;) {
-        if (__pyx_t_22 >= PyList_GET_SIZE(__pyx_t_3)) break;
+        if (__pyx_t_23 >= PyList_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_22); __Pyx_INCREF(__pyx_t_4); __pyx_t_22++; if (unlikely((0 < 0))) __PYX_ERR(0, 1092, __pyx_L1_error)
+        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_23); __Pyx_INCREF(__pyx_t_4); __pyx_t_23++; if (unlikely((0 < 0))) __PYX_ERR(0, 1094, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_3, __pyx_t_22); __pyx_t_22++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1092, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_3, __pyx_t_23); __pyx_t_23++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1094, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
         __Pyx_XDECREF_SET(__pyx_v_company, __pyx_t_4);
         __pyx_t_4 = 0;
         __Pyx_INCREF(__pyx_t_2);
         __Pyx_XDECREF_SET(__pyx_v_company_i, __pyx_t_2);
-        __pyx_t_4 = __Pyx_PyInt_AddObjC(__pyx_t_2, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1092, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyInt_AddObjC(__pyx_t_2, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1094, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_2);
         __pyx_t_2 = __pyx_t_4;
         __pyx_t_4 = 0;
 
-        /* "src_code/market/market.pyx":1093
+        /* "src_code/market/market.pyx":1095
  *                 price_compare = copy.deepcopy(quotes)
  *                 for company_i, company in enumerate(self.company_list):
  *                     if quote_premiums[company_i] == 1:             # <<<<<<<<<<<<<<
  *                         if company_i == nco.pr_company:
  *                             quote_premiums[company_i] = nco.renewal_prem
  */
-        __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_quote_premiums, __pyx_v_company_i); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1093, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_quote_premiums, __pyx_v_company_i); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1095, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_20 = (__Pyx_PyInt_BoolEqObjC(__pyx_t_4, __pyx_int_1, 1, 0)); if (unlikely((__pyx_t_20 < 0))) __PYX_ERR(0, 1093, __pyx_L1_error)
+        __pyx_t_21 = (__Pyx_PyInt_BoolEqObjC(__pyx_t_4, __pyx_int_1, 1, 0)); if (unlikely((__pyx_t_21 < 0))) __PYX_ERR(0, 1095, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (__pyx_t_20) {
+        if (__pyx_t_21) {
 
-          /* "src_code/market/market.pyx":1094
+          /* "src_code/market/market.pyx":1096
  *                 for company_i, company in enumerate(self.company_list):
  *                     if quote_premiums[company_i] == 1:
  *                         if company_i == nco.pr_company:             # <<<<<<<<<<<<<<
  *                             quote_premiums[company_i] = nco.renewal_prem
  *                         else:
  */
-          __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_pr_company); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1094, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_pr_company); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1096, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
-          __pyx_t_21 = PyObject_RichCompare(__pyx_v_company_i, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_21); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 1094, __pyx_L1_error)
+          __pyx_t_22 = PyObject_RichCompare(__pyx_v_company_i, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_22); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 1096, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __pyx_t_20 = __Pyx_PyObject_IsTrue(__pyx_t_21); if (unlikely((__pyx_t_20 < 0))) __PYX_ERR(0, 1094, __pyx_L1_error)
-          __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
-          if (__pyx_t_20) {
+          __pyx_t_21 = __Pyx_PyObject_IsTrue(__pyx_t_22); if (unlikely((__pyx_t_21 < 0))) __PYX_ERR(0, 1096, __pyx_L1_error)
+          __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+          if (__pyx_t_21) {
 
-            /* "src_code/market/market.pyx":1095
+            /* "src_code/market/market.pyx":1097
  *                     if quote_premiums[company_i] == 1:
  *                         if company_i == nco.pr_company:
  *                             quote_premiums[company_i] = nco.renewal_prem             # <<<<<<<<<<<<<<
  *                         else:
  *                             company.record_quote(new_year)
  */
-            __pyx_t_21 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_renewal_prem); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 1095, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_21);
-            if (unlikely((PyObject_SetItem(__pyx_v_quote_premiums, __pyx_v_company_i, __pyx_t_21) < 0))) __PYX_ERR(0, 1095, __pyx_L1_error)
-            __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
+            __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_renewal_prem); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 1097, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            if (unlikely((PyObject_SetItem(__pyx_v_quote_premiums, __pyx_v_company_i, __pyx_t_22) < 0))) __PYX_ERR(0, 1097, __pyx_L1_error)
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
 
-            /* "src_code/market/market.pyx":1094
+            /* "src_code/market/market.pyx":1096
  *                 for company_i, company in enumerate(self.company_list):
  *                     if quote_premiums[company_i] == 1:
  *                         if company_i == nco.pr_company:             # <<<<<<<<<<<<<<
@@ -45767,7 +45803,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
             goto __pyx_L9;
           }
 
-          /* "src_code/market/market.pyx":1097
+          /* "src_code/market/market.pyx":1099
  *                             quote_premiums[company_i] = nco.renewal_prem
  *                         else:
  *                             company.record_quote(new_year)             # <<<<<<<<<<<<<<
@@ -45775,129 +45811,129 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
  *                             quote_premiums[company_i] = company.generate_quote(new_year, quote_data)
  */
           /*else*/ {
-            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_record_quote); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1097, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_record_quote); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1099, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_24 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 1097, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_24);
-            __pyx_t_25 = NULL;
+            __pyx_t_25 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_25)) __PYX_ERR(0, 1099, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_25);
+            __pyx_t_26 = NULL;
             __pyx_t_8 = 0;
             if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
-              __pyx_t_25 = PyMethod_GET_SELF(__pyx_t_4);
-              if (likely(__pyx_t_25)) {
+              __pyx_t_26 = PyMethod_GET_SELF(__pyx_t_4);
+              if (likely(__pyx_t_26)) {
                 PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-                __Pyx_INCREF(__pyx_t_25);
+                __Pyx_INCREF(__pyx_t_26);
                 __Pyx_INCREF(function);
                 __Pyx_DECREF_SET(__pyx_t_4, function);
                 __pyx_t_8 = 1;
               }
             }
             {
-              PyObject *__pyx_callargs[2] = {__pyx_t_25, __pyx_t_24};
-              __pyx_t_21 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
-              __Pyx_XDECREF(__pyx_t_25); __pyx_t_25 = 0;
-              __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
-              if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 1097, __pyx_L1_error)
-              __Pyx_GOTREF(__pyx_t_21);
+              PyObject *__pyx_callargs[2] = {__pyx_t_26, __pyx_t_25};
+              __pyx_t_22 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
+              __Pyx_XDECREF(__pyx_t_26); __pyx_t_26 = 0;
+              __Pyx_DECREF(__pyx_t_25); __pyx_t_25 = 0;
+              if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 1099, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_22);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             }
-            __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
 
-            /* "src_code/market/market.pyx":1098
+            /* "src_code/market/market.pyx":1100
  *                         else:
  *                             company.record_quote(new_year)
  *                             quote_data = nco.generate_client_quote_packet(company.get_company_quote_level(new_year))             # <<<<<<<<<<<<<<
  *                             quote_premiums[company_i] = company.generate_quote(new_year, quote_data)
  *                         # print(f'Client: {client_obj.client_id} Premium quote for company {company_i} - {quote_premiums[company_i]}')
  */
-            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_generate_client_quote_packet); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1098, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_generate_client_quote_packet); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1100, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_25 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_get_company_quote_level); if (unlikely(!__pyx_t_25)) __PYX_ERR(0, 1098, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_25);
-            __pyx_t_26 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 1098, __pyx_L1_error)
+            __pyx_t_26 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_get_company_quote_level); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 1100, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_26);
-            __pyx_t_27 = NULL;
+            __pyx_t_27 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 1100, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_27);
+            __pyx_t_28 = NULL;
             __pyx_t_8 = 0;
-            if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_25))) {
-              __pyx_t_27 = PyMethod_GET_SELF(__pyx_t_25);
-              if (likely(__pyx_t_27)) {
-                PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_25);
-                __Pyx_INCREF(__pyx_t_27);
+            if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_26))) {
+              __pyx_t_28 = PyMethod_GET_SELF(__pyx_t_26);
+              if (likely(__pyx_t_28)) {
+                PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_26);
+                __Pyx_INCREF(__pyx_t_28);
                 __Pyx_INCREF(function);
-                __Pyx_DECREF_SET(__pyx_t_25, function);
+                __Pyx_DECREF_SET(__pyx_t_26, function);
                 __pyx_t_8 = 1;
               }
             }
             {
-              PyObject *__pyx_callargs[2] = {__pyx_t_27, __pyx_t_26};
-              __pyx_t_24 = __Pyx_PyObject_FastCall(__pyx_t_25, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
-              __Pyx_XDECREF(__pyx_t_27); __pyx_t_27 = 0;
+              PyObject *__pyx_callargs[2] = {__pyx_t_28, __pyx_t_27};
+              __pyx_t_25 = __Pyx_PyObject_FastCall(__pyx_t_26, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
+              __Pyx_XDECREF(__pyx_t_28); __pyx_t_28 = 0;
+              __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+              if (unlikely(!__pyx_t_25)) __PYX_ERR(0, 1100, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_25);
               __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-              if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 1098, __pyx_L1_error)
-              __Pyx_GOTREF(__pyx_t_24);
-              __Pyx_DECREF(__pyx_t_25); __pyx_t_25 = 0;
             }
-            __pyx_t_25 = NULL;
+            __pyx_t_26 = NULL;
             __pyx_t_8 = 0;
             if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
-              __pyx_t_25 = PyMethod_GET_SELF(__pyx_t_4);
-              if (likely(__pyx_t_25)) {
+              __pyx_t_26 = PyMethod_GET_SELF(__pyx_t_4);
+              if (likely(__pyx_t_26)) {
                 PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-                __Pyx_INCREF(__pyx_t_25);
+                __Pyx_INCREF(__pyx_t_26);
                 __Pyx_INCREF(function);
                 __Pyx_DECREF_SET(__pyx_t_4, function);
                 __pyx_t_8 = 1;
               }
             }
             {
-              PyObject *__pyx_callargs[2] = {__pyx_t_25, __pyx_t_24};
-              __pyx_t_21 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
-              __Pyx_XDECREF(__pyx_t_25); __pyx_t_25 = 0;
-              __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
-              if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 1098, __pyx_L1_error)
-              __Pyx_GOTREF(__pyx_t_21);
+              PyObject *__pyx_callargs[2] = {__pyx_t_26, __pyx_t_25};
+              __pyx_t_22 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
+              __Pyx_XDECREF(__pyx_t_26); __pyx_t_26 = 0;
+              __Pyx_DECREF(__pyx_t_25); __pyx_t_25 = 0;
+              if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 1100, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_22);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             }
-            __Pyx_XDECREF_SET(__pyx_v_quote_data, __pyx_t_21);
-            __pyx_t_21 = 0;
+            __Pyx_XDECREF_SET(__pyx_v_quote_data, __pyx_t_22);
+            __pyx_t_22 = 0;
 
-            /* "src_code/market/market.pyx":1099
+            /* "src_code/market/market.pyx":1101
  *                             company.record_quote(new_year)
  *                             quote_data = nco.generate_client_quote_packet(company.get_company_quote_level(new_year))
  *                             quote_premiums[company_i] = company.generate_quote(new_year, quote_data)             # <<<<<<<<<<<<<<
  *                         # print(f'Client: {client_obj.client_id} Premium quote for company {company_i} - {quote_premiums[company_i]}')
  * 
  */
-            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_generate_quote); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1099, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_generate_quote); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1101, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_24 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 1099, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_24);
-            __pyx_t_25 = NULL;
+            __pyx_t_25 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_25)) __PYX_ERR(0, 1101, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_25);
+            __pyx_t_26 = NULL;
             __pyx_t_8 = 0;
             if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
-              __pyx_t_25 = PyMethod_GET_SELF(__pyx_t_4);
-              if (likely(__pyx_t_25)) {
+              __pyx_t_26 = PyMethod_GET_SELF(__pyx_t_4);
+              if (likely(__pyx_t_26)) {
                 PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-                __Pyx_INCREF(__pyx_t_25);
+                __Pyx_INCREF(__pyx_t_26);
                 __Pyx_INCREF(function);
                 __Pyx_DECREF_SET(__pyx_t_4, function);
                 __pyx_t_8 = 1;
               }
             }
             {
-              PyObject *__pyx_callargs[3] = {__pyx_t_25, __pyx_t_24, __pyx_v_quote_data};
-              __pyx_t_21 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 2+__pyx_t_8);
-              __Pyx_XDECREF(__pyx_t_25); __pyx_t_25 = 0;
-              __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
-              if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 1099, __pyx_L1_error)
-              __Pyx_GOTREF(__pyx_t_21);
+              PyObject *__pyx_callargs[3] = {__pyx_t_26, __pyx_t_25, __pyx_v_quote_data};
+              __pyx_t_22 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 2+__pyx_t_8);
+              __Pyx_XDECREF(__pyx_t_26); __pyx_t_26 = 0;
+              __Pyx_DECREF(__pyx_t_25); __pyx_t_25 = 0;
+              if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 1101, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_22);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             }
-            if (unlikely((PyObject_SetItem(__pyx_v_quote_premiums, __pyx_v_company_i, __pyx_t_21) < 0))) __PYX_ERR(0, 1099, __pyx_L1_error)
-            __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
+            if (unlikely((PyObject_SetItem(__pyx_v_quote_premiums, __pyx_v_company_i, __pyx_t_22) < 0))) __PYX_ERR(0, 1101, __pyx_L1_error)
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
           }
           __pyx_L9:;
 
-          /* "src_code/market/market.pyx":1093
+          /* "src_code/market/market.pyx":1095
  *                 price_compare = copy.deepcopy(quotes)
  *                 for company_i, company in enumerate(self.company_list):
  *                     if quote_premiums[company_i] == 1:             # <<<<<<<<<<<<<<
@@ -45906,7 +45942,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
  */
         }
 
-        /* "src_code/market/market.pyx":1092
+        /* "src_code/market/market.pyx":1094
  *                 quote_premiums = copy.deepcopy(quotes)
  *                 price_compare = copy.deepcopy(quotes)
  *                 for company_i, company in enumerate(self.company_list):             # <<<<<<<<<<<<<<
@@ -45917,7 +45953,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "src_code/market/market.pyx":1102
+      /* "src_code/market/market.pyx":1104
  *                         # print(f'Client: {client_obj.client_id} Premium quote for company {company_i} - {quote_premiums[company_i]}')
  * 
  *                 price_srvc = self.mkt_features['price_srvc']             # <<<<<<<<<<<<<<
@@ -45926,14 +45962,14 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
  */
       if (unlikely(__pyx_v_self->mkt_features == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 1102, __pyx_L1_error)
+        __PYX_ERR(0, 1104, __pyx_L1_error)
       }
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->mkt_features, __pyx_n_s_price_srvc); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1102, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->mkt_features, __pyx_n_s_price_srvc); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1104, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_XDECREF_SET(__pyx_v_price_srvc, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "src_code/market/market.pyx":1103
+      /* "src_code/market/market.pyx":1105
  * 
  *                 price_srvc = self.mkt_features['price_srvc']
  *                 price_sens = self.mkt_features['price_sens']             # <<<<<<<<<<<<<<
@@ -45942,105 +45978,105 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
  */
       if (unlikely(__pyx_v_self->mkt_features == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 1103, __pyx_L1_error)
+        __PYX_ERR(0, 1105, __pyx_L1_error)
       }
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->mkt_features, __pyx_n_s_price_sens); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1103, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->mkt_features, __pyx_n_s_price_sens); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1105, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_XDECREF_SET(__pyx_v_price_sens, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "src_code/market/market.pyx":1104
+      /* "src_code/market/market.pyx":1106
  *                 price_srvc = self.mkt_features['price_srvc']
  *                 price_sens = self.mkt_features['price_sens']
  *                 new_company, new_price = compare_price_c(prices=quote_premiums,             # <<<<<<<<<<<<<<
  *                                                          quotes=price_compare,
  *                                                          price_srvc=price_srvc,
  */
-      if (!(likely(PyList_CheckExact(__pyx_v_quote_premiums))||((__pyx_v_quote_premiums) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_v_quote_premiums))) __PYX_ERR(0, 1104, __pyx_L1_error)
+      if (!(likely(PyList_CheckExact(__pyx_v_quote_premiums))||((__pyx_v_quote_premiums) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_v_quote_premiums))) __PYX_ERR(0, 1106, __pyx_L1_error)
 
-      /* "src_code/market/market.pyx":1105
+      /* "src_code/market/market.pyx":1107
  *                 price_sens = self.mkt_features['price_sens']
  *                 new_company, new_price = compare_price_c(prices=quote_premiums,
  *                                                          quotes=price_compare,             # <<<<<<<<<<<<<<
  *                                                          price_srvc=price_srvc,
  *                                                          price_sens=price_sens)
  */
-      if (!(likely(PyList_CheckExact(__pyx_v_price_compare))||((__pyx_v_price_compare) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_v_price_compare))) __PYX_ERR(0, 1105, __pyx_L1_error)
+      if (!(likely(PyList_CheckExact(__pyx_v_price_compare))||((__pyx_v_price_compare) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_v_price_compare))) __PYX_ERR(0, 1107, __pyx_L1_error)
 
-      /* "src_code/market/market.pyx":1106
+      /* "src_code/market/market.pyx":1108
  *                 new_company, new_price = compare_price_c(prices=quote_premiums,
  *                                                          quotes=price_compare,
  *                                                          price_srvc=price_srvc,             # <<<<<<<<<<<<<<
  *                                                          price_sens=price_sens)
  * 
  */
-      __pyx_t_18 = __pyx_PyFloat_AsFloat(__pyx_v_price_srvc); if (unlikely((__pyx_t_18 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1106, __pyx_L1_error)
+      __pyx_t_19 = __pyx_PyFloat_AsFloat(__pyx_v_price_srvc); if (unlikely((__pyx_t_19 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1108, __pyx_L1_error)
 
-      /* "src_code/market/market.pyx":1107
+      /* "src_code/market/market.pyx":1109
  *                                                          quotes=price_compare,
  *                                                          price_srvc=price_srvc,
  *                                                          price_sens=price_sens)             # <<<<<<<<<<<<<<
  * 
  *                 nco.company = new_company
  */
-      __pyx_t_17 = __pyx_PyFloat_AsFloat(__pyx_v_price_sens); if (unlikely((__pyx_t_17 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1107, __pyx_L1_error)
+      __pyx_t_18 = __pyx_PyFloat_AsFloat(__pyx_v_price_sens); if (unlikely((__pyx_t_18 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1109, __pyx_L1_error)
 
-      /* "src_code/market/market.pyx":1104
+      /* "src_code/market/market.pyx":1106
  *                 price_srvc = self.mkt_features['price_srvc']
  *                 price_sens = self.mkt_features['price_sens']
  *                 new_company, new_price = compare_price_c(prices=quote_premiums,             # <<<<<<<<<<<<<<
  *                                                          quotes=price_compare,
  *                                                          price_srvc=price_srvc,
  */
-      __pyx_t_28 = __pyx_f_8src_code_6market_6market_compare_price_c(((PyObject*)__pyx_v_quote_premiums), ((PyObject*)__pyx_v_price_compare), __pyx_t_18, __pyx_t_17); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1104, __pyx_L1_error)
-      __pyx_t_8 = __pyx_t_28.f0;
-      __pyx_t_23 = __pyx_t_28.f1;
+      __pyx_t_29 = __pyx_f_8src_code_6market_6market_compare_price_c(((PyObject*)__pyx_v_quote_premiums), ((PyObject*)__pyx_v_price_compare), __pyx_t_19, __pyx_t_18); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1106, __pyx_L1_error)
+      __pyx_t_8 = __pyx_t_29.f0;
+      __pyx_t_24 = __pyx_t_29.f1;
       __pyx_v_new_company = __pyx_t_8;
-      __pyx_v_new_price = __pyx_t_23;
+      __pyx_v_new_price = __pyx_t_24;
 
-      /* "src_code/market/market.pyx":1109
+      /* "src_code/market/market.pyx":1111
  *                                                          price_sens=price_sens)
  * 
  *                 nco.company = new_company             # <<<<<<<<<<<<<<
  *                 nco.annual_prem = new_price
  *                 if nco.company != nco.pr_company:
  */
-      __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_new_company); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1109, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_new_company); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1111, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      if (__Pyx_PyObject_SetAttrStr(__pyx_v_nco, __pyx_n_s_company, __pyx_t_2) < 0) __PYX_ERR(0, 1109, __pyx_L1_error)
+      if (__Pyx_PyObject_SetAttrStr(__pyx_v_nco, __pyx_n_s_company, __pyx_t_2) < 0) __PYX_ERR(0, 1111, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "src_code/market/market.pyx":1110
+      /* "src_code/market/market.pyx":1112
  * 
  *                 nco.company = new_company
  *                 nco.annual_prem = new_price             # <<<<<<<<<<<<<<
  *                 if nco.company != nco.pr_company:
  *                     self.company_list[nco.company].process_sale(new_year, client_obj.client_id)
  */
-      __pyx_t_2 = PyFloat_FromDouble(__pyx_v_new_price); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1110, __pyx_L1_error)
+      __pyx_t_2 = PyFloat_FromDouble(__pyx_v_new_price); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1112, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      if (__Pyx_PyObject_SetAttrStr(__pyx_v_nco, __pyx_n_s_annual_prem, __pyx_t_2) < 0) __PYX_ERR(0, 1110, __pyx_L1_error)
+      if (__Pyx_PyObject_SetAttrStr(__pyx_v_nco, __pyx_n_s_annual_prem, __pyx_t_2) < 0) __PYX_ERR(0, 1112, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "src_code/market/market.pyx":1111
+      /* "src_code/market/market.pyx":1113
  *                 nco.company = new_company
  *                 nco.annual_prem = new_price
  *                 if nco.company != nco.pr_company:             # <<<<<<<<<<<<<<
  *                     self.company_list[nco.company].process_sale(new_year, client_obj.client_id)
  *                     self.company_list[nco.pr_company].process_canx(new_year, client_obj.client_id)
  */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_company); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1111, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_company); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1113, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_pr_company); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1111, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_pr_company); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1113, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_21 = PyObject_RichCompare(__pyx_t_2, __pyx_t_3, Py_NE); __Pyx_XGOTREF(__pyx_t_21); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 1111, __pyx_L1_error)
+      __pyx_t_22 = PyObject_RichCompare(__pyx_t_2, __pyx_t_3, Py_NE); __Pyx_XGOTREF(__pyx_t_22); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 1113, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_20 = __Pyx_PyObject_IsTrue(__pyx_t_21); if (unlikely((__pyx_t_20 < 0))) __PYX_ERR(0, 1111, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
-      if (__pyx_t_20) {
+      __pyx_t_21 = __Pyx_PyObject_IsTrue(__pyx_t_22); if (unlikely((__pyx_t_21 < 0))) __PYX_ERR(0, 1113, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+      if (__pyx_t_21) {
 
-        /* "src_code/market/market.pyx":1112
+        /* "src_code/market/market.pyx":1114
  *                 nco.annual_prem = new_price
  *                 if nco.company != nco.pr_company:
  *                     self.company_list[nco.company].process_sale(new_year, client_obj.client_id)             # <<<<<<<<<<<<<<
@@ -46049,45 +46085,45 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
  */
         if (unlikely(__pyx_v_self->company_list == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 1112, __pyx_L1_error)
+          __PYX_ERR(0, 1114, __pyx_L1_error)
         }
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_company); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1112, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_company); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1114, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_self->company_list, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1112, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_self->company_list, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1114, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_process_sale); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1112, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_process_sale); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1114, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1112, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1114, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_client_obj, __pyx_n_s_client_id); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1112, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_client_obj, __pyx_n_s_client_id); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1114, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_24 = NULL;
+        __pyx_t_25 = NULL;
         __pyx_t_8 = 0;
         if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-          __pyx_t_24 = PyMethod_GET_SELF(__pyx_t_3);
-          if (likely(__pyx_t_24)) {
+          __pyx_t_25 = PyMethod_GET_SELF(__pyx_t_3);
+          if (likely(__pyx_t_25)) {
             PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-            __Pyx_INCREF(__pyx_t_24);
+            __Pyx_INCREF(__pyx_t_25);
             __Pyx_INCREF(function);
             __Pyx_DECREF_SET(__pyx_t_3, function);
             __pyx_t_8 = 1;
           }
         }
         {
-          PyObject *__pyx_callargs[3] = {__pyx_t_24, __pyx_t_2, __pyx_t_4};
-          __pyx_t_21 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 2+__pyx_t_8);
-          __Pyx_XDECREF(__pyx_t_24); __pyx_t_24 = 0;
+          PyObject *__pyx_callargs[3] = {__pyx_t_25, __pyx_t_2, __pyx_t_4};
+          __pyx_t_22 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 2+__pyx_t_8);
+          __Pyx_XDECREF(__pyx_t_25); __pyx_t_25 = 0;
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 1112, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_21);
+          if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 1114, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_22);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         }
-        __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
+        __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
 
-        /* "src_code/market/market.pyx":1113
+        /* "src_code/market/market.pyx":1115
  *                 if nco.company != nco.pr_company:
  *                     self.company_list[nco.company].process_sale(new_year, client_obj.client_id)
  *                     self.company_list[nco.pr_company].process_canx(new_year, client_obj.client_id)             # <<<<<<<<<<<<<<
@@ -46096,45 +46132,45 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
  */
         if (unlikely(__pyx_v_self->company_list == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 1113, __pyx_L1_error)
+          __PYX_ERR(0, 1115, __pyx_L1_error)
         }
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_pr_company); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1113, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_pr_company); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1115, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_self->company_list, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1113, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_self->company_list, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1115, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_process_canx); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1113, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_process_canx); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1115, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1113, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1115, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_client_obj, __pyx_n_s_client_id); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1113, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_client_obj, __pyx_n_s_client_id); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1115, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_24 = NULL;
+        __pyx_t_25 = NULL;
         __pyx_t_8 = 0;
         if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-          __pyx_t_24 = PyMethod_GET_SELF(__pyx_t_3);
-          if (likely(__pyx_t_24)) {
+          __pyx_t_25 = PyMethod_GET_SELF(__pyx_t_3);
+          if (likely(__pyx_t_25)) {
             PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-            __Pyx_INCREF(__pyx_t_24);
+            __Pyx_INCREF(__pyx_t_25);
             __Pyx_INCREF(function);
             __Pyx_DECREF_SET(__pyx_t_3, function);
             __pyx_t_8 = 1;
           }
         }
         {
-          PyObject *__pyx_callargs[3] = {__pyx_t_24, __pyx_t_4, __pyx_t_2};
-          __pyx_t_21 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 2+__pyx_t_8);
-          __Pyx_XDECREF(__pyx_t_24); __pyx_t_24 = 0;
+          PyObject *__pyx_callargs[3] = {__pyx_t_25, __pyx_t_4, __pyx_t_2};
+          __pyx_t_22 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 2+__pyx_t_8);
+          __Pyx_XDECREF(__pyx_t_25); __pyx_t_25 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 1113, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_21);
+          if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 1115, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_22);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         }
-        __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
+        __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
 
-        /* "src_code/market/market.pyx":1111
+        /* "src_code/market/market.pyx":1113
  *                 nco.company = new_company
  *                 nco.annual_prem = new_price
  *                 if nco.company != nco.pr_company:             # <<<<<<<<<<<<<<
@@ -46143,7 +46179,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
  */
       }
 
-      /* "src_code/market/market.pyx":1077
+      /* "src_code/market/market.pyx":1079
  *                 nco.company = oco.company
  *                 nco.annual_prem = nco.renewal_prem
  *             elif nco.shop == 1:             # <<<<<<<<<<<<<<
@@ -46171,16 +46207,17 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_21);
-  __Pyx_XDECREF(__pyx_t_24);
+  __Pyx_XDECREF(__pyx_t_22);
   __Pyx_XDECREF(__pyx_t_25);
   __Pyx_XDECREF(__pyx_t_26);
   __Pyx_XDECREF(__pyx_t_27);
+  __Pyx_XDECREF(__pyx_t_28);
   __Pyx_AddTraceback("src_code.market.market.Market.process_shopping", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_shop_base);
-  __Pyx_XDECREF(__pyx_v_shop_slpe);
+  __Pyx_XDECREF(__pyx_v_shop_slpe_increase);
+  __Pyx_XDECREF(__pyx_v_shop_slpe_decrease);
   __Pyx_XDECREF(__pyx_v_shop_sens);
   __Pyx_XDECREF(__pyx_v_mktg_spend_ind);
   __Pyx_XDECREF(__pyx_v_ann_prem_prior_ind);
@@ -46208,7 +46245,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_28process_shopping(s
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1120
+/* "src_code/market/market.pyx":1122
  *                 # print(f'new_price: {new_price}')
  * 
  *     def process_mktg(self, int year):             # <<<<<<<<<<<<<<
@@ -46258,23 +46295,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_year)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1120, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1122, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "process_mktg") < 0)) __PYX_ERR(0, 1120, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "process_mktg") < 0)) __PYX_ERR(0, 1122, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1120, __pyx_L3_error)
+    __pyx_v_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1122, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("process_mktg", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1120, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("process_mktg", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1122, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("src_code.market.market.Market.process_mktg", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -46303,7 +46340,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_30process_mktg(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("process_mktg", 0);
 
-  /* "src_code/market/market.pyx":1121
+  /* "src_code/market/market.pyx":1123
  * 
  *     def process_mktg(self, int year):
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -46312,30 +46349,30 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_30process_mktg(struc
  */
   if (unlikely(__pyx_v_self->company_list == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 1121, __pyx_L1_error)
+    __PYX_ERR(0, 1123, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_self->company_list; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1121, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1123, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1121, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1123, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_company, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1122
+    /* "src_code/market/market.pyx":1124
  *     def process_mktg(self, int year):
  *         for company in self.company_list:
  *             company.process_mktg(year)             # <<<<<<<<<<<<<<
  * 
  *     def process_mktg_ind(self, int year):
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_process_mktg); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1122, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_process_mktg); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1124, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_year); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1122, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_year); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1124, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     __pyx_t_7 = 0;
@@ -46354,13 +46391,13 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_30process_mktg(struc
       __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1122, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1124, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1121
+    /* "src_code/market/market.pyx":1123
  * 
  *     def process_mktg(self, int year):
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -46370,7 +46407,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_30process_mktg(struc
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1120
+  /* "src_code/market/market.pyx":1122
  *                 # print(f'new_price: {new_price}')
  * 
  *     def process_mktg(self, int year):             # <<<<<<<<<<<<<<
@@ -46396,7 +46433,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_30process_mktg(struc
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1124
+/* "src_code/market/market.pyx":1126
  *             company.process_mktg(year)
  * 
  *     def process_mktg_ind(self, int year):             # <<<<<<<<<<<<<<
@@ -46446,23 +46483,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_year)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1124, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1126, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "process_mktg_ind") < 0)) __PYX_ERR(0, 1124, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "process_mktg_ind") < 0)) __PYX_ERR(0, 1126, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1124, __pyx_L3_error)
+    __pyx_v_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1126, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("process_mktg_ind", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1124, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("process_mktg_ind", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1126, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("src_code.market.market.Market.process_mktg_ind", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -46492,7 +46529,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_32process_mktg_ind(s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("process_mktg_ind", 0);
 
-  /* "src_code/market/market.pyx":1125
+  /* "src_code/market/market.pyx":1127
  * 
  *     def process_mktg_ind(self, int year):
  *         mktg_spend_ind = 0             # <<<<<<<<<<<<<<
@@ -46502,69 +46539,12 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_32process_mktg_ind(s
   __Pyx_INCREF(__pyx_int_0);
   __pyx_v_mktg_spend_ind = __pyx_int_0;
 
-  /* "src_code/market/market.pyx":1126
- *     def process_mktg_ind(self, int year):
- *         mktg_spend_ind = 0
- *         for company in self.company_list:             # <<<<<<<<<<<<<<
- *             mktg_spend_ind += company.annual_data[year]['financial_data'].mktg_var_expenses
- *         for company in self.company_list:
- */
-  if (unlikely(__pyx_v_self->company_list == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 1126, __pyx_L1_error)
-  }
-  __pyx_t_1 = __pyx_v_self->company_list; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
-  for (;;) {
-    if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
-    #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1126, __pyx_L1_error)
-    #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1126, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    #endif
-    __Pyx_XDECREF_SET(__pyx_v_company, __pyx_t_3);
-    __pyx_t_3 = 0;
-
-    /* "src_code/market/market.pyx":1127
- *         mktg_spend_ind = 0
- *         for company in self.company_list:
- *             mktg_spend_ind += company.annual_data[year]['financial_data'].mktg_var_expenses             # <<<<<<<<<<<<<<
- *         for company in self.company_list:
- *             company.process_mktg_ind(year, mktg_spend_ind)
- */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1127, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_year, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1127, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_financial_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1127, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_mktg_var_expenses); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1127, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_v_mktg_spend_ind, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1127, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF_SET(__pyx_v_mktg_spend_ind, __pyx_t_3);
-    __pyx_t_3 = 0;
-
-    /* "src_code/market/market.pyx":1126
- *     def process_mktg_ind(self, int year):
- *         mktg_spend_ind = 0
- *         for company in self.company_list:             # <<<<<<<<<<<<<<
- *             mktg_spend_ind += company.annual_data[year]['financial_data'].mktg_var_expenses
- *         for company in self.company_list:
- */
-  }
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
   /* "src_code/market/market.pyx":1128
- *         for company in self.company_list:
- *             mktg_spend_ind += company.annual_data[year]['financial_data'].mktg_var_expenses
+ *     def process_mktg_ind(self, int year):
+ *         mktg_spend_ind = 0
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
- *             company.process_mktg_ind(year, mktg_spend_ind)
- * 
+ *             mktg_spend_ind += company.annual_data[year]['financial_data'].mktg_var_expenses
+ *         for company in self.company_list:
  */
   if (unlikely(__pyx_v_self->company_list == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
@@ -46583,15 +46563,72 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_32process_mktg_ind(s
     __pyx_t_3 = 0;
 
     /* "src_code/market/market.pyx":1129
+ *         mktg_spend_ind = 0
+ *         for company in self.company_list:
+ *             mktg_spend_ind += company.annual_data[year]['financial_data'].mktg_var_expenses             # <<<<<<<<<<<<<<
+ *         for company in self.company_list:
+ *             company.process_mktg_ind(year, mktg_spend_ind)
+ */
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1129, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_year, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1129, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_financial_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1129, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_mktg_var_expenses); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1129, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_v_mktg_spend_ind, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1129, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF_SET(__pyx_v_mktg_spend_ind, __pyx_t_3);
+    __pyx_t_3 = 0;
+
+    /* "src_code/market/market.pyx":1128
+ *     def process_mktg_ind(self, int year):
+ *         mktg_spend_ind = 0
+ *         for company in self.company_list:             # <<<<<<<<<<<<<<
+ *             mktg_spend_ind += company.annual_data[year]['financial_data'].mktg_var_expenses
+ *         for company in self.company_list:
+ */
+  }
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "src_code/market/market.pyx":1130
+ *         for company in self.company_list:
+ *             mktg_spend_ind += company.annual_data[year]['financial_data'].mktg_var_expenses
+ *         for company in self.company_list:             # <<<<<<<<<<<<<<
+ *             company.process_mktg_ind(year, mktg_spend_ind)
+ * 
+ */
+  if (unlikely(__pyx_v_self->company_list == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
+    __PYX_ERR(0, 1130, __pyx_L1_error)
+  }
+  __pyx_t_1 = __pyx_v_self->company_list; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
+  for (;;) {
+    if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
+    #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1130, __pyx_L1_error)
+    #else
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1130, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    #endif
+    __Pyx_XDECREF_SET(__pyx_v_company, __pyx_t_3);
+    __pyx_t_3 = 0;
+
+    /* "src_code/market/market.pyx":1131
  *             mktg_spend_ind += company.annual_data[year]['financial_data'].mktg_var_expenses
  *         for company in self.company_list:
  *             company.process_mktg_ind(year, mktg_spend_ind)             # <<<<<<<<<<<<<<
  * 
  *     # perform claim initialization
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_process_mktg_ind); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1129, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_process_mktg_ind); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1131, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_year); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1129, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_year); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1131, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     __pyx_t_7 = 0;
@@ -46610,13 +46647,13 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_32process_mktg_ind(s
       __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_7, 2+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1129, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1131, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1128
+    /* "src_code/market/market.pyx":1130
  *         for company in self.company_list:
  *             mktg_spend_ind += company.annual_data[year]['financial_data'].mktg_var_expenses
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -46626,7 +46663,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_32process_mktg_ind(s
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1124
+  /* "src_code/market/market.pyx":1126
  *             company.process_mktg(year)
  * 
  *     def process_mktg_ind(self, int year):             # <<<<<<<<<<<<<<
@@ -46653,7 +46690,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_32process_mktg_ind(s
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1132
+/* "src_code/market/market.pyx":1134
  * 
  *     # perform claim initialization
  *     def process_claims(self, int year):             # <<<<<<<<<<<<<<
@@ -46703,23 +46740,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_year)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1132, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1134, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "process_claims") < 0)) __PYX_ERR(0, 1132, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "process_claims") < 0)) __PYX_ERR(0, 1134, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1132, __pyx_L3_error)
+    __pyx_v_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1134, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("process_claims", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1132, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("process_claims", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1134, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("src_code.market.market.Market.process_claims", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -46749,7 +46786,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_34process_claims(str
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("process_claims", 0);
 
-  /* "src_code/market/market.pyx":1133
+  /* "src_code/market/market.pyx":1135
  *     # perform claim initialization
  *     def process_claims(self, int year):
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -46758,51 +46795,51 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_34process_claims(str
  */
   if (unlikely(__pyx_v_self->company_list == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 1133, __pyx_L1_error)
+    __PYX_ERR(0, 1135, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_self->company_list; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1133, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1135, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1133, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1135, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_company, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1134
+    /* "src_code/market/market.pyx":1136
  *     def process_claims(self, int year):
  *         for company in self.company_list:
  *             sel_aa_margin = company.annual_data[year]['decision_data'].sel_aa_margin             # <<<<<<<<<<<<<<
  *             company.process_claim_reserves(year, sel_aa_margin, self.resv_features)
  * 
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1134, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_year, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1134, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_year, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_decision_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1134, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_decision_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_sel_aa_margin); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1134, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_sel_aa_margin); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_XDECREF_SET(__pyx_v_sel_aa_margin, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "src_code/market/market.pyx":1135
+    /* "src_code/market/market.pyx":1137
  *         for company in self.company_list:
  *             sel_aa_margin = company.annual_data[year]['decision_data'].sel_aa_margin
  *             company.process_claim_reserves(year, sel_aa_margin, self.resv_features)             # <<<<<<<<<<<<<<
  * 
  *     def process_financials(self, int year):
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_process_claim_reserves); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1135, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_process_claim_reserves); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1137, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_year); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1135, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_year); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1137, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     __pyx_t_7 = 0;
@@ -46821,13 +46858,13 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_34process_claims(str
       __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_7, 3+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1135, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1137, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "src_code/market/market.pyx":1133
+    /* "src_code/market/market.pyx":1135
  *     # perform claim initialization
  *     def process_claims(self, int year):
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -46837,7 +46874,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_34process_claims(str
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1132
+  /* "src_code/market/market.pyx":1134
  * 
  *     # perform claim initialization
  *     def process_claims(self, int year):             # <<<<<<<<<<<<<<
@@ -46864,7 +46901,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_34process_claims(str
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1137
+/* "src_code/market/market.pyx":1139
  *             company.process_claim_reserves(year, sel_aa_margin, self.resv_features)
  * 
  *     def process_financials(self, int year):             # <<<<<<<<<<<<<<
@@ -46914,23 +46951,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_year)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1137, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1139, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "process_financials") < 0)) __PYX_ERR(0, 1137, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "process_financials") < 0)) __PYX_ERR(0, 1139, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1137, __pyx_L3_error)
+    __pyx_v_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1139, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("process_financials", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1137, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("process_financials", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1139, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("src_code.market.market.Market.process_financials", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -46962,7 +46999,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_36process_financials
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("process_financials", 0);
 
-  /* "src_code/market/market.pyx":1138
+  /* "src_code/market/market.pyx":1140
  * 
  *     def process_financials(self, int year):
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -46971,96 +47008,28 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_36process_financials
  */
   if (unlikely(__pyx_v_self->company_list == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 1138, __pyx_L1_error)
+    __PYX_ERR(0, 1140, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_self->company_list; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1138, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1140, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1138, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1140, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_company, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1139
+    /* "src_code/market/market.pyx":1141
  *     def process_financials(self, int year):
  *         for company in self.company_list:
  *             company.claim_financial_summary(year)             # <<<<<<<<<<<<<<
  *             company.process_claim_triangles(year, self.mkt_features)
  *             company.expense_financial_summary(year)
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_claim_financial_summary); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1139, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_year); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1139, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = NULL;
-    __pyx_t_7 = 0;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
-      __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
-      if (likely(__pyx_t_6)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-        __Pyx_INCREF(__pyx_t_6);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_4, function);
-        __pyx_t_7 = 1;
-      }
-    }
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_t_5};
-      __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
-      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1139, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    }
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
-    /* "src_code/market/market.pyx":1140
- *         for company in self.company_list:
- *             company.claim_financial_summary(year)
- *             company.process_claim_triangles(year, self.mkt_features)             # <<<<<<<<<<<<<<
- *             company.expense_financial_summary(year)
- *             company.fs_financial_summary(year)
- */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_process_claim_triangles); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1140, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_year); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1140, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = NULL;
-    __pyx_t_7 = 0;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
-      __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
-      if (likely(__pyx_t_6)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-        __Pyx_INCREF(__pyx_t_6);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_4, function);
-        __pyx_t_7 = 1;
-      }
-    }
-    {
-      PyObject *__pyx_callargs[3] = {__pyx_t_6, __pyx_t_5, __pyx_v_self->mkt_features};
-      __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_7, 2+__pyx_t_7);
-      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1140, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    }
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
-    /* "src_code/market/market.pyx":1141
- *             company.claim_financial_summary(year)
- *             company.process_claim_triangles(year, self.mkt_features)
- *             company.expense_financial_summary(year)             # <<<<<<<<<<<<<<
- *             company.fs_financial_summary(year)
- *             company.indication_financial_summary(year)
- */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_expense_financial_summary); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1141, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_claim_financial_summary); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1141, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_year); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1141, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
@@ -47088,13 +47057,13 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_36process_financials
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
     /* "src_code/market/market.pyx":1142
- *             company.process_claim_triangles(year, self.mkt_features)
+ *         for company in self.company_list:
+ *             company.claim_financial_summary(year)
+ *             company.process_claim_triangles(year, self.mkt_features)             # <<<<<<<<<<<<<<
  *             company.expense_financial_summary(year)
- *             company.fs_financial_summary(year)             # <<<<<<<<<<<<<<
- *             company.indication_financial_summary(year)
- *             company.update_annual_data(year, self.get_expense_inflation_index(year))
+ *             company.fs_financial_summary(year)
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_fs_financial_summary); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1142, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_process_claim_triangles); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1142, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_year); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1142, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
@@ -47111,8 +47080,8 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_36process_financials
       }
     }
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_t_5};
-      __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
+      PyObject *__pyx_callargs[3] = {__pyx_t_6, __pyx_t_5, __pyx_v_self->mkt_features};
+      __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_7, 2+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1142, __pyx_L1_error)
@@ -47122,13 +47091,13 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_36process_financials
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
     /* "src_code/market/market.pyx":1143
- *             company.expense_financial_summary(year)
+ *             company.claim_financial_summary(year)
+ *             company.process_claim_triangles(year, self.mkt_features)
+ *             company.expense_financial_summary(year)             # <<<<<<<<<<<<<<
  *             company.fs_financial_summary(year)
- *             company.indication_financial_summary(year)             # <<<<<<<<<<<<<<
- *             company.update_annual_data(year, self.get_expense_inflation_index(year))
- * 
+ *             company.indication_financial_summary(year)
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_indication_financial_summary); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1143, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_expense_financial_summary); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1143, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_year); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1143, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
@@ -47156,19 +47125,87 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_36process_financials
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
     /* "src_code/market/market.pyx":1144
+ *             company.process_claim_triangles(year, self.mkt_features)
+ *             company.expense_financial_summary(year)
+ *             company.fs_financial_summary(year)             # <<<<<<<<<<<<<<
+ *             company.indication_financial_summary(year)
+ *             company.update_annual_data(year, self.get_expense_inflation_index(year))
+ */
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_fs_financial_summary); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1144, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_year); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1144, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_6 = NULL;
+    __pyx_t_7 = 0;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_6)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_6);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+        __pyx_t_7 = 1;
+      }
+    }
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_t_5};
+      __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
+      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1144, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    }
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+    /* "src_code/market/market.pyx":1145
+ *             company.expense_financial_summary(year)
+ *             company.fs_financial_summary(year)
+ *             company.indication_financial_summary(year)             # <<<<<<<<<<<<<<
+ *             company.update_annual_data(year, self.get_expense_inflation_index(year))
+ * 
+ */
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_indication_financial_summary); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1145, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_year); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1145, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_6 = NULL;
+    __pyx_t_7 = 0;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_6)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_6);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+        __pyx_t_7 = 1;
+      }
+    }
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_t_5};
+      __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
+      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1145, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    }
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+    /* "src_code/market/market.pyx":1146
  *             company.fs_financial_summary(year)
  *             company.indication_financial_summary(year)
  *             company.update_annual_data(year, self.get_expense_inflation_index(year))             # <<<<<<<<<<<<<<
  * 
  *     def process_clients(self, int new_year):
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_update_annual_data); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1144, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_update_annual_data); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1146, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_year); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1144, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_year); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1146, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_expense_inflation_index); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1144, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_expense_inflation_index); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1146, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_year); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1144, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_year); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1146, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __pyx_t_10 = NULL;
     __pyx_t_7 = 0;
@@ -47187,7 +47224,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_36process_financials
       __pyx_t_6 = __Pyx_PyObject_FastCall(__pyx_t_8, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1144, __pyx_L1_error)
+      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1146, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
@@ -47209,13 +47246,13 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_36process_financials
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1144, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1146, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1138
+    /* "src_code/market/market.pyx":1140
  * 
  *     def process_financials(self, int year):
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -47225,7 +47262,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_36process_financials
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1137
+  /* "src_code/market/market.pyx":1139
  *             company.process_claim_reserves(year, sel_aa_margin, self.resv_features)
  * 
  *     def process_financials(self, int year):             # <<<<<<<<<<<<<<
@@ -47254,7 +47291,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_36process_financials
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1146
+/* "src_code/market/market.pyx":1148
  *             company.update_annual_data(year, self.get_expense_inflation_index(year))
  * 
  *     def process_clients(self, int new_year):             # <<<<<<<<<<<<<<
@@ -47304,23 +47341,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_new_year)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1146, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1148, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "process_clients") < 0)) __PYX_ERR(0, 1146, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "process_clients") < 0)) __PYX_ERR(0, 1148, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v_new_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_new_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1146, __pyx_L3_error)
+    __pyx_v_new_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_new_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1148, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("process_clients", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1146, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("process_clients", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1148, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("src_code.market.market.Market.process_clients", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -47364,7 +47401,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_38process_clients(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("process_clients", 0);
 
-  /* "src_code/market/market.pyx":1147
+  /* "src_code/market/market.pyx":1149
  * 
  *     def process_clients(self, int new_year):
  *         old_year = new_year - 1             # <<<<<<<<<<<<<<
@@ -47373,7 +47410,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_38process_clients(st
  */
   __pyx_v_old_year = (__pyx_v_new_year - 1);
 
-  /* "src_code/market/market.pyx":1148
+  /* "src_code/market/market.pyx":1150
  *     def process_clients(self, int new_year):
  *         old_year = new_year - 1
  *         terr_chg_test = random_between(self.init_client_features['terr_chg_min'], self.init_client_features['terr_chg_max'])             # <<<<<<<<<<<<<<
@@ -47382,24 +47419,24 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_38process_clients(st
  */
   if (unlikely(__pyx_v_self->init_client_features == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 1148, __pyx_L1_error)
+    __PYX_ERR(0, 1150, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->init_client_features, __pyx_n_s_terr_chg_min); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1148, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->init_client_features, __pyx_n_s_terr_chg_min); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1150, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1148, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1150, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (unlikely(__pyx_v_self->init_client_features == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 1148, __pyx_L1_error)
+    __PYX_ERR(0, 1150, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->init_client_features, __pyx_n_s_terr_chg_max); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1148, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->init_client_features, __pyx_n_s_terr_chg_max); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1150, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1148, __pyx_L1_error)
+  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1150, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_4 = __pyx_f_8src_code_6market_6market_random_between(__pyx_t_2, __pyx_t_3); if (unlikely(__pyx_t_4 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1148, __pyx_L1_error)
+  __pyx_t_4 = __pyx_f_8src_code_6market_6market_random_between(__pyx_t_2, __pyx_t_3); if (unlikely(__pyx_t_4 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1150, __pyx_L1_error)
   __pyx_v_terr_chg_test = __pyx_t_4;
 
-  /* "src_code/market/market.pyx":1149
+  /* "src_code/market/market.pyx":1151
  *         old_year = new_year - 1
  *         terr_chg_test = random_between(self.init_client_features['terr_chg_min'], self.init_client_features['terr_chg_max'])
  *         credit_chg_test = random_between(self.init_client_features['credit_chg_min'], self.init_client_features['credit_chg_max'])             # <<<<<<<<<<<<<<
@@ -47408,24 +47445,24 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_38process_clients(st
  */
   if (unlikely(__pyx_v_self->init_client_features == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 1149, __pyx_L1_error)
+    __PYX_ERR(0, 1151, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->init_client_features, __pyx_n_s_credit_chg_min); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1149, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->init_client_features, __pyx_n_s_credit_chg_min); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1151, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1149, __pyx_L1_error)
+  __pyx_t_4 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1151, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (unlikely(__pyx_v_self->init_client_features == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 1149, __pyx_L1_error)
+    __PYX_ERR(0, 1151, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->init_client_features, __pyx_n_s_credit_chg_max); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1149, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->init_client_features, __pyx_n_s_credit_chg_max); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1151, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1149, __pyx_L1_error)
+  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1151, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_2 = __pyx_f_8src_code_6market_6market_random_between(__pyx_t_4, __pyx_t_3); if (unlikely(__pyx_t_2 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1149, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_8src_code_6market_6market_random_between(__pyx_t_4, __pyx_t_3); if (unlikely(__pyx_t_2 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1151, __pyx_L1_error)
   __pyx_v_credit_chg_test = __pyx_t_2;
 
-  /* "src_code/market/market.pyx":1151
+  /* "src_code/market/market.pyx":1153
  *         credit_chg_test = random_between(self.init_client_features['credit_chg_min'], self.init_client_features['credit_chg_max'])
  * 
  *         for client_id in self.client_dict.keys():             # <<<<<<<<<<<<<<
@@ -47435,9 +47472,9 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_38process_clients(st
   __pyx_t_5 = 0;
   if (unlikely(__pyx_v_self->client_dict == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "keys");
-    __PYX_ERR(0, 1151, __pyx_L1_error)
+    __PYX_ERR(0, 1153, __pyx_L1_error)
   }
-  __pyx_t_8 = __Pyx_dict_iterator(__pyx_v_self->client_dict, 1, __pyx_n_s_keys, (&__pyx_t_6), (&__pyx_t_7)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1151, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_dict_iterator(__pyx_v_self->client_dict, 1, __pyx_n_s_keys, (&__pyx_t_6), (&__pyx_t_7)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1153, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_1);
   __pyx_t_1 = __pyx_t_8;
@@ -47445,19 +47482,19 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_38process_clients(st
   while (1) {
     __pyx_t_9 = __Pyx_dict_iter_next(__pyx_t_1, __pyx_t_6, &__pyx_t_5, &__pyx_t_8, NULL, NULL, __pyx_t_7);
     if (unlikely(__pyx_t_9 == 0)) break;
-    if (unlikely(__pyx_t_9 == -1)) __PYX_ERR(0, 1151, __pyx_L1_error)
+    if (unlikely(__pyx_t_9 == -1)) __PYX_ERR(0, 1153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_XDECREF_SET(__pyx_v_client_id, __pyx_t_8);
     __pyx_t_8 = 0;
 
-    /* "src_code/market/market.pyx":1152
+    /* "src_code/market/market.pyx":1154
  * 
  *         for client_id in self.client_dict.keys():
  *             client_obj = self.get_client_obj(client_id)             # <<<<<<<<<<<<<<
  *             oco = client_obj.annual_data[old_year]
  *             ann_prem = 0
  */
-    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_client_obj); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 1152, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_client_obj); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 1154, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __pyx_t_11 = NULL;
     __pyx_t_9 = 0;
@@ -47475,29 +47512,29 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_38process_clients(st
       PyObject *__pyx_callargs[2] = {__pyx_t_11, __pyx_v_client_id};
       __pyx_t_8 = __Pyx_PyObject_FastCall(__pyx_t_10, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
       __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1152, __pyx_L1_error)
+      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1154, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     }
     __Pyx_XDECREF_SET(__pyx_v_client_obj, __pyx_t_8);
     __pyx_t_8 = 0;
 
-    /* "src_code/market/market.pyx":1153
+    /* "src_code/market/market.pyx":1155
  *         for client_id in self.client_dict.keys():
  *             client_obj = self.get_client_obj(client_id)
  *             oco = client_obj.annual_data[old_year]             # <<<<<<<<<<<<<<
  *             ann_prem = 0
  *             new_client_features = client_obj.init_client_features
  */
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_client_obj, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1153, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_client_obj, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1155, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_10 = __Pyx_GetItemInt(__pyx_t_8, __pyx_v_old_year, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 1153, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_GetItemInt(__pyx_t_8, __pyx_v_old_year, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 1155, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_XDECREF_SET(__pyx_v_oco, __pyx_t_10);
     __pyx_t_10 = 0;
 
-    /* "src_code/market/market.pyx":1154
+    /* "src_code/market/market.pyx":1156
  *             client_obj = self.get_client_obj(client_id)
  *             oco = client_obj.annual_data[old_year]
  *             ann_prem = 0             # <<<<<<<<<<<<<<
@@ -47506,44 +47543,44 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_38process_clients(st
  */
     __pyx_v_ann_prem = 0;
 
-    /* "src_code/market/market.pyx":1155
+    /* "src_code/market/market.pyx":1157
  *             oco = client_obj.annual_data[old_year]
  *             ann_prem = 0
  *             new_client_features = client_obj.init_client_features             # <<<<<<<<<<<<<<
  *             new_claim_features = client_obj.init_claim_features
  *             # modfiy client_features / claim_features for drift later
  */
-    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_client_obj, __pyx_n_s_init_client_features); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 1155, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_client_obj, __pyx_n_s_init_client_features); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 1157, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_XDECREF_SET(__pyx_v_new_client_features, __pyx_t_10);
     __pyx_t_10 = 0;
 
-    /* "src_code/market/market.pyx":1156
+    /* "src_code/market/market.pyx":1158
  *             ann_prem = 0
  *             new_client_features = client_obj.init_client_features
  *             new_claim_features = client_obj.init_claim_features             # <<<<<<<<<<<<<<
  *             # modfiy client_features / claim_features for drift later
  *             client_obj.age_clients(new_year, terr_chg_test, credit_chg_test)
  */
-    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_client_obj, __pyx_n_s_init_claim_features); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 1156, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_client_obj, __pyx_n_s_init_claim_features); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 1158, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_XDECREF_SET(__pyx_v_new_claim_features, __pyx_t_10);
     __pyx_t_10 = 0;
 
-    /* "src_code/market/market.pyx":1158
+    /* "src_code/market/market.pyx":1160
  *             new_claim_features = client_obj.init_claim_features
  *             # modfiy client_features / claim_features for drift later
  *             client_obj.age_clients(new_year, terr_chg_test, credit_chg_test)             # <<<<<<<<<<<<<<
  *             client_obj.new_client_year(new_year, ann_prem, oco, self.claim_trend)
  * 
  */
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_client_obj, __pyx_n_s_age_clients); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1158, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_client_obj, __pyx_n_s_age_clients); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1160, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_11 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 1158, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 1160, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
-    __pyx_t_12 = PyFloat_FromDouble(__pyx_v_terr_chg_test); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 1158, __pyx_L1_error)
+    __pyx_t_12 = PyFloat_FromDouble(__pyx_v_terr_chg_test); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 1160, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
-    __pyx_t_13 = PyFloat_FromDouble(__pyx_v_credit_chg_test); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 1158, __pyx_L1_error)
+    __pyx_t_13 = PyFloat_FromDouble(__pyx_v_credit_chg_test); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 1160, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
     __pyx_t_14 = NULL;
     __pyx_t_9 = 0;
@@ -47564,24 +47601,24 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_38process_clients(st
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-      if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 1158, __pyx_L1_error)
+      if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 1160, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "src_code/market/market.pyx":1159
+    /* "src_code/market/market.pyx":1161
  *             # modfiy client_features / claim_features for drift later
  *             client_obj.age_clients(new_year, terr_chg_test, credit_chg_test)
  *             client_obj.new_client_year(new_year, ann_prem, oco, self.claim_trend)             # <<<<<<<<<<<<<<
  * 
  *     def process_pre_game_renewal(self, int new_year):
  */
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_client_obj, __pyx_n_s_new_client_year); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1159, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_client_obj, __pyx_n_s_new_client_year); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1161, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_13 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 1159, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 1161, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
-    __pyx_t_12 = __Pyx_PyInt_From_long(__pyx_v_ann_prem); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 1159, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyInt_From_long(__pyx_v_ann_prem); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 1161, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __pyx_t_11 = NULL;
     __pyx_t_9 = 0;
@@ -47601,7 +47638,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_38process_clients(st
       __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-      if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 1159, __pyx_L1_error)
+      if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 1161, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
@@ -47609,7 +47646,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_38process_clients(st
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1146
+  /* "src_code/market/market.pyx":1148
  *             company.update_annual_data(year, self.get_expense_inflation_index(year))
  * 
  *     def process_clients(self, int new_year):             # <<<<<<<<<<<<<<
@@ -47641,7 +47678,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_38process_clients(st
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1161
+/* "src_code/market/market.pyx":1163
  *             client_obj.new_client_year(new_year, ann_prem, oco, self.claim_trend)
  * 
  *     def process_pre_game_renewal(self, int new_year):             # <<<<<<<<<<<<<<
@@ -47691,23 +47728,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_new_year)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1161, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1163, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "process_pre_game_renewal") < 0)) __PYX_ERR(0, 1161, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "process_pre_game_renewal") < 0)) __PYX_ERR(0, 1163, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v_new_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_new_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1161, __pyx_L3_error)
+    __pyx_v_new_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_new_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1163, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("process_pre_game_renewal", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1161, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("process_pre_game_renewal", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1163, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("src_code.market.market.Market.process_pre_game_renewal", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -47747,7 +47784,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_40process_pre_game_r
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("process_pre_game_renewal", 0);
 
-  /* "src_code/market/market.pyx":1162
+  /* "src_code/market/market.pyx":1164
  * 
  *     def process_pre_game_renewal(self, int new_year):
  *         old_year = new_year - 1             # <<<<<<<<<<<<<<
@@ -47756,7 +47793,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_40process_pre_game_r
  */
   __pyx_v_old_year = (__pyx_v_new_year - 1);
 
-  /* "src_code/market/market.pyx":1164
+  /* "src_code/market/market.pyx":1166
  *         old_year = new_year - 1
  *         # print(f'process_pre_game_renewal: {new_year} {old_year}')
  *         inflation = 1 + self.mkt_features['renewal_prem_infl_init']             # <<<<<<<<<<<<<<
@@ -47765,17 +47802,17 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_40process_pre_game_r
  */
   if (unlikely(__pyx_v_self->mkt_features == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 1164, __pyx_L1_error)
+    __PYX_ERR(0, 1166, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->mkt_features, __pyx_n_s_renewal_prem_infl_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1164, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->mkt_features, __pyx_n_s_renewal_prem_infl_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_AddCObj(__pyx_int_1, __pyx_t_1, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1164, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_AddCObj(__pyx_int_1, __pyx_t_1, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_inflation = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "src_code/market/market.pyx":1165
+  /* "src_code/market/market.pyx":1167
  *         # print(f'process_pre_game_renewal: {new_year} {old_year}')
  *         inflation = 1 + self.mkt_features['renewal_prem_infl_init']
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -47784,72 +47821,72 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_40process_pre_game_r
  */
   if (unlikely(__pyx_v_self->company_list == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 1165, __pyx_L1_error)
+    __PYX_ERR(0, 1167, __pyx_L1_error)
   }
   __pyx_t_2 = __pyx_v_self->company_list; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
   for (;;) {
     if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_2)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely((0 < 0))) __PYX_ERR(0, 1165, __pyx_L1_error)
+    __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely((0 < 0))) __PYX_ERR(0, 1167, __pyx_L1_error)
     #else
-    __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1165, __pyx_L1_error)
+    __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1167, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_company, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "src_code/market/market.pyx":1166
+    /* "src_code/market/market.pyx":1168
  *         inflation = 1 + self.mkt_features['renewal_prem_infl_init']
  *         for company in self.company_list:
  *             new_ddo = company.annual_data[new_year]['decision_data']             # <<<<<<<<<<<<<<
  *             old_ddo = company.annual_data[old_year]['decision_data']
  *             new_ddo.sel_avg_prem = old_ddo.sel_avg_prem * inflation
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1166, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1168, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_1, __pyx_v_new_year, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1166, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_1, __pyx_v_new_year, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1168, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_decision_data); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1166, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_decision_data); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1168, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_XDECREF_SET(__pyx_v_new_ddo, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "src_code/market/market.pyx":1167
+    /* "src_code/market/market.pyx":1169
  *         for company in self.company_list:
  *             new_ddo = company.annual_data[new_year]['decision_data']
  *             old_ddo = company.annual_data[old_year]['decision_data']             # <<<<<<<<<<<<<<
  *             new_ddo.sel_avg_prem = old_ddo.sel_avg_prem * inflation
  * 
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1167, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1169, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_1, __pyx_v_old_year, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1167, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_1, __pyx_v_old_year, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1169, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_decision_data); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1167, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_decision_data); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1169, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_XDECREF_SET(__pyx_v_old_ddo, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "src_code/market/market.pyx":1168
+    /* "src_code/market/market.pyx":1170
  *             new_ddo = company.annual_data[new_year]['decision_data']
  *             old_ddo = company.annual_data[old_year]['decision_data']
  *             new_ddo.sel_avg_prem = old_ddo.sel_avg_prem * inflation             # <<<<<<<<<<<<<<
  * 
  *         for client_id in self.client_dict.keys():
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_old_ddo, __pyx_n_s_sel_avg_prem); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1168, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_old_ddo, __pyx_n_s_sel_avg_prem); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1170, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = PyNumber_Multiply(__pyx_t_1, __pyx_v_inflation); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1168, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_Multiply(__pyx_t_1, __pyx_v_inflation); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1170, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_new_ddo, __pyx_n_s_sel_avg_prem, __pyx_t_4) < 0) __PYX_ERR(0, 1168, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_new_ddo, __pyx_n_s_sel_avg_prem, __pyx_t_4) < 0) __PYX_ERR(0, 1170, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "src_code/market/market.pyx":1165
+    /* "src_code/market/market.pyx":1167
  *         # print(f'process_pre_game_renewal: {new_year} {old_year}')
  *         inflation = 1 + self.mkt_features['renewal_prem_infl_init']
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -47859,7 +47896,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_40process_pre_game_r
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "src_code/market/market.pyx":1170
+  /* "src_code/market/market.pyx":1172
  *             new_ddo.sel_avg_prem = old_ddo.sel_avg_prem * inflation
  * 
  *         for client_id in self.client_dict.keys():             # <<<<<<<<<<<<<<
@@ -47869,9 +47906,9 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_40process_pre_game_r
   __pyx_t_3 = 0;
   if (unlikely(__pyx_v_self->client_dict == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "keys");
-    __PYX_ERR(0, 1170, __pyx_L1_error)
+    __PYX_ERR(0, 1172, __pyx_L1_error)
   }
-  __pyx_t_4 = __Pyx_dict_iterator(__pyx_v_self->client_dict, 1, __pyx_n_s_keys, (&__pyx_t_5), (&__pyx_t_6)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1170, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_dict_iterator(__pyx_v_self->client_dict, 1, __pyx_n_s_keys, (&__pyx_t_5), (&__pyx_t_6)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_2);
   __pyx_t_2 = __pyx_t_4;
@@ -47879,19 +47916,19 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_40process_pre_game_r
   while (1) {
     __pyx_t_7 = __Pyx_dict_iter_next(__pyx_t_2, __pyx_t_5, &__pyx_t_3, &__pyx_t_4, NULL, NULL, __pyx_t_6);
     if (unlikely(__pyx_t_7 == 0)) break;
-    if (unlikely(__pyx_t_7 == -1)) __PYX_ERR(0, 1170, __pyx_L1_error)
+    if (unlikely(__pyx_t_7 == -1)) __PYX_ERR(0, 1172, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_XDECREF_SET(__pyx_v_client_id, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "src_code/market/market.pyx":1171
+    /* "src_code/market/market.pyx":1173
  * 
  *         for client_id in self.client_dict.keys():
  *             client_obj = self.get_client_obj(client_id)             # <<<<<<<<<<<<<<
  *             nco = client_obj.annual_data[new_year]
  *             quote_data = dict()
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_client_obj); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1171, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_client_obj); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1173, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_8 = NULL;
     __pyx_t_7 = 0;
@@ -47909,50 +47946,50 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_40process_pre_game_r
       PyObject *__pyx_callargs[2] = {__pyx_t_8, __pyx_v_client_id};
       __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1171, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1173, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
     __Pyx_XDECREF_SET(__pyx_v_client_obj, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "src_code/market/market.pyx":1172
+    /* "src_code/market/market.pyx":1174
  *         for client_id in self.client_dict.keys():
  *             client_obj = self.get_client_obj(client_id)
  *             nco = client_obj.annual_data[new_year]             # <<<<<<<<<<<<<<
  *             quote_data = dict()
  *             quote_data['quote_level'] = 0
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_client_obj, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1172, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_client_obj, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1174, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_4, __pyx_v_new_year, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1172, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_4, __pyx_v_new_year, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1174, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_XDECREF_SET(__pyx_v_nco, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "src_code/market/market.pyx":1173
+    /* "src_code/market/market.pyx":1175
  *             client_obj = self.get_client_obj(client_id)
  *             nco = client_obj.annual_data[new_year]
  *             quote_data = dict()             # <<<<<<<<<<<<<<
  *             quote_data['quote_level'] = 0
  *             renewal_prem = self.company_list[nco.pr_company].generate_quote(new_year, quote_data)
  */
-    __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1173, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1175, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_XDECREF_SET(__pyx_v_quote_data, ((PyObject*)__pyx_t_1));
     __pyx_t_1 = 0;
 
-    /* "src_code/market/market.pyx":1174
+    /* "src_code/market/market.pyx":1176
  *             nco = client_obj.annual_data[new_year]
  *             quote_data = dict()
  *             quote_data['quote_level'] = 0             # <<<<<<<<<<<<<<
  *             renewal_prem = self.company_list[nco.pr_company].generate_quote(new_year, quote_data)
  *             nco.update_renewal_prem(renewal_prem)
  */
-    if (unlikely((PyDict_SetItem(__pyx_v_quote_data, __pyx_n_s_quote_level, __pyx_int_0) < 0))) __PYX_ERR(0, 1174, __pyx_L1_error)
+    if (unlikely((PyDict_SetItem(__pyx_v_quote_data, __pyx_n_s_quote_level, __pyx_int_0) < 0))) __PYX_ERR(0, 1176, __pyx_L1_error)
 
-    /* "src_code/market/market.pyx":1175
+    /* "src_code/market/market.pyx":1177
  *             quote_data = dict()
  *             quote_data['quote_level'] = 0
  *             renewal_prem = self.company_list[nco.pr_company].generate_quote(new_year, quote_data)             # <<<<<<<<<<<<<<
@@ -47961,17 +47998,17 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_40process_pre_game_r
  */
     if (unlikely(__pyx_v_self->company_list == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 1175, __pyx_L1_error)
+      __PYX_ERR(0, 1177, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_pr_company); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1175, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_pr_company); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_v_self->company_list, __pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1175, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_v_self->company_list, __pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_generate_quote); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1175, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_generate_quote); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1175, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_v_new_year); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_9 = NULL;
     __pyx_t_7 = 0;
@@ -47990,21 +48027,21 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_40process_pre_game_r
       __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_7, 2+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1175, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1177, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
     __Pyx_XDECREF_SET(__pyx_v_renewal_prem, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "src_code/market/market.pyx":1176
+    /* "src_code/market/market.pyx":1178
  *             quote_data['quote_level'] = 0
  *             renewal_prem = self.company_list[nco.pr_company].generate_quote(new_year, quote_data)
  *             nco.update_renewal_prem(renewal_prem)             # <<<<<<<<<<<<<<
  * 
  *     def process_post_decision_renewals(self, int year):
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_update_renewal_prem); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1176, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_nco, __pyx_n_s_update_renewal_prem); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1178, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_8 = NULL;
     __pyx_t_7 = 0;
@@ -48022,7 +48059,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_40process_pre_game_r
       PyObject *__pyx_callargs[2] = {__pyx_t_8, __pyx_v_renewal_prem};
       __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1176, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1178, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
@@ -48030,7 +48067,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_40process_pre_game_r
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "src_code/market/market.pyx":1161
+  /* "src_code/market/market.pyx":1163
  *             client_obj.new_client_year(new_year, ann_prem, oco, self.claim_trend)
  * 
  *     def process_pre_game_renewal(self, int new_year):             # <<<<<<<<<<<<<<
@@ -48064,7 +48101,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_40process_pre_game_r
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1178
+/* "src_code/market/market.pyx":1180
  *             nco.update_renewal_prem(renewal_prem)
  * 
  *     def process_post_decision_renewals(self, int year):             # <<<<<<<<<<<<<<
@@ -48114,23 +48151,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_year)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1178, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1180, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "process_post_decision_renewals") < 0)) __PYX_ERR(0, 1178, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "process_post_decision_renewals") < 0)) __PYX_ERR(0, 1180, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1178, __pyx_L3_error)
+    __pyx_v_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1180, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("process_post_decision_renewals", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1178, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("process_post_decision_renewals", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1180, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("src_code.market.market.Market.process_post_decision_renewals", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -48160,7 +48197,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_42process_post_decis
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("process_post_decision_renewals", 0);
 
-  /* "src_code/market/market.pyx":1179
+  /* "src_code/market/market.pyx":1181
  * 
  *     def process_post_decision_renewals(self, int year):
  *         dec_year = year - 1             # <<<<<<<<<<<<<<
@@ -48169,7 +48206,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_42process_post_decis
  */
   __pyx_v_dec_year = (__pyx_v_year - 1);
 
-  /* "src_code/market/market.pyx":1180
+  /* "src_code/market/market.pyx":1182
  *     def process_post_decision_renewals(self, int year):
  *         dec_year = year - 1
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -48178,30 +48215,30 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_42process_post_decis
  */
   if (unlikely(__pyx_v_self->company_list == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 1180, __pyx_L1_error)
+    __PYX_ERR(0, 1182, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_self->company_list; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1180, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1182, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1180, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1182, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_company, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1181
+    /* "src_code/market/market.pyx":1183
  *         dec_year = year - 1
  *         for company in self.company_list:
  *             company.process_renewals(dec_year)             # <<<<<<<<<<<<<<
  * 
  *     def get_client_dict(self):
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_process_renewals); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1181, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_process_renewals); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1183, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_From_long(__pyx_v_dec_year); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1181, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_long(__pyx_v_dec_year); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1183, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     __pyx_t_7 = 0;
@@ -48220,13 +48257,13 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_42process_post_decis
       __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1181, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1183, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1180
+    /* "src_code/market/market.pyx":1182
  *     def process_post_decision_renewals(self, int year):
  *         dec_year = year - 1
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -48236,7 +48273,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_42process_post_decis
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1178
+  /* "src_code/market/market.pyx":1180
  *             nco.update_renewal_prem(renewal_prem)
  * 
  *     def process_post_decision_renewals(self, int year):             # <<<<<<<<<<<<<<
@@ -48262,7 +48299,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_42process_post_decis
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1183
+/* "src_code/market/market.pyx":1185
  *             company.process_renewals(dec_year)
  * 
  *     def get_client_dict(self):             # <<<<<<<<<<<<<<
@@ -48308,7 +48345,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_44get_client_dict(st
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_client_dict", 0);
 
-  /* "src_code/market/market.pyx":1184
+  /* "src_code/market/market.pyx":1186
  * 
  *     def get_client_dict(self):
  *         return self.client_dict             # <<<<<<<<<<<<<<
@@ -48320,7 +48357,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_44get_client_dict(st
   __pyx_r = __pyx_v_self->client_dict;
   goto __pyx_L0;
 
-  /* "src_code/market/market.pyx":1183
+  /* "src_code/market/market.pyx":1185
  *             company.process_renewals(dec_year)
  * 
  *     def get_client_dict(self):             # <<<<<<<<<<<<<<
@@ -48335,7 +48372,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_44get_client_dict(st
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1186
+/* "src_code/market/market.pyx":1188
  *         return self.client_dict
  * 
  *     def get_companies(self):             # <<<<<<<<<<<<<<
@@ -48381,7 +48418,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_46get_companies(stru
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_companies", 0);
 
-  /* "src_code/market/market.pyx":1187
+  /* "src_code/market/market.pyx":1189
  * 
  *     def get_companies(self):
  *         return self.company_list             # <<<<<<<<<<<<<<
@@ -48393,7 +48430,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_46get_companies(stru
   __pyx_r = __pyx_v_self->company_list;
   goto __pyx_L0;
 
-  /* "src_code/market/market.pyx":1186
+  /* "src_code/market/market.pyx":1188
  *         return self.client_dict
  * 
  *     def get_companies(self):             # <<<<<<<<<<<<<<
@@ -48408,7 +48445,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_46get_companies(stru
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1189
+/* "src_code/market/market.pyx":1191
  *         return self.company_list
  * 
  *     def get_mktg_spend_by_company(self, year):             # <<<<<<<<<<<<<<
@@ -48458,12 +48495,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_year)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1189, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1191, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_mktg_spend_by_company") < 0)) __PYX_ERR(0, 1189, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_mktg_spend_by_company") < 0)) __PYX_ERR(0, 1191, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -48474,7 +48511,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_mktg_spend_by_company", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1189, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_mktg_spend_by_company", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1191, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("src_code.market.market.Market.get_mktg_spend_by_company", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -48504,19 +48541,19 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_48get_mktg_spend_by_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_mktg_spend_by_company", 0);
 
-  /* "src_code/market/market.pyx":1190
+  /* "src_code/market/market.pyx":1192
  * 
  *     def get_mktg_spend_by_company(self, year):
  *         mktg_spend_by_company = []             # <<<<<<<<<<<<<<
  *         for company in self.company_list:
  *             mktg_spend_by_company.append(company.get_mktg_spend_company(year))
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1190, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_mktg_spend_by_company = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1191
+  /* "src_code/market/market.pyx":1193
  *     def get_mktg_spend_by_company(self, year):
  *         mktg_spend_by_company = []
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -48525,28 +48562,28 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_48get_mktg_spend_by_
  */
   if (unlikely(__pyx_v_self->company_list == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 1191, __pyx_L1_error)
+    __PYX_ERR(0, 1193, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_self->company_list; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1191, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1193, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1191, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1193, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_company, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1192
+    /* "src_code/market/market.pyx":1194
  *         mktg_spend_by_company = []
  *         for company in self.company_list:
  *             mktg_spend_by_company.append(company.get_mktg_spend_company(year))             # <<<<<<<<<<<<<<
  *         return mktg_spend_by_company
  * 
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_get_mktg_spend_company); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1192, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_get_mktg_spend_company); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1194, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     __pyx_t_6 = 0;
@@ -48564,14 +48601,14 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_48get_mktg_spend_by_
       PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_v_year};
       __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1192, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1194, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
-    __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_mktg_spend_by_company, __pyx_t_3); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 1192, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_mktg_spend_by_company, __pyx_t_3); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 1194, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1191
+    /* "src_code/market/market.pyx":1193
  *     def get_mktg_spend_by_company(self, year):
  *         mktg_spend_by_company = []
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -48581,7 +48618,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_48get_mktg_spend_by_
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1193
+  /* "src_code/market/market.pyx":1195
  *         for company in self.company_list:
  *             mktg_spend_by_company.append(company.get_mktg_spend_company(year))
  *         return mktg_spend_by_company             # <<<<<<<<<<<<<<
@@ -48593,7 +48630,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_48get_mktg_spend_by_
   __pyx_r = __pyx_v_mktg_spend_by_company;
   goto __pyx_L0;
 
-  /* "src_code/market/market.pyx":1189
+  /* "src_code/market/market.pyx":1191
  *         return self.company_list
  * 
  *     def get_mktg_spend_by_company(self, year):             # <<<<<<<<<<<<<<
@@ -48617,7 +48654,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_48get_mktg_spend_by_
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1195
+/* "src_code/market/market.pyx":1197
  *         return mktg_spend_by_company
  * 
  *     def get_ann_prem_prior_by_company(self, year):             # <<<<<<<<<<<<<<
@@ -48667,12 +48704,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_year)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1195, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1197, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_ann_prem_prior_by_company") < 0)) __PYX_ERR(0, 1195, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_ann_prem_prior_by_company") < 0)) __PYX_ERR(0, 1197, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -48683,7 +48720,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_ann_prem_prior_by_company", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1195, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_ann_prem_prior_by_company", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1197, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("src_code.market.market.Market.get_ann_prem_prior_by_company", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -48713,19 +48750,19 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_50get_ann_prem_prior
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_ann_prem_prior_by_company", 0);
 
-  /* "src_code/market/market.pyx":1196
+  /* "src_code/market/market.pyx":1198
  * 
  *     def get_ann_prem_prior_by_company(self, year):
  *         ann_prem_prior_by_company = []             # <<<<<<<<<<<<<<
  *         for company in self.company_list:
  *             ann_prem_prior_by_company.append(company.get_ann_prem_prior_company(year))
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1196, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1198, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_ann_prem_prior_by_company = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1197
+  /* "src_code/market/market.pyx":1199
  *     def get_ann_prem_prior_by_company(self, year):
  *         ann_prem_prior_by_company = []
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -48734,28 +48771,28 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_50get_ann_prem_prior
  */
   if (unlikely(__pyx_v_self->company_list == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 1197, __pyx_L1_error)
+    __PYX_ERR(0, 1199, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_self->company_list; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1197, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1199, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1197, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1199, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_company, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1198
+    /* "src_code/market/market.pyx":1200
  *         ann_prem_prior_by_company = []
  *         for company in self.company_list:
  *             ann_prem_prior_by_company.append(company.get_ann_prem_prior_company(year))             # <<<<<<<<<<<<<<
  *         return ann_prem_prior_by_company
  * 
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_get_ann_prem_prior_company); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1198, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_get_ann_prem_prior_company); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1200, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     __pyx_t_6 = 0;
@@ -48773,14 +48810,14 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_50get_ann_prem_prior
       PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_v_year};
       __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1198, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1200, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
-    __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_ann_prem_prior_by_company, __pyx_t_3); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 1198, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_ann_prem_prior_by_company, __pyx_t_3); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 1200, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1197
+    /* "src_code/market/market.pyx":1199
  *     def get_ann_prem_prior_by_company(self, year):
  *         ann_prem_prior_by_company = []
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -48790,7 +48827,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_50get_ann_prem_prior
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1199
+  /* "src_code/market/market.pyx":1201
  *         for company in self.company_list:
  *             ann_prem_prior_by_company.append(company.get_ann_prem_prior_company(year))
  *         return ann_prem_prior_by_company             # <<<<<<<<<<<<<<
@@ -48802,7 +48839,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_50get_ann_prem_prior
   __pyx_r = __pyx_v_ann_prem_prior_by_company;
   goto __pyx_L0;
 
-  /* "src_code/market/market.pyx":1195
+  /* "src_code/market/market.pyx":1197
  *         return mktg_spend_by_company
  * 
  *     def get_ann_prem_prior_by_company(self, year):             # <<<<<<<<<<<<<<
@@ -48826,7 +48863,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_50get_ann_prem_prior
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1201
+/* "src_code/market/market.pyx":1203
  *         return ann_prem_prior_by_company
  * 
  *     def process_in_force_ind(self, year):             # <<<<<<<<<<<<<<
@@ -48876,12 +48913,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_year)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1201, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1203, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "process_in_force_ind") < 0)) __PYX_ERR(0, 1201, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "process_in_force_ind") < 0)) __PYX_ERR(0, 1203, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -48892,7 +48929,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("process_in_force_ind", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1201, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("process_in_force_ind", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1203, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("src_code.market.market.Market.process_in_force_ind", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -48922,19 +48959,19 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_52process_in_force_i
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("process_in_force_ind", 0);
 
-  /* "src_code/market/market.pyx":1202
+  /* "src_code/market/market.pyx":1204
  * 
  *     def process_in_force_ind(self, year):
  *         in_force_by_company = []             # <<<<<<<<<<<<<<
  *         for company in self.company_list:
  *             fdo = company.annual_data[year]['financial_data']
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1202, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_in_force_by_company = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1203
+  /* "src_code/market/market.pyx":1205
  *     def process_in_force_ind(self, year):
  *         in_force_by_company = []
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -48943,51 +48980,51 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_52process_in_force_i
  */
   if (unlikely(__pyx_v_self->company_list == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 1203, __pyx_L1_error)
+    __PYX_ERR(0, 1205, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_self->company_list; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1203, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1205, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1203, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1205, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_company, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1204
+    /* "src_code/market/market.pyx":1206
  *         in_force_by_company = []
  *         for company in self.company_list:
  *             fdo = company.annual_data[year]['financial_data']             # <<<<<<<<<<<<<<
  *             in_force_by_company.append(fdo.in_force)
  *         in_force_ind = sum(in_force_by_company)
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1204, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1206, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_v_year); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1204, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_v_year); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1206, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_financial_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1204, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_financial_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1206, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_XDECREF_SET(__pyx_v_fdo, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1205
+    /* "src_code/market/market.pyx":1207
  *         for company in self.company_list:
  *             fdo = company.annual_data[year]['financial_data']
  *             in_force_by_company.append(fdo.in_force)             # <<<<<<<<<<<<<<
  *         in_force_ind = sum(in_force_by_company)
  *         for company in self.company_list:
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_fdo, __pyx_n_s_in_force); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1205, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_fdo, __pyx_n_s_in_force); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1207, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_in_force_by_company, __pyx_t_3); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 1205, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_in_force_by_company, __pyx_t_3); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 1207, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1203
+    /* "src_code/market/market.pyx":1205
  *     def process_in_force_ind(self, year):
  *         in_force_by_company = []
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -48997,19 +49034,19 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_52process_in_force_i
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1206
+  /* "src_code/market/market.pyx":1208
  *             fdo = company.annual_data[year]['financial_data']
  *             in_force_by_company.append(fdo.in_force)
  *         in_force_ind = sum(in_force_by_company)             # <<<<<<<<<<<<<<
  *         for company in self.company_list:
  *             fdo = company.annual_data[year]['financial_data']
  */
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_sum, __pyx_v_in_force_by_company); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1206, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_sum, __pyx_v_in_force_by_company); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1208, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_in_force_ind = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1207
+  /* "src_code/market/market.pyx":1209
  *             in_force_by_company.append(fdo.in_force)
  *         in_force_ind = sum(in_force_by_company)
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -49018,48 +49055,48 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_52process_in_force_i
  */
   if (unlikely(__pyx_v_self->company_list == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 1207, __pyx_L1_error)
+    __PYX_ERR(0, 1209, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_self->company_list; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1207, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1209, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1207, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1209, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_company, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1208
+    /* "src_code/market/market.pyx":1210
  *         in_force_ind = sum(in_force_by_company)
  *         for company in self.company_list:
  *             fdo = company.annual_data[year]['financial_data']             # <<<<<<<<<<<<<<
  *             fdo.in_force_ind = in_force_ind
  * 
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1208, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1210, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_v_year); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1208, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_v_year); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1210, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_financial_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1208, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_financial_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1210, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_XDECREF_SET(__pyx_v_fdo, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1209
+    /* "src_code/market/market.pyx":1211
  *         for company in self.company_list:
  *             fdo = company.annual_data[year]['financial_data']
  *             fdo.in_force_ind = in_force_ind             # <<<<<<<<<<<<<<
  * 
  *     def get_mktg_spend_ind(self, year):
  */
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_fdo, __pyx_n_s_in_force_ind, __pyx_v_in_force_ind) < 0) __PYX_ERR(0, 1209, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_fdo, __pyx_n_s_in_force_ind, __pyx_v_in_force_ind) < 0) __PYX_ERR(0, 1211, __pyx_L1_error)
 
-    /* "src_code/market/market.pyx":1207
+    /* "src_code/market/market.pyx":1209
  *             in_force_by_company.append(fdo.in_force)
  *         in_force_ind = sum(in_force_by_company)
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -49069,7 +49106,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_52process_in_force_i
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1201
+  /* "src_code/market/market.pyx":1203
  *         return ann_prem_prior_by_company
  * 
  *     def process_in_force_ind(self, year):             # <<<<<<<<<<<<<<
@@ -49096,7 +49133,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_52process_in_force_i
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1211
+/* "src_code/market/market.pyx":1213
  *             fdo.in_force_ind = in_force_ind
  * 
  *     def get_mktg_spend_ind(self, year):             # <<<<<<<<<<<<<<
@@ -49146,12 +49183,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_year)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1211, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1213, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_mktg_spend_ind") < 0)) __PYX_ERR(0, 1211, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_mktg_spend_ind") < 0)) __PYX_ERR(0, 1213, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -49162,7 +49199,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_mktg_spend_ind", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1211, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_mktg_spend_ind", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1213, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("src_code.market.market.Market.get_mktg_spend_ind", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -49191,7 +49228,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_54get_mktg_spend_ind
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_mktg_spend_ind", 0);
 
-  /* "src_code/market/market.pyx":1212
+  /* "src_code/market/market.pyx":1214
  * 
  *     def get_mktg_spend_ind(self, year):
  *         mktg_spend_ind = 0             # <<<<<<<<<<<<<<
@@ -49201,7 +49238,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_54get_mktg_spend_ind
   __Pyx_INCREF(__pyx_int_0);
   __pyx_v_mktg_spend_ind = __pyx_int_0;
 
-  /* "src_code/market/market.pyx":1213
+  /* "src_code/market/market.pyx":1215
  *     def get_mktg_spend_ind(self, year):
  *         mktg_spend_ind = 0
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -49210,28 +49247,28 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_54get_mktg_spend_ind
  */
   if (unlikely(__pyx_v_self->company_list == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 1213, __pyx_L1_error)
+    __PYX_ERR(0, 1215, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_self->company_list; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1213, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1215, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1213, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1215, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_company, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1214
+    /* "src_code/market/market.pyx":1216
  *         mktg_spend_ind = 0
  *         for company in self.company_list:
  *             mktg_spend_ind += company.get_mktg_spend_company(year)             # <<<<<<<<<<<<<<
  *         return mktg_spend_ind
  * 
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_get_mktg_spend_company); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1214, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_get_mktg_spend_company); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1216, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     __pyx_t_6 = 0;
@@ -49249,17 +49286,17 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_54get_mktg_spend_ind
       PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_v_year};
       __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1214, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1216, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
-    __pyx_t_4 = PyNumber_InPlaceAdd(__pyx_v_mktg_spend_ind, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1214, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_InPlaceAdd(__pyx_v_mktg_spend_ind, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1216, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF_SET(__pyx_v_mktg_spend_ind, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "src_code/market/market.pyx":1213
+    /* "src_code/market/market.pyx":1215
  *     def get_mktg_spend_ind(self, year):
  *         mktg_spend_ind = 0
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -49269,7 +49306,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_54get_mktg_spend_ind
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1215
+  /* "src_code/market/market.pyx":1217
  *         for company in self.company_list:
  *             mktg_spend_ind += company.get_mktg_spend_company(year)
  *         return mktg_spend_ind             # <<<<<<<<<<<<<<
@@ -49281,7 +49318,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_54get_mktg_spend_ind
   __pyx_r = __pyx_v_mktg_spend_ind;
   goto __pyx_L0;
 
-  /* "src_code/market/market.pyx":1211
+  /* "src_code/market/market.pyx":1213
  *             fdo.in_force_ind = in_force_ind
  * 
  *     def get_mktg_spend_ind(self, year):             # <<<<<<<<<<<<<<
@@ -49305,7 +49342,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_54get_mktg_spend_ind
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1217
+/* "src_code/market/market.pyx":1219
  *         return mktg_spend_ind
  * 
  *     def get_ann_prem_prior_ind(self, year):             # <<<<<<<<<<<<<<
@@ -49355,12 +49392,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_year)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1217, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1219, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_ann_prem_prior_ind") < 0)) __PYX_ERR(0, 1217, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_ann_prem_prior_ind") < 0)) __PYX_ERR(0, 1219, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -49371,7 +49408,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_ann_prem_prior_ind", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1217, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_ann_prem_prior_ind", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1219, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("src_code.market.market.Market.get_ann_prem_prior_ind", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -49400,7 +49437,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_56get_ann_prem_prior
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_ann_prem_prior_ind", 0);
 
-  /* "src_code/market/market.pyx":1218
+  /* "src_code/market/market.pyx":1220
  * 
  *     def get_ann_prem_prior_ind(self, year):
  *         ann_prem_prior_ind = 0             # <<<<<<<<<<<<<<
@@ -49410,7 +49447,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_56get_ann_prem_prior
   __Pyx_INCREF(__pyx_int_0);
   __pyx_v_ann_prem_prior_ind = __pyx_int_0;
 
-  /* "src_code/market/market.pyx":1219
+  /* "src_code/market/market.pyx":1221
  *     def get_ann_prem_prior_ind(self, year):
  *         ann_prem_prior_ind = 0
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -49419,28 +49456,28 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_56get_ann_prem_prior
  */
   if (unlikely(__pyx_v_self->company_list == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 1219, __pyx_L1_error)
+    __PYX_ERR(0, 1221, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_self->company_list; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1219, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1221, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1219, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1221, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_company, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1220
+    /* "src_code/market/market.pyx":1222
  *         ann_prem_prior_ind = 0
  *         for company in self.company_list:
  *             ann_prem_prior_ind += company.get_ann_prem_prior_company(year)             # <<<<<<<<<<<<<<
  *         return ann_prem_prior_ind
  * 
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_get_ann_prem_prior_company); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1220, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_get_ann_prem_prior_company); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1222, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     __pyx_t_6 = 0;
@@ -49458,17 +49495,17 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_56get_ann_prem_prior
       PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_v_year};
       __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1220, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1222, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
-    __pyx_t_4 = PyNumber_InPlaceAdd(__pyx_v_ann_prem_prior_ind, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1220, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_InPlaceAdd(__pyx_v_ann_prem_prior_ind, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1222, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF_SET(__pyx_v_ann_prem_prior_ind, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "src_code/market/market.pyx":1219
+    /* "src_code/market/market.pyx":1221
  *     def get_ann_prem_prior_ind(self, year):
  *         ann_prem_prior_ind = 0
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -49478,7 +49515,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_56get_ann_prem_prior
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1221
+  /* "src_code/market/market.pyx":1223
  *         for company in self.company_list:
  *             ann_prem_prior_ind += company.get_ann_prem_prior_company(year)
  *         return ann_prem_prior_ind             # <<<<<<<<<<<<<<
@@ -49490,7 +49527,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_56get_ann_prem_prior
   __pyx_r = __pyx_v_ann_prem_prior_ind;
   goto __pyx_L0;
 
-  /* "src_code/market/market.pyx":1217
+  /* "src_code/market/market.pyx":1219
  *         return mktg_spend_ind
  * 
  *     def get_ann_prem_prior_ind(self, year):             # <<<<<<<<<<<<<<
@@ -49514,7 +49551,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_56get_ann_prem_prior
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1223
+/* "src_code/market/market.pyx":1225
  *         return ann_prem_prior_ind
  * 
  *     def get_financials(self, int year):             # <<<<<<<<<<<<<<
@@ -49564,23 +49601,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_year)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1223, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1225, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_financials") < 0)) __PYX_ERR(0, 1223, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_financials") < 0)) __PYX_ERR(0, 1225, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1223, __pyx_L3_error)
+    __pyx_v_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1225, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_financials", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1223, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_financials", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1225, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("src_code.market.market.Market.get_financials", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -49610,19 +49647,19 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_58get_financials(str
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_financials", 0);
 
-  /* "src_code/market/market.pyx":1224
+  /* "src_code/market/market.pyx":1226
  * 
  *     def get_financials(self, int year):
  *         company_data = list()             # <<<<<<<<<<<<<<
  *         for company in self.company_list:
  *             player_id = company.player_id
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1224, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_company_data = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1225
+  /* "src_code/market/market.pyx":1227
  *     def get_financials(self, int year):
  *         company_data = list()
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -49631,60 +49668,60 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_58get_financials(str
  */
   if (unlikely(__pyx_v_self->company_list == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 1225, __pyx_L1_error)
+    __PYX_ERR(0, 1227, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_self->company_list; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1225, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1227, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1225, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1227, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_company, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1226
+    /* "src_code/market/market.pyx":1228
  *         company_data = list()
  *         for company in self.company_list:
  *             player_id = company.player_id             # <<<<<<<<<<<<<<
  *             player_name = company.player_name
  *             company_data.append((player_id, player_name, company.annual_data[year]['financial_data']))
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_player_id); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1226, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_player_id); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1228, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_XDECREF_SET(__pyx_v_player_id, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1227
+    /* "src_code/market/market.pyx":1229
  *         for company in self.company_list:
  *             player_id = company.player_id
  *             player_name = company.player_name             # <<<<<<<<<<<<<<
  *             company_data.append((player_id, player_name, company.annual_data[year]['financial_data']))
  *         return company_data
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_player_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1227, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_player_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1229, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_XDECREF_SET(__pyx_v_player_name, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1228
+    /* "src_code/market/market.pyx":1230
  *             player_id = company.player_id
  *             player_name = company.player_name
  *             company_data.append((player_id, player_name, company.annual_data[year]['financial_data']))             # <<<<<<<<<<<<<<
  *         return company_data
  * 
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1228, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1230, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_year, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1228, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_year, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1230, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_financial_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1228, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_financial_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1230, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1228, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1230, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_v_player_id);
     __Pyx_GIVEREF(__pyx_v_player_id);
@@ -49695,10 +49732,10 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_58get_financials(str
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_company_data, __pyx_t_4); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 1228, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_company_data, __pyx_t_4); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 1230, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "src_code/market/market.pyx":1225
+    /* "src_code/market/market.pyx":1227
  *     def get_financials(self, int year):
  *         company_data = list()
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -49708,7 +49745,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_58get_financials(str
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1229
+  /* "src_code/market/market.pyx":1231
  *             player_name = company.player_name
  *             company_data.append((player_id, player_name, company.annual_data[year]['financial_data']))
  *         return company_data             # <<<<<<<<<<<<<<
@@ -49720,7 +49757,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_58get_financials(str
   __pyx_r = __pyx_v_company_data;
   goto __pyx_L0;
 
-  /* "src_code/market/market.pyx":1223
+  /* "src_code/market/market.pyx":1225
  *         return ann_prem_prior_ind
  * 
  *     def get_financials(self, int year):             # <<<<<<<<<<<<<<
@@ -49745,7 +49782,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_58get_financials(str
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1231
+/* "src_code/market/market.pyx":1233
  *         return company_data
  * 
  *     def get_decisions(self, int year):             # <<<<<<<<<<<<<<
@@ -49795,23 +49832,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_year)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1231, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1233, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_decisions") < 0)) __PYX_ERR(0, 1231, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_decisions") < 0)) __PYX_ERR(0, 1233, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1231, __pyx_L3_error)
+    __pyx_v_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1233, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_decisions", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1231, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_decisions", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1233, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("src_code.market.market.Market.get_decisions", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -49842,19 +49879,19 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_60get_decisions(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_decisions", 0);
 
-  /* "src_code/market/market.pyx":1232
+  /* "src_code/market/market.pyx":1234
  * 
  *     def get_decisions(self, int year):
  *         company_data = list()             # <<<<<<<<<<<<<<
  *         for company in self.company_list:
  *             player_id = company.player_id
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1232, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_company_data = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1233
+  /* "src_code/market/market.pyx":1235
  *     def get_decisions(self, int year):
  *         company_data = list()
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -49863,70 +49900,70 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_60get_decisions(stru
  */
   if (unlikely(__pyx_v_self->company_list == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 1233, __pyx_L1_error)
+    __PYX_ERR(0, 1235, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_self->company_list; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1233, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1235, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1233, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1235, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_company, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1234
+    /* "src_code/market/market.pyx":1236
  *         company_data = list()
  *         for company in self.company_list:
  *             player_id = company.player_id             # <<<<<<<<<<<<<<
  *             player_name = company.player_name
  *             decision_data = company.annual_data[year]['decision_data']
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_player_id); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1234, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_player_id); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1236, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_XDECREF_SET(__pyx_v_player_id, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1235
+    /* "src_code/market/market.pyx":1237
  *         for company in self.company_list:
  *             player_id = company.player_id
  *             player_name = company.player_name             # <<<<<<<<<<<<<<
  *             decision_data = company.annual_data[year]['decision_data']
  *             company_data.append((player_id, player_name, decision_data))
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_player_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1235, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_player_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1237, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_XDECREF_SET(__pyx_v_player_name, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1236
+    /* "src_code/market/market.pyx":1238
  *             player_id = company.player_id
  *             player_name = company.player_name
  *             decision_data = company.annual_data[year]['decision_data']             # <<<<<<<<<<<<<<
  *             company_data.append((player_id, player_name, decision_data))
  *         return company_data
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1236, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1238, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_year, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1236, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_year, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1238, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_decision_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1236, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_decision_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1238, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_XDECREF_SET(__pyx_v_decision_data, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1237
+    /* "src_code/market/market.pyx":1239
  *             player_name = company.player_name
  *             decision_data = company.annual_data[year]['decision_data']
  *             company_data.append((player_id, player_name, decision_data))             # <<<<<<<<<<<<<<
  *         return company_data
  * 
  */
-    __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1237, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1239, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_v_player_id);
     __Pyx_GIVEREF(__pyx_v_player_id);
@@ -49937,10 +49974,10 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_60get_decisions(stru
     __Pyx_INCREF(__pyx_v_decision_data);
     __Pyx_GIVEREF(__pyx_v_decision_data);
     PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_decision_data);
-    __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_company_data, __pyx_t_3); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 1237, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_company_data, __pyx_t_3); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 1239, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1233
+    /* "src_code/market/market.pyx":1235
  *     def get_decisions(self, int year):
  *         company_data = list()
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -49950,7 +49987,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_60get_decisions(stru
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1238
+  /* "src_code/market/market.pyx":1240
  *             decision_data = company.annual_data[year]['decision_data']
  *             company_data.append((player_id, player_name, decision_data))
  *         return company_data             # <<<<<<<<<<<<<<
@@ -49962,7 +49999,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_60get_decisions(stru
   __pyx_r = __pyx_v_company_data;
   goto __pyx_L0;
 
-  /* "src_code/market/market.pyx":1231
+  /* "src_code/market/market.pyx":1233
  *         return company_data
  * 
  *     def get_decisions(self, int year):             # <<<<<<<<<<<<<<
@@ -49988,7 +50025,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_60get_decisions(stru
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1240
+/* "src_code/market/market.pyx":1242
  *         return company_data
  * 
  *     def update_decisions(self, int year, decisions):             # <<<<<<<<<<<<<<
@@ -50041,19 +50078,19 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_year)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1240, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1242, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_decisions)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1240, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1242, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("update_decisions", 1, 2, 2, 1); __PYX_ERR(0, 1240, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("update_decisions", 1, 2, 2, 1); __PYX_ERR(0, 1242, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "update_decisions") < 0)) __PYX_ERR(0, 1240, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "update_decisions") < 0)) __PYX_ERR(0, 1242, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
@@ -50061,12 +50098,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
       values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
     }
-    __pyx_v_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1240, __pyx_L3_error)
+    __pyx_v_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1242, __pyx_L3_error)
     __pyx_v_decisions = values[1];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("update_decisions", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 1240, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("update_decisions", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 1242, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("src_code.market.market.Market.update_decisions", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -50100,7 +50137,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_62update_decisions(s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("update_decisions", 0);
 
-  /* "src_code/market/market.pyx":1241
+  /* "src_code/market/market.pyx":1243
  * 
  *     def update_decisions(self, int year, decisions):
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -50109,21 +50146,21 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_62update_decisions(s
  */
   if (unlikely(__pyx_v_self->company_list == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 1241, __pyx_L1_error)
+    __PYX_ERR(0, 1243, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_self->company_list; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1241, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1243, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1241, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1243, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_company, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1242
+    /* "src_code/market/market.pyx":1244
  *     def update_decisions(self, int year, decisions):
  *         for company in self.company_list:
  *             for decision in decisions:             # <<<<<<<<<<<<<<
@@ -50134,26 +50171,26 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_62update_decisions(s
       __pyx_t_3 = __pyx_v_decisions; __Pyx_INCREF(__pyx_t_3); __pyx_t_4 = 0;
       __pyx_t_5 = NULL;
     } else {
-      __pyx_t_4 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_decisions); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1242, __pyx_L1_error)
+      __pyx_t_4 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_decisions); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1244, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_5 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1242, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1244, __pyx_L1_error)
     }
     for (;;) {
       if (likely(!__pyx_t_5)) {
         if (likely(PyList_CheckExact(__pyx_t_3))) {
           if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_3)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_6 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_6); __pyx_t_4++; if (unlikely((0 < 0))) __PYX_ERR(0, 1242, __pyx_L1_error)
+          __pyx_t_6 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_6); __pyx_t_4++; if (unlikely((0 < 0))) __PYX_ERR(0, 1244, __pyx_L1_error)
           #else
-          __pyx_t_6 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1242, __pyx_L1_error)
+          __pyx_t_6 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1244, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_6);
           #endif
         } else {
           if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_6); __pyx_t_4++; if (unlikely((0 < 0))) __PYX_ERR(0, 1242, __pyx_L1_error)
+          __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_6); __pyx_t_4++; if (unlikely((0 < 0))) __PYX_ERR(0, 1244, __pyx_L1_error)
           #else
-          __pyx_t_6 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1242, __pyx_L1_error)
+          __pyx_t_6 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1244, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_6);
           #endif
         }
@@ -50163,7 +50200,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_62update_decisions(s
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 1242, __pyx_L1_error)
+            else __PYX_ERR(0, 1244, __pyx_L1_error)
           }
           break;
         }
@@ -50172,34 +50209,34 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_62update_decisions(s
       __Pyx_XDECREF_SET(__pyx_v_decision, __pyx_t_6);
       __pyx_t_6 = 0;
 
-      /* "src_code/market/market.pyx":1243
+      /* "src_code/market/market.pyx":1245
  *         for company in self.company_list:
  *             for decision in decisions:
  *                 if company.player_name == decision['player_name']:             # <<<<<<<<<<<<<<
  *                     company.update_decisions(year, decision)
  *                     break
  */
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_player_name); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1243, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_player_name); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1245, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_7 = __Pyx_PyObject_Dict_GetItem(__pyx_v_decision, __pyx_n_s_player_name); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1243, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_Dict_GetItem(__pyx_v_decision, __pyx_n_s_player_name); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1245, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_8 = PyObject_RichCompare(__pyx_t_6, __pyx_t_7, Py_EQ); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1243, __pyx_L1_error)
+      __pyx_t_8 = PyObject_RichCompare(__pyx_t_6, __pyx_t_7, Py_EQ); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1245, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 1243, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 1245, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       if (__pyx_t_9) {
 
-        /* "src_code/market/market.pyx":1244
+        /* "src_code/market/market.pyx":1246
  *             for decision in decisions:
  *                 if company.player_name == decision['player_name']:
  *                     company.update_decisions(year, decision)             # <<<<<<<<<<<<<<
  *                     break
  * 
  */
-        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_update_decisions); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1244, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_update_decisions); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1246, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_year); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1244, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_year); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1246, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __pyx_t_10 = NULL;
         __pyx_t_11 = 0;
@@ -50218,13 +50255,13 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_62update_decisions(s
           __pyx_t_8 = __Pyx_PyObject_FastCall(__pyx_t_7, __pyx_callargs+1-__pyx_t_11, 2+__pyx_t_11);
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-          if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1244, __pyx_L1_error)
+          if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1246, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         }
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-        /* "src_code/market/market.pyx":1245
+        /* "src_code/market/market.pyx":1247
  *                 if company.player_name == decision['player_name']:
  *                     company.update_decisions(year, decision)
  *                     break             # <<<<<<<<<<<<<<
@@ -50233,7 +50270,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_62update_decisions(s
  */
         goto __pyx_L6_break;
 
-        /* "src_code/market/market.pyx":1243
+        /* "src_code/market/market.pyx":1245
  *         for company in self.company_list:
  *             for decision in decisions:
  *                 if company.player_name == decision['player_name']:             # <<<<<<<<<<<<<<
@@ -50242,7 +50279,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_62update_decisions(s
  */
       }
 
-      /* "src_code/market/market.pyx":1242
+      /* "src_code/market/market.pyx":1244
  *     def update_decisions(self, int year, decisions):
  *         for company in self.company_list:
  *             for decision in decisions:             # <<<<<<<<<<<<<<
@@ -50257,7 +50294,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_62update_decisions(s
     goto __pyx_L8_for_end;
     __pyx_L8_for_end:;
 
-    /* "src_code/market/market.pyx":1241
+    /* "src_code/market/market.pyx":1243
  * 
  *     def update_decisions(self, int year, decisions):
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -50267,7 +50304,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_62update_decisions(s
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1240
+  /* "src_code/market/market.pyx":1242
  *         return company_data
  * 
  *     def update_decisions(self, int year, decisions):             # <<<<<<<<<<<<<<
@@ -50295,7 +50332,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_62update_decisions(s
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1247
+/* "src_code/market/market.pyx":1249
  *                     break
  * 
  *     def get_indications(self, int year):             # <<<<<<<<<<<<<<
@@ -50345,23 +50382,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_year)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1247, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1249, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_indications") < 0)) __PYX_ERR(0, 1247, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_indications") < 0)) __PYX_ERR(0, 1249, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1247, __pyx_L3_error)
+    __pyx_v_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1249, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_indications", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1247, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_indications", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1249, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("src_code.market.market.Market.get_indications", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -50392,19 +50429,19 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_64get_indications(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_indications", 0);
 
-  /* "src_code/market/market.pyx":1248
+  /* "src_code/market/market.pyx":1250
  * 
  *     def get_indications(self, int year):
  *         company_data = list()             # <<<<<<<<<<<<<<
  *         for company in self.company_list:
  *             player_id = company.player_id
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1248, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1250, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_company_data = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1249
+  /* "src_code/market/market.pyx":1251
  *     def get_indications(self, int year):
  *         company_data = list()
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -50413,70 +50450,70 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_64get_indications(st
  */
   if (unlikely(__pyx_v_self->company_list == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 1249, __pyx_L1_error)
+    __PYX_ERR(0, 1251, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_self->company_list; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1249, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1251, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1249, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1251, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_company, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1250
+    /* "src_code/market/market.pyx":1252
  *         company_data = list()
  *         for company in self.company_list:
  *             player_id = company.player_id             # <<<<<<<<<<<<<<
  *             player_name = company.player_name
  *             indication_data = company.annual_data[year]['indication_data']
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_player_id); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1250, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_player_id); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1252, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_XDECREF_SET(__pyx_v_player_id, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1251
+    /* "src_code/market/market.pyx":1253
  *         for company in self.company_list:
  *             player_id = company.player_id
  *             player_name = company.player_name             # <<<<<<<<<<<<<<
  *             indication_data = company.annual_data[year]['indication_data']
  *             company_data.append((player_id, player_name, indication_data))
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_player_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1251, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_player_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1253, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_XDECREF_SET(__pyx_v_player_name, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1252
+    /* "src_code/market/market.pyx":1254
  *             player_id = company.player_id
  *             player_name = company.player_name
  *             indication_data = company.annual_data[year]['indication_data']             # <<<<<<<<<<<<<<
  *             company_data.append((player_id, player_name, indication_data))
  * 
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1252, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1254, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_year, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1252, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_year, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1254, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_indication_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1252, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_indication_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1254, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_XDECREF_SET(__pyx_v_indication_data, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1253
+    /* "src_code/market/market.pyx":1255
  *             player_name = company.player_name
  *             indication_data = company.annual_data[year]['indication_data']
  *             company_data.append((player_id, player_name, indication_data))             # <<<<<<<<<<<<<<
  * 
  *         return company_data
  */
-    __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1253, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1255, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_v_player_id);
     __Pyx_GIVEREF(__pyx_v_player_id);
@@ -50487,10 +50524,10 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_64get_indications(st
     __Pyx_INCREF(__pyx_v_indication_data);
     __Pyx_GIVEREF(__pyx_v_indication_data);
     PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_indication_data);
-    __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_company_data, __pyx_t_3); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 1253, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_company_data, __pyx_t_3); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 1255, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1249
+    /* "src_code/market/market.pyx":1251
  *     def get_indications(self, int year):
  *         company_data = list()
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -50500,7 +50537,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_64get_indications(st
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1255
+  /* "src_code/market/market.pyx":1257
  *             company_data.append((player_id, player_name, indication_data))
  * 
  *         return company_data             # <<<<<<<<<<<<<<
@@ -50512,7 +50549,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_64get_indications(st
   __pyx_r = __pyx_v_company_data;
   goto __pyx_L0;
 
-  /* "src_code/market/market.pyx":1247
+  /* "src_code/market/market.pyx":1249
  *                     break
  * 
  *     def get_indications(self, int year):             # <<<<<<<<<<<<<<
@@ -50538,7 +50575,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_64get_indications(st
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1257
+/* "src_code/market/market.pyx":1259
  *         return company_data
  * 
  *     def get_claim_triangles(self, int year):             # <<<<<<<<<<<<<<
@@ -50588,23 +50625,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_year)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1257, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1259, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_claim_triangles") < 0)) __PYX_ERR(0, 1257, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_claim_triangles") < 0)) __PYX_ERR(0, 1259, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1257, __pyx_L3_error)
+    __pyx_v_year = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_year == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1259, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_claim_triangles", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1257, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_claim_triangles", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1259, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("src_code.market.market.Market.get_claim_triangles", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -50635,19 +50672,19 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_66get_claim_triangle
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_claim_triangles", 0);
 
-  /* "src_code/market/market.pyx":1258
+  /* "src_code/market/market.pyx":1260
  * 
  *     def get_claim_triangles(self, int year):
  *         company_triangle_data = list()             # <<<<<<<<<<<<<<
  *         for company in self.company_list:
  *             triangle_data = dict()
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1258, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1260, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_company_triangle_data = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1259
+  /* "src_code/market/market.pyx":1261
  *     def get_claim_triangles(self, int year):
  *         company_triangle_data = list()
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -50656,82 +50693,82 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_66get_claim_triangle
  */
   if (unlikely(__pyx_v_self->company_list == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 1259, __pyx_L1_error)
+    __PYX_ERR(0, 1261, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_self->company_list; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1259, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(0, 1261, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1259, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1261, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_company, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1260
+    /* "src_code/market/market.pyx":1262
  *         company_triangle_data = list()
  *         for company in self.company_list:
  *             triangle_data = dict()             # <<<<<<<<<<<<<<
  *             player_id = company.player_id
  *             player_name = company.player_name
  */
-    __pyx_t_3 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1260, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1262, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_XDECREF_SET(__pyx_v_triangle_data, ((PyObject*)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1261
+    /* "src_code/market/market.pyx":1263
  *         for company in self.company_list:
  *             triangle_data = dict()
  *             player_id = company.player_id             # <<<<<<<<<<<<<<
  *             player_name = company.player_name
  *             triangle_data['triangles'] = company.annual_data[year]['claim_triangle_data']
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_player_id); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1261, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_player_id); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1263, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_XDECREF_SET(__pyx_v_player_id, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1262
+    /* "src_code/market/market.pyx":1264
  *             triangle_data = dict()
  *             player_id = company.player_id
  *             player_name = company.player_name             # <<<<<<<<<<<<<<
  *             triangle_data['triangles'] = company.annual_data[year]['claim_triangle_data']
  *             company_triangle_data.append((player_id, player_name, triangle_data))
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_player_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1262, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_player_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1264, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_XDECREF_SET(__pyx_v_player_name, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1263
+    /* "src_code/market/market.pyx":1265
  *             player_id = company.player_id
  *             player_name = company.player_name
  *             triangle_data['triangles'] = company.annual_data[year]['claim_triangle_data']             # <<<<<<<<<<<<<<
  *             company_triangle_data.append((player_id, player_name, triangle_data))
  *         return company_triangle_data
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1263, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_company, __pyx_n_s_annual_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1265, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_year, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1263, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_year, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1265, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_claim_triangle_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1263, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_claim_triangle_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1265, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely((PyDict_SetItem(__pyx_v_triangle_data, __pyx_n_s_triangles, __pyx_t_3) < 0))) __PYX_ERR(0, 1263, __pyx_L1_error)
+    if (unlikely((PyDict_SetItem(__pyx_v_triangle_data, __pyx_n_s_triangles, __pyx_t_3) < 0))) __PYX_ERR(0, 1265, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1264
+    /* "src_code/market/market.pyx":1266
  *             player_name = company.player_name
  *             triangle_data['triangles'] = company.annual_data[year]['claim_triangle_data']
  *             company_triangle_data.append((player_id, player_name, triangle_data))             # <<<<<<<<<<<<<<
  *         return company_triangle_data
  * 
  */
-    __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1264, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1266, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_v_player_id);
     __Pyx_GIVEREF(__pyx_v_player_id);
@@ -50742,10 +50779,10 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_66get_claim_triangle
     __Pyx_INCREF(__pyx_v_triangle_data);
     __Pyx_GIVEREF(__pyx_v_triangle_data);
     PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_triangle_data);
-    __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_company_triangle_data, __pyx_t_3); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 1264, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_company_triangle_data, __pyx_t_3); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 1266, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1259
+    /* "src_code/market/market.pyx":1261
  *     def get_claim_triangles(self, int year):
  *         company_triangle_data = list()
  *         for company in self.company_list:             # <<<<<<<<<<<<<<
@@ -50755,7 +50792,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_66get_claim_triangle
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1265
+  /* "src_code/market/market.pyx":1267
  *             triangle_data['triangles'] = company.annual_data[year]['claim_triangle_data']
  *             company_triangle_data.append((player_id, player_name, triangle_data))
  *         return company_triangle_data             # <<<<<<<<<<<<<<
@@ -50767,7 +50804,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_66get_claim_triangle
   __pyx_r = __pyx_v_company_triangle_data;
   goto __pyx_L0;
 
-  /* "src_code/market/market.pyx":1257
+  /* "src_code/market/market.pyx":1259
  *         return company_data
  * 
  *     def get_claim_triangles(self, int year):             # <<<<<<<<<<<<<<
@@ -52564,7 +52601,7 @@ static PyObject *__pyx_pf_8src_code_6market_6market_6Market_70__setstate_cython_
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1268
+/* "src_code/market/market.pyx":1270
  * 
  * 
  * cdef random_indicator(double threshold):             # <<<<<<<<<<<<<<
@@ -52583,7 +52620,7 @@ static PyObject *__pyx_f_8src_code_6market_6market_random_indicator(double __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("random_indicator", 0);
 
-  /* "src_code/market/market.pyx":1270
+  /* "src_code/market/market.pyx":1272
  * cdef random_indicator(double threshold):
  *     cdef double random_value
  *     random_value = rand() / <double> RAND_MAX             # <<<<<<<<<<<<<<
@@ -52593,11 +52630,11 @@ static PyObject *__pyx_f_8src_code_6market_6market_random_indicator(double __pyx
   __pyx_t_1 = rand();
   if (unlikely(((double)RAND_MAX) == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 1270, __pyx_L1_error)
+    __PYX_ERR(0, 1272, __pyx_L1_error)
   }
   __pyx_v_random_value = (((double)__pyx_t_1) / ((double)RAND_MAX));
 
-  /* "src_code/market/market.pyx":1271
+  /* "src_code/market/market.pyx":1273
  *     cdef double random_value
  *     random_value = rand() / <double> RAND_MAX
  *     return 1 if random_value < threshold else 0             # <<<<<<<<<<<<<<
@@ -52616,7 +52653,7 @@ static PyObject *__pyx_f_8src_code_6market_6market_random_indicator(double __pyx
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "src_code/market/market.pyx":1268
+  /* "src_code/market/market.pyx":1270
  * 
  * 
  * cdef random_indicator(double threshold):             # <<<<<<<<<<<<<<
@@ -52635,7 +52672,7 @@ static PyObject *__pyx_f_8src_code_6market_6market_random_indicator(double __pyx
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1274
+/* "src_code/market/market.pyx":1276
  * 
  * 
  * cdef double random_between(double a, double b):             # <<<<<<<<<<<<<<
@@ -52654,7 +52691,7 @@ static double __pyx_f_8src_code_6market_6market_random_between(double __pyx_v_a,
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("random_between", 0);
 
-  /* "src_code/market/market.pyx":1276
+  /* "src_code/market/market.pyx":1278
  * cdef double random_between(double a, double b):
  *     cdef double random_value
  *     random_value = rand() / (<double> RAND_MAX + 1.0)             # <<<<<<<<<<<<<<
@@ -52665,11 +52702,11 @@ static double __pyx_f_8src_code_6market_6market_random_between(double __pyx_v_a,
   __pyx_t_2 = (((double)RAND_MAX) + 1.0);
   if (unlikely(__pyx_t_2 == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 1276, __pyx_L1_error)
+    __PYX_ERR(0, 1278, __pyx_L1_error)
   }
   __pyx_v_random_value = (((double)__pyx_t_1) / __pyx_t_2);
 
-  /* "src_code/market/market.pyx":1277
+  /* "src_code/market/market.pyx":1279
  *     cdef double random_value
  *     random_value = rand() / (<double> RAND_MAX + 1.0)
  *     return a + (b - a) * random_value             # <<<<<<<<<<<<<<
@@ -52679,7 +52716,7 @@ static double __pyx_f_8src_code_6market_6market_random_between(double __pyx_v_a,
   __pyx_r = (__pyx_v_a + ((__pyx_v_b - __pyx_v_a) * __pyx_v_random_value));
   goto __pyx_L0;
 
-  /* "src_code/market/market.pyx":1274
+  /* "src_code/market/market.pyx":1276
  * 
  * 
  * cdef double random_between(double a, double b):             # <<<<<<<<<<<<<<
@@ -52696,7 +52733,7 @@ static double __pyx_f_8src_code_6market_6market_random_between(double __pyx_v_a,
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1280
+/* "src_code/market/market.pyx":1282
  * 
  * 
  * cdef double simulate_claim(double mean, double coeff_of_var, int limit):             # <<<<<<<<<<<<<<
@@ -52724,7 +52761,7 @@ static double __pyx_f_8src_code_6market_6market_simulate_claim(double __pyx_v_me
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("simulate_claim", 0);
 
-  /* "src_code/market/market.pyx":1284
+  /* "src_code/market/market.pyx":1286
  *     cdef double stddev, variance_log, logmean
  * 
  *     stddev = coeff_of_var * mean             # <<<<<<<<<<<<<<
@@ -52733,7 +52770,7 @@ static double __pyx_f_8src_code_6market_6market_simulate_claim(double __pyx_v_me
  */
   __pyx_v_stddev = (__pyx_v_coeff_of_var * __pyx_v_mean);
 
-  /* "src_code/market/market.pyx":1285
+  /* "src_code/market/market.pyx":1287
  * 
  *     stddev = coeff_of_var * mean
  *     variance_log = log((stddev / mean) ** 2 + 1)             # <<<<<<<<<<<<<<
@@ -52742,11 +52779,11 @@ static double __pyx_f_8src_code_6market_6market_simulate_claim(double __pyx_v_me
  */
   if (unlikely(__pyx_v_mean == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 1285, __pyx_L1_error)
+    __PYX_ERR(0, 1287, __pyx_L1_error)
   }
   __pyx_v_variance_log = log((pow((__pyx_v_stddev / __pyx_v_mean), 2.0) + 1.0));
 
-  /* "src_code/market/market.pyx":1286
+  /* "src_code/market/market.pyx":1288
  *     stddev = coeff_of_var * mean
  *     variance_log = log((stddev / mean) ** 2 + 1)
  *     stddev_log = sqrt(variance_log)             # <<<<<<<<<<<<<<
@@ -52755,7 +52792,7 @@ static double __pyx_f_8src_code_6market_6market_simulate_claim(double __pyx_v_me
  */
   __pyx_v_stddev_log = sqrt(__pyx_v_variance_log);
 
-  /* "src_code/market/market.pyx":1287
+  /* "src_code/market/market.pyx":1289
  *     variance_log = log((stddev / mean) ** 2 + 1)
  *     stddev_log = sqrt(variance_log)
  *     logmean = log(mean) - 0.5 * (stddev_log ** 2)             # <<<<<<<<<<<<<<
@@ -52764,24 +52801,24 @@ static double __pyx_f_8src_code_6market_6market_simulate_claim(double __pyx_v_me
  */
   __pyx_v_logmean = (log(__pyx_v_mean) - (0.5 * pow(__pyx_v_stddev_log, 2.0)));
 
-  /* "src_code/market/market.pyx":1289
+  /* "src_code/market/market.pyx":1291
  *     logmean = log(mean) - 0.5 * (stddev_log ** 2)
  * 
  *     claim_amount = np.random.lognormal(logmean, stddev_log)             # <<<<<<<<<<<<<<
  *     return claim_amount if claim_amount < limit else limit
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1289, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1291, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1289, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1291, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_lognormal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1289, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_lognormal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1291, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_logmean); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1289, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_logmean); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1291, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_stddev_log); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1289, __pyx_L1_error)
+  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_stddev_log); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1291, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -52801,15 +52838,15 @@ static double __pyx_f_8src_code_6market_6market_simulate_claim(double __pyx_v_me
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1289, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1291, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
-  __pyx_t_7 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_7 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1289, __pyx_L1_error)
+  __pyx_t_7 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_7 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1291, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_claim_amount = __pyx_t_7;
 
-  /* "src_code/market/market.pyx":1290
+  /* "src_code/market/market.pyx":1292
  * 
  *     claim_amount = np.random.lognormal(logmean, stddev_log)
  *     return claim_amount if claim_amount < limit else limit             # <<<<<<<<<<<<<<
@@ -52824,7 +52861,7 @@ static double __pyx_f_8src_code_6market_6market_simulate_claim(double __pyx_v_me
   __pyx_r = __pyx_t_7;
   goto __pyx_L0;
 
-  /* "src_code/market/market.pyx":1280
+  /* "src_code/market/market.pyx":1282
  * 
  * 
  * cdef double simulate_claim(double mean, double coeff_of_var, int limit):             # <<<<<<<<<<<<<<
@@ -52846,7 +52883,7 @@ static double __pyx_f_8src_code_6market_6market_simulate_claim(double __pyx_v_me
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1293
+/* "src_code/market/market.pyx":1295
  * 
  * 
  * cdef double trunc_normal_c(float mu, float sigma, float limit):             # <<<<<<<<<<<<<<
@@ -52872,24 +52909,24 @@ static double __pyx_f_8src_code_6market_6market_trunc_normal_c(float __pyx_v_mu,
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("trunc_normal_c", 0);
 
-  /* "src_code/market/market.pyx":1294
+  /* "src_code/market/market.pyx":1296
  * 
  * cdef double trunc_normal_c(float mu, float sigma, float limit):
  *     cdef double uncapped_norm = np.random.normal(mu, sigma)             # <<<<<<<<<<<<<<
  *     return min(uncapped_norm, limit)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1294, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1296, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1294, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1296, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_normal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1294, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_normal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1296, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_mu); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1294, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_mu); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1296, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_sigma); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1294, __pyx_L1_error)
+  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_sigma); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1296, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -52909,15 +52946,15 @@ static double __pyx_f_8src_code_6market_6market_trunc_normal_c(float __pyx_v_mu,
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1294, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1296, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
-  __pyx_t_7 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_7 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1294, __pyx_L1_error)
+  __pyx_t_7 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_7 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1296, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_uncapped_norm = __pyx_t_7;
 
-  /* "src_code/market/market.pyx":1295
+  /* "src_code/market/market.pyx":1297
  * cdef double trunc_normal_c(float mu, float sigma, float limit):
  *     cdef double uncapped_norm = np.random.normal(mu, sigma)
  *     return min(uncapped_norm, limit)             # <<<<<<<<<<<<<<
@@ -52934,7 +52971,7 @@ static double __pyx_f_8src_code_6market_6market_trunc_normal_c(float __pyx_v_mu,
   __pyx_r = __pyx_t_9;
   goto __pyx_L0;
 
-  /* "src_code/market/market.pyx":1293
+  /* "src_code/market/market.pyx":1295
  * 
  * 
  * cdef double trunc_normal_c(float mu, float sigma, float limit):             # <<<<<<<<<<<<<<
@@ -52956,7 +52993,7 @@ static double __pyx_f_8src_code_6market_6market_trunc_normal_c(float __pyx_v_mu,
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1298
+/* "src_code/market/market.pyx":1300
  * 
  * 
  * cdef double normal_c(float mu, float sigma):             # <<<<<<<<<<<<<<
@@ -52980,24 +53017,24 @@ static double __pyx_f_8src_code_6market_6market_normal_c(float __pyx_v_mu, float
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("normal_c", 0);
 
-  /* "src_code/market/market.pyx":1299
+  /* "src_code/market/market.pyx":1301
  * 
  * cdef double normal_c(float mu, float sigma):
  *     cdef double uncapped_norm = np.random.normal(mu, sigma)             # <<<<<<<<<<<<<<
  *     return uncapped_norm
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1299, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1301, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1299, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1301, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_normal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1299, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_normal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1301, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_mu); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1299, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_mu); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1301, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_sigma); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1299, __pyx_L1_error)
+  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_sigma); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1301, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -53017,25 +53054,25 @@ static double __pyx_f_8src_code_6market_6market_normal_c(float __pyx_v_mu, float
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1299, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1301, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
-  __pyx_t_7 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_7 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1299, __pyx_L1_error)
+  __pyx_t_7 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_7 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1301, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_uncapped_norm = __pyx_t_7;
 
-  /* "src_code/market/market.pyx":1300
+  /* "src_code/market/market.pyx":1302
  * cdef double normal_c(float mu, float sigma):
  *     cdef double uncapped_norm = np.random.normal(mu, sigma)
  *     return uncapped_norm             # <<<<<<<<<<<<<<
  * 
- * 
+ * cdef float shop_ratio_c(float old_price, float new_price,
  */
   __pyx_r = __pyx_v_uncapped_norm;
   goto __pyx_L0;
 
-  /* "src_code/market/market.pyx":1298
+  /* "src_code/market/market.pyx":1300
  * 
  * 
  * cdef double normal_c(float mu, float sigma):             # <<<<<<<<<<<<<<
@@ -53057,163 +53094,238 @@ static double __pyx_f_8src_code_6market_6market_normal_c(float __pyx_v_mu, float
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1303
- * 
+/* "src_code/market/market.pyx":1304
+ *     return uncapped_norm
  * 
  * cdef float shop_ratio_c(float old_price, float new_price,             # <<<<<<<<<<<<<<
  *                         float sel_exp_ratio_mktg_max, float sel_exp_ratio_mktg_min,
- *                         float shop_base, float shop_slpe, float shop_sens,
+ *                         float shop_base, float shop_slpe_increase, float shop_slpe_decrease, float shop_sens,
  */
 
-static float __pyx_f_8src_code_6market_6market_shop_ratio_c(float __pyx_v_old_price, float __pyx_v_new_price, float __pyx_v_sel_exp_ratio_mktg_max, float __pyx_v_sel_exp_ratio_mktg_min, float __pyx_v_shop_base, float __pyx_v_shop_slpe, float __pyx_v_shop_sens, float __pyx_v_sum_ind_mktg_spend, float __pyx_v_sum_ind_prem) {
+static float __pyx_f_8src_code_6market_6market_shop_ratio_c(float __pyx_v_old_price, float __pyx_v_new_price, float __pyx_v_sel_exp_ratio_mktg_max, float __pyx_v_sel_exp_ratio_mktg_min, float __pyx_v_shop_base, float __pyx_v_shop_slpe_increase, float __pyx_v_shop_slpe_decrease, float __pyx_v_shop_sens, float __pyx_v_sum_ind_mktg_spend, float __pyx_v_sum_ind_prem) {
   float __pyx_v_rate_change;
+  float __pyx_v_effective_slpe;
   float __pyx_v_logistic_value;
   float __pyx_v_shop_value;
   float __pyx_v_final_value;
   float __pyx_r;
   __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
+  int __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
   PyObject *__pyx_t_5 = NULL;
-  int __pyx_t_6;
-  float __pyx_t_7;
+  PyObject *__pyx_t_6 = NULL;
+  int __pyx_t_7;
   float __pyx_t_8;
+  float __pyx_t_9;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("shop_ratio_c", 0);
 
-  /* "src_code/market/market.pyx":1307
- *                         float shop_base, float shop_slpe, float shop_sens,
+  /* "src_code/market/market.pyx":1308
+ *                         float shop_base, float shop_slpe_increase, float shop_slpe_decrease, float shop_sens,
  *                         float sum_ind_mktg_spend, float sum_ind_prem):
  *     cdef float rate_change = (new_price / old_price) - 1             # <<<<<<<<<<<<<<
- *     cdef float logistic_value = shop_base / (1 + math.exp(-1 * shop_slpe * (-1 * rate_change)))
- *     cdef float shop_value = 1 + (shop_sens - 1) * math.log(1 + ((sum_ind_mktg_spend / sum_ind_prem) - sel_exp_ratio_mktg_min) / (sel_exp_ratio_mktg_max - sel_exp_ratio_mktg_min))
+ *     cdef float effective_slpe
+ * 
  */
   if (unlikely(__pyx_v_old_price == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 1307, __pyx_L1_error)
+    __PYX_ERR(0, 1308, __pyx_L1_error)
   }
   __pyx_v_rate_change = ((__pyx_v_new_price / __pyx_v_old_price) - 1.0);
 
-  /* "src_code/market/market.pyx":1308
- *                         float sum_ind_mktg_spend, float sum_ind_prem):
- *     cdef float rate_change = (new_price / old_price) - 1
- *     cdef float logistic_value = shop_base / (1 + math.exp(-1 * shop_slpe * (-1 * rate_change)))             # <<<<<<<<<<<<<<
- *     cdef float shop_value = 1 + (shop_sens - 1) * math.log(1 + ((sum_ind_mktg_spend / sum_ind_prem) - sel_exp_ratio_mktg_min) / (sel_exp_ratio_mktg_max - sel_exp_ratio_mktg_min))
- *     cdef float final_value = logistic_value * shop_value
+  /* "src_code/market/market.pyx":1311
+ *     cdef float effective_slpe
+ * 
+ *     if rate_change >= 0:             # <<<<<<<<<<<<<<
+ *         effective_slpe = shop_slpe_increase
+ *     else:
  */
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_shop_base); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1308, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_math); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1308, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_exp); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1308, __pyx_L1_error)
+  __pyx_t_1 = (__pyx_v_rate_change >= 0.0);
+  if (__pyx_t_1) {
+
+    /* "src_code/market/market.pyx":1312
+ * 
+ *     if rate_change >= 0:
+ *         effective_slpe = shop_slpe_increase             # <<<<<<<<<<<<<<
+ *     else:
+ *         effective_slpe = shop_slpe_decrease
+ */
+    __pyx_v_effective_slpe = __pyx_v_shop_slpe_increase;
+
+    /* "src_code/market/market.pyx":1311
+ *     cdef float effective_slpe
+ * 
+ *     if rate_change >= 0:             # <<<<<<<<<<<<<<
+ *         effective_slpe = shop_slpe_increase
+ *     else:
+ */
+    goto __pyx_L3;
+  }
+
+  /* "src_code/market/market.pyx":1314
+ *         effective_slpe = shop_slpe_increase
+ *     else:
+ *         effective_slpe = shop_slpe_decrease             # <<<<<<<<<<<<<<
+ * 
+ *     cdef float logistic_value = shop_base / (1 + math.exp(-1 * effective_slpe * (-1 * rate_change)))
+ */
+  /*else*/ {
+    __pyx_v_effective_slpe = __pyx_v_shop_slpe_decrease;
+  }
+  __pyx_L3:;
+
+  /* "src_code/market/market.pyx":1316
+ *         effective_slpe = shop_slpe_decrease
+ * 
+ *     cdef float logistic_value = shop_base / (1 + math.exp(-1 * effective_slpe * (-1 * rate_change)))             # <<<<<<<<<<<<<<
+ *     cdef float shop_value = 1 + (shop_sens - 1) * math.log(
+ *         1 + ((sum_ind_mktg_spend / sum_ind_prem) - sel_exp_ratio_mktg_min) / (
+ */
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_shop_base); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1316, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_math); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1316, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyFloat_FromDouble(((-1.0 * __pyx_v_shop_slpe) * (-1.0 * __pyx_v_rate_change))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1308, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = NULL;
-  __pyx_t_6 = 0;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
-    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
-    if (likely(__pyx_t_5)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-      __Pyx_INCREF(__pyx_t_5);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_exp); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1316, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = PyFloat_FromDouble(((-1.0 * __pyx_v_effective_slpe) * (-1.0 * __pyx_v_rate_change))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1316, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_6 = NULL;
+  __pyx_t_7 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
+    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_5);
+    if (likely(__pyx_t_6)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+      __Pyx_INCREF(__pyx_t_6);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_4, function);
-      __pyx_t_6 = 1;
+      __Pyx_DECREF_SET(__pyx_t_5, function);
+      __pyx_t_7 = 1;
     }
   }
   {
-    PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_t_3};
-    __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
-    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1308, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
+    PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_t_4};
+    __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
+    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1316, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
-  __pyx_t_4 = __Pyx_PyInt_AddCObj(__pyx_int_1, __pyx_t_2, 1, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1308, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_AddCObj(__pyx_int_1, __pyx_t_3, 1, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1316, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1316, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_8 = __pyx_PyFloat_AsFloat(__pyx_t_3); if (unlikely((__pyx_t_8 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1316, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_v_logistic_value = __pyx_t_8;
+
+  /* "src_code/market/market.pyx":1317
+ * 
+ *     cdef float logistic_value = shop_base / (1 + math.exp(-1 * effective_slpe * (-1 * rate_change)))
+ *     cdef float shop_value = 1 + (shop_sens - 1) * math.log(             # <<<<<<<<<<<<<<
+ *         1 + ((sum_ind_mktg_spend / sum_ind_prem) - sel_exp_ratio_mktg_min) / (
+ *                     sel_exp_ratio_mktg_max - sel_exp_ratio_mktg_min))
+ */
+  __pyx_t_3 = PyFloat_FromDouble((__pyx_v_shop_sens - 1.0)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1317, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_math); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1317, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_log); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1317, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1308, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1308, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_v_logistic_value = __pyx_t_7;
 
-  /* "src_code/market/market.pyx":1309
- *     cdef float rate_change = (new_price / old_price) - 1
- *     cdef float logistic_value = shop_base / (1 + math.exp(-1 * shop_slpe * (-1 * rate_change)))
- *     cdef float shop_value = 1 + (shop_sens - 1) * math.log(1 + ((sum_ind_mktg_spend / sum_ind_prem) - sel_exp_ratio_mktg_min) / (sel_exp_ratio_mktg_max - sel_exp_ratio_mktg_min))             # <<<<<<<<<<<<<<
+  /* "src_code/market/market.pyx":1318
+ *     cdef float logistic_value = shop_base / (1 + math.exp(-1 * effective_slpe * (-1 * rate_change)))
+ *     cdef float shop_value = 1 + (shop_sens - 1) * math.log(
+ *         1 + ((sum_ind_mktg_spend / sum_ind_prem) - sel_exp_ratio_mktg_min) / (             # <<<<<<<<<<<<<<
+ *                     sel_exp_ratio_mktg_max - sel_exp_ratio_mktg_min))
+ *     cdef float final_value = logistic_value * shop_value
+ */
+  if (unlikely(__pyx_v_sum_ind_prem == 0)) {
+    PyErr_SetString(PyExc_ZeroDivisionError, "float division");
+    __PYX_ERR(0, 1318, __pyx_L1_error)
+  }
+  __pyx_t_8 = ((__pyx_v_sum_ind_mktg_spend / __pyx_v_sum_ind_prem) - __pyx_v_sel_exp_ratio_mktg_min);
+
+  /* "src_code/market/market.pyx":1319
+ *     cdef float shop_value = 1 + (shop_sens - 1) * math.log(
+ *         1 + ((sum_ind_mktg_spend / sum_ind_prem) - sel_exp_ratio_mktg_min) / (
+ *                     sel_exp_ratio_mktg_max - sel_exp_ratio_mktg_min))             # <<<<<<<<<<<<<<
  *     cdef float final_value = logistic_value * shop_value
  * 
  */
-  __pyx_t_2 = PyFloat_FromDouble((__pyx_v_shop_sens - 1.0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1309, __pyx_L1_error)
+  __pyx_t_9 = (__pyx_v_sel_exp_ratio_mktg_max - __pyx_v_sel_exp_ratio_mktg_min);
+
+  /* "src_code/market/market.pyx":1318
+ *     cdef float logistic_value = shop_base / (1 + math.exp(-1 * effective_slpe * (-1 * rate_change)))
+ *     cdef float shop_value = 1 + (shop_sens - 1) * math.log(
+ *         1 + ((sum_ind_mktg_spend / sum_ind_prem) - sel_exp_ratio_mktg_min) / (             # <<<<<<<<<<<<<<
+ *                     sel_exp_ratio_mktg_max - sel_exp_ratio_mktg_min))
+ *     cdef float final_value = logistic_value * shop_value
+ */
+  if (unlikely(__pyx_t_9 == 0)) {
+    PyErr_SetString(PyExc_ZeroDivisionError, "float division");
+    __PYX_ERR(0, 1318, __pyx_L1_error)
+  }
+  __pyx_t_2 = PyFloat_FromDouble((1.0 + (__pyx_t_8 / __pyx_t_9))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1318, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_math); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1309, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_log); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1309, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(__pyx_v_sum_ind_prem == 0)) {
-    PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 1309, __pyx_L1_error)
-  }
-  __pyx_t_7 = ((__pyx_v_sum_ind_mktg_spend / __pyx_v_sum_ind_prem) - __pyx_v_sel_exp_ratio_mktg_min);
-  __pyx_t_8 = (__pyx_v_sel_exp_ratio_mktg_max - __pyx_v_sel_exp_ratio_mktg_min);
-  if (unlikely(__pyx_t_8 == 0)) {
-    PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 1309, __pyx_L1_error)
-  }
-  __pyx_t_1 = PyFloat_FromDouble((1.0 + (__pyx_t_7 / __pyx_t_8))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1309, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = NULL;
-  __pyx_t_6 = 0;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_3);
-    if (likely(__pyx_t_5)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_5);
+  __pyx_t_6 = NULL;
+  __pyx_t_7 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
+    if (likely(__pyx_t_6)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_6);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_3, function);
-      __pyx_t_6 = 1;
+      __Pyx_DECREF_SET(__pyx_t_4, function);
+      __pyx_t_7 = 1;
     }
   }
   {
-    PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_t_1};
-    __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
-    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1309, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_t_2};
+    __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
+    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1317, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
-  __pyx_t_3 = PyNumber_Multiply(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1309, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyInt_AddCObj(__pyx_int_1, __pyx_t_3, 1, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1309, __pyx_L1_error)
+
+  /* "src_code/market/market.pyx":1317
+ * 
+ *     cdef float logistic_value = shop_base / (1 + math.exp(-1 * effective_slpe * (-1 * rate_change)))
+ *     cdef float shop_value = 1 + (shop_sens - 1) * math.log(             # <<<<<<<<<<<<<<
+ *         1 + ((sum_ind_mktg_spend / sum_ind_prem) - sel_exp_ratio_mktg_min) / (
+ *                     sel_exp_ratio_mktg_max - sel_exp_ratio_mktg_min))
+ */
+  __pyx_t_4 = PyNumber_Multiply(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1317, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_8 = __pyx_PyFloat_AsFloat(__pyx_t_4); if (unlikely((__pyx_t_8 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1309, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyInt_AddCObj(__pyx_int_1, __pyx_t_4, 1, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1317, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_v_shop_value = __pyx_t_8;
+  __pyx_t_9 = __pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_9 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1317, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_v_shop_value = __pyx_t_9;
 
-  /* "src_code/market/market.pyx":1310
- *     cdef float logistic_value = shop_base / (1 + math.exp(-1 * shop_slpe * (-1 * rate_change)))
- *     cdef float shop_value = 1 + (shop_sens - 1) * math.log(1 + ((sum_ind_mktg_spend / sum_ind_prem) - sel_exp_ratio_mktg_min) / (sel_exp_ratio_mktg_max - sel_exp_ratio_mktg_min))
+  /* "src_code/market/market.pyx":1320
+ *         1 + ((sum_ind_mktg_spend / sum_ind_prem) - sel_exp_ratio_mktg_min) / (
+ *                     sel_exp_ratio_mktg_max - sel_exp_ratio_mktg_min))
  *     cdef float final_value = logistic_value * shop_value             # <<<<<<<<<<<<<<
  * 
  *     return final_value
  */
   __pyx_v_final_value = (__pyx_v_logistic_value * __pyx_v_shop_value);
 
-  /* "src_code/market/market.pyx":1312
+  /* "src_code/market/market.pyx":1322
  *     cdef float final_value = logistic_value * shop_value
  * 
  *     return final_value             # <<<<<<<<<<<<<<
@@ -53223,21 +53335,21 @@ static float __pyx_f_8src_code_6market_6market_shop_ratio_c(float __pyx_v_old_pr
   __pyx_r = __pyx_v_final_value;
   goto __pyx_L0;
 
-  /* "src_code/market/market.pyx":1303
- * 
+  /* "src_code/market/market.pyx":1304
+ *     return uncapped_norm
  * 
  * cdef float shop_ratio_c(float old_price, float new_price,             # <<<<<<<<<<<<<<
  *                         float sel_exp_ratio_mktg_max, float sel_exp_ratio_mktg_min,
- *                         float shop_base, float shop_slpe, float shop_sens,
+ *                         float shop_base, float shop_slpe_increase, float shop_slpe_decrease, float shop_sens,
  */
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
   __Pyx_AddTraceback("src_code.market.market.shop_ratio_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
@@ -53245,7 +53357,7 @@ static float __pyx_f_8src_code_6market_6market_shop_ratio_c(float __pyx_v_old_pr
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1315
+/* "src_code/market/market.pyx":1325
  * 
  * 
  * cdef list lottery_c(list marketing, list wprem, double lottery_mult, double lottery_prem_wt, company):             # <<<<<<<<<<<<<<
@@ -53281,7 +53393,7 @@ static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *__pyx_v_m
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lottery_c", 0);
 
-  /* "src_code/market/market.pyx":1322
+  /* "src_code/market/market.pyx":1332
  *     cdef double test_val
  * 
  *     sum_tot = 0             # <<<<<<<<<<<<<<
@@ -53290,7 +53402,7 @@ static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *__pyx_v_m
  */
   __pyx_v_sum_tot = 0.0;
 
-  /* "src_code/market/market.pyx":1323
+  /* "src_code/market/market.pyx":1333
  * 
  *     sum_tot = 0
  *     max_i = len(marketing)             # <<<<<<<<<<<<<<
@@ -53299,19 +53411,19 @@ static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *__pyx_v_m
  */
   if (unlikely(__pyx_v_marketing == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 1323, __pyx_L1_error)
+    __PYX_ERR(0, 1333, __pyx_L1_error)
   }
-  __pyx_t_1 = PyList_GET_SIZE(__pyx_v_marketing); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 1323, __pyx_L1_error)
+  __pyx_t_1 = PyList_GET_SIZE(__pyx_v_marketing); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 1333, __pyx_L1_error)
   __pyx_v_max_i = __pyx_t_1;
 
-  /* "src_code/market/market.pyx":1324
+  /* "src_code/market/market.pyx":1334
  *     sum_tot = 0
  *     max_i = len(marketing)
  *     lottery = [0.0] * max_i             # <<<<<<<<<<<<<<
  *     outcome = [0] * max_i
  * 
  */
-  __pyx_t_2 = PyList_New(1 * ((__pyx_v_max_i<0) ? 0:__pyx_v_max_i)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1324, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1 * ((__pyx_v_max_i<0) ? 0:__pyx_v_max_i)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1334, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   { Py_ssize_t __pyx_temp;
     for (__pyx_temp=0; __pyx_temp < __pyx_v_max_i; __pyx_temp++) {
@@ -53323,14 +53435,14 @@ static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *__pyx_v_m
   __pyx_v_lottery = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src_code/market/market.pyx":1325
+  /* "src_code/market/market.pyx":1335
  *     max_i = len(marketing)
  *     lottery = [0.0] * max_i
  *     outcome = [0] * max_i             # <<<<<<<<<<<<<<
  * 
  *     for i in range(max_i):
  */
-  __pyx_t_2 = PyList_New(1 * ((__pyx_v_max_i<0) ? 0:__pyx_v_max_i)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1325, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1 * ((__pyx_v_max_i<0) ? 0:__pyx_v_max_i)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1335, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   { Py_ssize_t __pyx_temp;
     for (__pyx_temp=0; __pyx_temp < __pyx_v_max_i; __pyx_temp++) {
@@ -53342,7 +53454,7 @@ static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *__pyx_v_m
   __pyx_v_outcome = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src_code/market/market.pyx":1327
+  /* "src_code/market/market.pyx":1337
  *     outcome = [0] * max_i
  * 
  *     for i in range(max_i):             # <<<<<<<<<<<<<<
@@ -53354,7 +53466,7 @@ static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *__pyx_v_m
   for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
     __pyx_v_i = __pyx_t_5;
 
-    /* "src_code/market/market.pyx":1328
+    /* "src_code/market/market.pyx":1338
  * 
  *     for i in range(max_i):
  *         if wprem[i] == 0:             # <<<<<<<<<<<<<<
@@ -53363,15 +53475,15 @@ static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *__pyx_v_m
  */
     if (unlikely(__pyx_v_wprem == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 1328, __pyx_L1_error)
+      __PYX_ERR(0, 1338, __pyx_L1_error)
     }
-    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_wprem, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1328, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_wprem, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1338, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = (__Pyx_PyInt_BoolEqObjC(__pyx_t_2, __pyx_int_0, 0, 0)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 1328, __pyx_L1_error)
+    __pyx_t_6 = (__Pyx_PyInt_BoolEqObjC(__pyx_t_2, __pyx_int_0, 0, 0)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 1338, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (__pyx_t_6) {
 
-      /* "src_code/market/market.pyx":1329
+      /* "src_code/market/market.pyx":1339
  *     for i in range(max_i):
  *         if wprem[i] == 0:
  *             wprem[i] = 1             # <<<<<<<<<<<<<<
@@ -53380,11 +53492,11 @@ static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *__pyx_v_m
  */
       if (unlikely(__pyx_v_wprem == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 1329, __pyx_L1_error)
+        __PYX_ERR(0, 1339, __pyx_L1_error)
       }
-      if (unlikely((__Pyx_SetItemInt(__pyx_v_wprem, __pyx_v_i, __pyx_int_1, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0))) __PYX_ERR(0, 1329, __pyx_L1_error)
+      if (unlikely((__Pyx_SetItemInt(__pyx_v_wprem, __pyx_v_i, __pyx_int_1, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0))) __PYX_ERR(0, 1339, __pyx_L1_error)
 
-      /* "src_code/market/market.pyx":1328
+      /* "src_code/market/market.pyx":1338
  * 
  *     for i in range(max_i):
  *         if wprem[i] == 0:             # <<<<<<<<<<<<<<
@@ -53393,7 +53505,7 @@ static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *__pyx_v_m
  */
     }
 
-    /* "src_code/market/market.pyx":1330
+    /* "src_code/market/market.pyx":1340
  *         if wprem[i] == 0:
  *             wprem[i] = 1
  *         lottery[i] = (marketing[i] + wprem[i] * lottery_prem_wt) / wprem[i]             # <<<<<<<<<<<<<<
@@ -53402,60 +53514,60 @@ static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *__pyx_v_m
  */
     if (unlikely(__pyx_v_marketing == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 1330, __pyx_L1_error)
+      __PYX_ERR(0, 1340, __pyx_L1_error)
     }
-    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_marketing, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1330, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_marketing, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1340, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     if (unlikely(__pyx_v_wprem == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 1330, __pyx_L1_error)
+      __PYX_ERR(0, 1340, __pyx_L1_error)
     }
-    __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_wprem, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1330, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_wprem, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1340, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_8 = PyFloat_FromDouble(__pyx_v_lottery_prem_wt); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1330, __pyx_L1_error)
+    __pyx_t_8 = PyFloat_FromDouble(__pyx_v_lottery_prem_wt); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1340, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_9 = PyNumber_Multiply(__pyx_t_7, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1330, __pyx_L1_error)
+    __pyx_t_9 = PyNumber_Multiply(__pyx_t_7, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1340, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = PyNumber_Add(__pyx_t_2, __pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1330, __pyx_L1_error)
+    __pyx_t_8 = PyNumber_Add(__pyx_t_2, __pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1340, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     if (unlikely(__pyx_v_wprem == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 1330, __pyx_L1_error)
+      __PYX_ERR(0, 1340, __pyx_L1_error)
     }
-    __pyx_t_9 = __Pyx_GetItemInt_List(__pyx_v_wprem, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1330, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_GetItemInt_List(__pyx_v_wprem, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1340, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_8, __pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1330, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_8, __pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1340, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    if (unlikely((__Pyx_SetItemInt(__pyx_v_lottery, __pyx_v_i, __pyx_t_2, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0))) __PYX_ERR(0, 1330, __pyx_L1_error)
+    if (unlikely((__Pyx_SetItemInt(__pyx_v_lottery, __pyx_v_i, __pyx_t_2, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0))) __PYX_ERR(0, 1340, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "src_code/market/market.pyx":1331
+    /* "src_code/market/market.pyx":1341
  *             wprem[i] = 1
  *         lottery[i] = (marketing[i] + wprem[i] * lottery_prem_wt) / wprem[i]
  *         sum_tot += lottery[i]             # <<<<<<<<<<<<<<
  * 
  *     sum_tot /= lottery_mult
  */
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_sum_tot); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1331, __pyx_L1_error)
+    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_sum_tot); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1341, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_9 = __Pyx_GetItemInt_List(__pyx_v_lottery, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1331, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_GetItemInt_List(__pyx_v_lottery, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1341, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_8 = PyNumber_InPlaceAdd(__pyx_t_2, __pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1331, __pyx_L1_error)
+    __pyx_t_8 = PyNumber_InPlaceAdd(__pyx_t_2, __pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1341, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __pyx_t_10 = __pyx_PyFloat_AsDouble(__pyx_t_8); if (unlikely((__pyx_t_10 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1331, __pyx_L1_error)
+    __pyx_t_10 = __pyx_PyFloat_AsDouble(__pyx_t_8); if (unlikely((__pyx_t_10 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1341, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __pyx_v_sum_tot = __pyx_t_10;
   }
 
-  /* "src_code/market/market.pyx":1333
+  /* "src_code/market/market.pyx":1343
  *         sum_tot += lottery[i]
  * 
  *     sum_tot /= lottery_mult             # <<<<<<<<<<<<<<
@@ -53464,11 +53576,11 @@ static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *__pyx_v_m
  */
   if (unlikely(__pyx_v_lottery_mult == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 1333, __pyx_L1_error)
+    __PYX_ERR(0, 1343, __pyx_L1_error)
   }
   __pyx_v_sum_tot = (__pyx_v_sum_tot / __pyx_v_lottery_mult);
 
-  /* "src_code/market/market.pyx":1335
+  /* "src_code/market/market.pyx":1345
  *     sum_tot /= lottery_mult
  * 
  *     for i in range(max_i):             # <<<<<<<<<<<<<<
@@ -53480,19 +53592,19 @@ static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *__pyx_v_m
   for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
     __pyx_v_i = __pyx_t_5;
 
-    /* "src_code/market/market.pyx":1336
+    /* "src_code/market/market.pyx":1346
  * 
  *     for i in range(max_i):
  *         test_val = random.uniform(0, sum_tot)             # <<<<<<<<<<<<<<
  *         if lottery[i] >= test_val:
  *             outcome[i] = 1
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_random); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1336, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_random); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1346, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_uniform); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1336, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_uniform); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1346, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __pyx_t_9 = PyFloat_FromDouble(__pyx_v_sum_tot); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1336, __pyx_L1_error)
+    __pyx_t_9 = PyFloat_FromDouble(__pyx_v_sum_tot); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1346, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __pyx_t_7 = NULL;
     __pyx_t_11 = 0;
@@ -53511,42 +53623,42 @@ static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *__pyx_v_m
       __pyx_t_8 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_11, 2+__pyx_t_11);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1336, __pyx_L1_error)
+      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1346, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
-    __pyx_t_10 = __pyx_PyFloat_AsDouble(__pyx_t_8); if (unlikely((__pyx_t_10 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1336, __pyx_L1_error)
+    __pyx_t_10 = __pyx_PyFloat_AsDouble(__pyx_t_8); if (unlikely((__pyx_t_10 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1346, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __pyx_v_test_val = __pyx_t_10;
 
-    /* "src_code/market/market.pyx":1337
+    /* "src_code/market/market.pyx":1347
  *     for i in range(max_i):
  *         test_val = random.uniform(0, sum_tot)
  *         if lottery[i] >= test_val:             # <<<<<<<<<<<<<<
  *             outcome[i] = 1
  * 
  */
-    __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_lottery, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1337, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_lottery, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1347, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_test_val); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1337, __pyx_L1_error)
+    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_test_val); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1347, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_9 = PyObject_RichCompare(__pyx_t_8, __pyx_t_2, Py_GE); __Pyx_XGOTREF(__pyx_t_9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1337, __pyx_L1_error)
+    __pyx_t_9 = PyObject_RichCompare(__pyx_t_8, __pyx_t_2, Py_GE); __Pyx_XGOTREF(__pyx_t_9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1347, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 1337, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 1347, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     if (__pyx_t_6) {
 
-      /* "src_code/market/market.pyx":1338
+      /* "src_code/market/market.pyx":1348
  *         test_val = random.uniform(0, sum_tot)
  *         if lottery[i] >= test_val:
  *             outcome[i] = 1             # <<<<<<<<<<<<<<
  * 
  *     outcome[company] = 0
  */
-      if (unlikely((__Pyx_SetItemInt(__pyx_v_outcome, __pyx_v_i, __pyx_int_1, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0))) __PYX_ERR(0, 1338, __pyx_L1_error)
+      if (unlikely((__Pyx_SetItemInt(__pyx_v_outcome, __pyx_v_i, __pyx_int_1, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0))) __PYX_ERR(0, 1348, __pyx_L1_error)
 
-      /* "src_code/market/market.pyx":1337
+      /* "src_code/market/market.pyx":1347
  *     for i in range(max_i):
  *         test_val = random.uniform(0, sum_tot)
  *         if lottery[i] >= test_val:             # <<<<<<<<<<<<<<
@@ -53556,16 +53668,16 @@ static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *__pyx_v_m
     }
   }
 
-  /* "src_code/market/market.pyx":1340
+  /* "src_code/market/market.pyx":1350
  *             outcome[i] = 1
  * 
  *     outcome[company] = 0             # <<<<<<<<<<<<<<
  * 
  *     # Check if all entries in outcome are zero
  */
-  if (unlikely((PyObject_SetItem(__pyx_v_outcome, __pyx_v_company, __pyx_int_0) < 0))) __PYX_ERR(0, 1340, __pyx_L1_error)
+  if (unlikely((PyObject_SetItem(__pyx_v_outcome, __pyx_v_company, __pyx_int_0) < 0))) __PYX_ERR(0, 1350, __pyx_L1_error)
 
-  /* "src_code/market/market.pyx":1343
+  /* "src_code/market/market.pyx":1353
  * 
  *     # Check if all entries in outcome are zero
  *     if not any(outcome[:company] + outcome[company + 1:]):             # <<<<<<<<<<<<<<
@@ -53578,37 +53690,37 @@ static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *__pyx_v_m
   if (__pyx_t_6) {
     __pyx_t_1 = PY_SSIZE_T_MAX;
   } else {
-    __pyx_t_12 = __Pyx_PyIndex_AsSsize_t(__pyx_t_9); if (unlikely((__pyx_t_12 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 1343, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyIndex_AsSsize_t(__pyx_t_9); if (unlikely((__pyx_t_12 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 1353, __pyx_L1_error)
     __pyx_t_1 = __pyx_t_12;
   }
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyList_GetSlice(__pyx_v_outcome, 0, __pyx_t_1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1343, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyList_GetSlice(__pyx_v_outcome, 0, __pyx_t_1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1353, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_v_company, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1343, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_v_company, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1353, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_6 = (__pyx_t_2 == Py_None);
   if (__pyx_t_6) {
     __pyx_t_1 = 0;
   } else {
-    __pyx_t_12 = __Pyx_PyIndex_AsSsize_t(__pyx_t_2); if (unlikely((__pyx_t_12 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 1343, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyIndex_AsSsize_t(__pyx_t_2); if (unlikely((__pyx_t_12 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 1353, __pyx_L1_error)
     __pyx_t_1 = __pyx_t_12;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyList_GetSlice(__pyx_v_outcome, __pyx_t_1, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1343, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyList_GetSlice(__pyx_v_outcome, __pyx_t_1, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1353, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_8 = PyNumber_Add(__pyx_t_9, __pyx_t_2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1343, __pyx_L1_error)
+  __pyx_t_8 = PyNumber_Add(__pyx_t_9, __pyx_t_2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1353, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_any, __pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1343, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_any, __pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1353, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 1343, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 1353, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_13 = (!__pyx_t_6);
   if (__pyx_t_13) {
 
-    /* "src_code/market/market.pyx":1344
+    /* "src_code/market/market.pyx":1354
  *     # Check if all entries in outcome are zero
  *     if not any(outcome[:company] + outcome[company + 1:]):
  *         while True:             # <<<<<<<<<<<<<<
@@ -53617,19 +53729,19 @@ static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *__pyx_v_m
  */
     while (1) {
 
-      /* "src_code/market/market.pyx":1345
+      /* "src_code/market/market.pyx":1355
  *     if not any(outcome[:company] + outcome[company + 1:]):
  *         while True:
  *             random_index = random.randint(0, max_i - 1)             # <<<<<<<<<<<<<<
  *             if random_index != company:  # Ensure the random index is not the company index
  *                 outcome[random_index] = 1
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_random); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1345, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_random); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1355, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_randint); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1345, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_randint); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1355, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_8 = __Pyx_PyInt_From_long((__pyx_v_max_i - 1)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1345, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyInt_From_long((__pyx_v_max_i - 1)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1355, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __pyx_t_7 = NULL;
       __pyx_t_3 = 0;
@@ -53648,35 +53760,35 @@ static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *__pyx_v_m
         __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_9, __pyx_callargs+1-__pyx_t_3, 2+__pyx_t_3);
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1345, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1355, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       }
       __Pyx_XDECREF_SET(__pyx_v_random_index, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "src_code/market/market.pyx":1346
+      /* "src_code/market/market.pyx":1356
  *         while True:
  *             random_index = random.randint(0, max_i - 1)
  *             if random_index != company:  # Ensure the random index is not the company index             # <<<<<<<<<<<<<<
  *                 outcome[random_index] = 1
  *                 break
  */
-      __pyx_t_2 = PyObject_RichCompare(__pyx_v_random_index, __pyx_v_company, Py_NE); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1346, __pyx_L1_error)
-      __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_13 < 0))) __PYX_ERR(0, 1346, __pyx_L1_error)
+      __pyx_t_2 = PyObject_RichCompare(__pyx_v_random_index, __pyx_v_company, Py_NE); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1356, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_13 < 0))) __PYX_ERR(0, 1356, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       if (__pyx_t_13) {
 
-        /* "src_code/market/market.pyx":1347
+        /* "src_code/market/market.pyx":1357
  *             random_index = random.randint(0, max_i - 1)
  *             if random_index != company:  # Ensure the random index is not the company index
  *                 outcome[random_index] = 1             # <<<<<<<<<<<<<<
  *                 break
  * 
  */
-        if (unlikely((PyObject_SetItem(__pyx_v_outcome, __pyx_v_random_index, __pyx_int_1) < 0))) __PYX_ERR(0, 1347, __pyx_L1_error)
+        if (unlikely((PyObject_SetItem(__pyx_v_outcome, __pyx_v_random_index, __pyx_int_1) < 0))) __PYX_ERR(0, 1357, __pyx_L1_error)
 
-        /* "src_code/market/market.pyx":1348
+        /* "src_code/market/market.pyx":1358
  *             if random_index != company:  # Ensure the random index is not the company index
  *                 outcome[random_index] = 1
  *                 break             # <<<<<<<<<<<<<<
@@ -53685,7 +53797,7 @@ static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *__pyx_v_m
  */
         goto __pyx_L11_break;
 
-        /* "src_code/market/market.pyx":1346
+        /* "src_code/market/market.pyx":1356
  *         while True:
  *             random_index = random.randint(0, max_i - 1)
  *             if random_index != company:  # Ensure the random index is not the company index             # <<<<<<<<<<<<<<
@@ -53696,7 +53808,7 @@ static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *__pyx_v_m
     }
     __pyx_L11_break:;
 
-    /* "src_code/market/market.pyx":1343
+    /* "src_code/market/market.pyx":1353
  * 
  *     # Check if all entries in outcome are zero
  *     if not any(outcome[:company] + outcome[company + 1:]):             # <<<<<<<<<<<<<<
@@ -53705,16 +53817,16 @@ static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *__pyx_v_m
  */
   }
 
-  /* "src_code/market/market.pyx":1350
+  /* "src_code/market/market.pyx":1360
  *                 break
  * 
  *     outcome[company] = 1             # <<<<<<<<<<<<<<
  * 
  *     return outcome
  */
-  if (unlikely((PyObject_SetItem(__pyx_v_outcome, __pyx_v_company, __pyx_int_1) < 0))) __PYX_ERR(0, 1350, __pyx_L1_error)
+  if (unlikely((PyObject_SetItem(__pyx_v_outcome, __pyx_v_company, __pyx_int_1) < 0))) __PYX_ERR(0, 1360, __pyx_L1_error)
 
-  /* "src_code/market/market.pyx":1352
+  /* "src_code/market/market.pyx":1362
  *     outcome[company] = 1
  * 
  *     return outcome             # <<<<<<<<<<<<<<
@@ -53726,7 +53838,7 @@ static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *__pyx_v_m
   __pyx_r = __pyx_v_outcome;
   goto __pyx_L0;
 
-  /* "src_code/market/market.pyx":1315
+  /* "src_code/market/market.pyx":1325
  * 
  * 
  * cdef list lottery_c(list marketing, list wprem, double lottery_mult, double lottery_prem_wt, company):             # <<<<<<<<<<<<<<
@@ -53751,7 +53863,7 @@ static PyObject *__pyx_f_8src_code_6market_6market_lottery_c(PyObject *__pyx_v_m
   return __pyx_r;
 }
 
-/* "src_code/market/market.pyx":1355
+/* "src_code/market/market.pyx":1365
  * 
  * 
  * cdef (int, double) compare_price_c(list prices, list quotes, float price_srvc, float price_sens):             # <<<<<<<<<<<<<<
@@ -53798,7 +53910,7 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("compare_price_c", 0);
 
-  /* "src_code/market/market.pyx":1356
+  /* "src_code/market/market.pyx":1366
  * 
  * cdef (int, double) compare_price_c(list prices, list quotes, float price_srvc, float price_sens):
  *     cdef int winning_company = -1             # <<<<<<<<<<<<<<
@@ -53807,7 +53919,7 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
  */
   __pyx_v_winning_company = -1;
 
-  /* "src_code/market/market.pyx":1357
+  /* "src_code/market/market.pyx":1367
  * cdef (int, double) compare_price_c(list prices, list quotes, float price_srvc, float price_sens):
  *     cdef int winning_company = -1
  *     cdef double winning_price = 99999999.0             # <<<<<<<<<<<<<<
@@ -53816,16 +53928,16 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
  */
   __pyx_v_winning_price = 99999999.0;
 
-  /* "src_code/market/market.pyx":1359
+  /* "src_code/market/market.pyx":1369
  *     cdef double winning_price = 99999999.0
  *     cdef int i
  *     cdef double mu = np.mean(prices)             # <<<<<<<<<<<<<<
  *     cdef double limit = price_sens
  *     cdef list service_value_rand = np.random.normal(0, price_srvc, len(prices)).tolist()
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1359, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_mean); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1359, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_mean); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -53844,15 +53956,15 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
     PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_prices};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1359, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1369, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
-  __pyx_t_5 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_5 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1359, __pyx_L1_error)
+  __pyx_t_5 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_5 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1369, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_mu = __pyx_t_5;
 
-  /* "src_code/market/market.pyx":1360
+  /* "src_code/market/market.pyx":1370
  *     cdef int i
  *     cdef double mu = np.mean(prices)
  *     cdef double limit = price_sens             # <<<<<<<<<<<<<<
@@ -53861,29 +53973,29 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
  */
   __pyx_v_limit = __pyx_v_price_sens;
 
-  /* "src_code/market/market.pyx":1361
+  /* "src_code/market/market.pyx":1371
  *     cdef double mu = np.mean(prices)
  *     cdef double limit = price_sens
  *     cdef list service_value_rand = np.random.normal(0, price_srvc, len(prices)).tolist()             # <<<<<<<<<<<<<<
  *     cdef list final_service_value = []
  *     cdef list noise_value = np.random.normal(0, .01, len(prices)).tolist()
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1361, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1371, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1361, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1371, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_normal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1361, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_normal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1371, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_price_srvc); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1361, __pyx_L1_error)
+  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_price_srvc); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1371, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   if (unlikely(__pyx_v_prices == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 1361, __pyx_L1_error)
+    __PYX_ERR(0, 1371, __pyx_L1_error)
   }
-  __pyx_t_7 = PyList_GET_SIZE(__pyx_v_prices); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 1361, __pyx_L1_error)
-  __pyx_t_8 = PyInt_FromSsize_t(__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1361, __pyx_L1_error)
+  __pyx_t_7 = PyList_GET_SIZE(__pyx_v_prices); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 1371, __pyx_L1_error)
+  __pyx_t_8 = PyInt_FromSsize_t(__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1371, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __pyx_t_9 = NULL;
   __pyx_t_4 = 0;
@@ -53903,11 +54015,11 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1361, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1371, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_tolist); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1361, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_tolist); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1371, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -53926,47 +54038,47 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
     PyObject *__pyx_callargs[1] = {__pyx_t_3, };
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1361, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1371, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_1))) __PYX_ERR(0, 1361, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_1))) __PYX_ERR(0, 1371, __pyx_L1_error)
   __pyx_v_service_value_rand = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1362
+  /* "src_code/market/market.pyx":1372
  *     cdef double limit = price_sens
  *     cdef list service_value_rand = np.random.normal(0, price_srvc, len(prices)).tolist()
  *     cdef list final_service_value = []             # <<<<<<<<<<<<<<
  *     cdef list noise_value = np.random.normal(0, .01, len(prices)).tolist()
  *     # Calculate final service value within the specified limit
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1362, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1372, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_final_service_value = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1363
+  /* "src_code/market/market.pyx":1373
  *     cdef list service_value_rand = np.random.normal(0, price_srvc, len(prices)).tolist()
  *     cdef list final_service_value = []
  *     cdef list noise_value = np.random.normal(0, .01, len(prices)).tolist()             # <<<<<<<<<<<<<<
  *     # Calculate final service value within the specified limit
  *     for ind, value in enumerate(service_value_rand):
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1363, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1373, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_random); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1363, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_random); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1373, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_normal); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1363, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_normal); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1373, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   if (unlikely(__pyx_v_prices == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 1363, __pyx_L1_error)
+    __PYX_ERR(0, 1373, __pyx_L1_error)
   }
-  __pyx_t_7 = PyList_GET_SIZE(__pyx_v_prices); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 1363, __pyx_L1_error)
-  __pyx_t_8 = PyInt_FromSsize_t(__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1363, __pyx_L1_error)
+  __pyx_t_7 = PyList_GET_SIZE(__pyx_v_prices); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 1373, __pyx_L1_error)
+  __pyx_t_8 = PyInt_FromSsize_t(__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1373, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __pyx_t_6 = NULL;
   __pyx_t_4 = 0;
@@ -53985,11 +54097,11 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
     __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 3+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1363, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1373, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_tolist); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1363, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_tolist); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1373, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -54008,15 +54120,15 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
     PyObject *__pyx_callargs[1] = {__pyx_t_2, };
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1363, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1373, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_1))) __PYX_ERR(0, 1363, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_1))) __PYX_ERR(0, 1373, __pyx_L1_error)
   __pyx_v_noise_value = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1365
+  /* "src_code/market/market.pyx":1375
  *     cdef list noise_value = np.random.normal(0, .01, len(prices)).tolist()
  *     # Calculate final service value within the specified limit
  *     for ind, value in enumerate(service_value_rand):             # <<<<<<<<<<<<<<
@@ -54028,9 +54140,9 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
   for (;;) {
     if (__pyx_t_10 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_10); __Pyx_INCREF(__pyx_t_3); __pyx_t_10++; if (unlikely((0 < 0))) __PYX_ERR(0, 1365, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_10); __Pyx_INCREF(__pyx_t_3); __pyx_t_10++; if (unlikely((0 < 0))) __PYX_ERR(0, 1375, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1365, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1375, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_value, __pyx_t_3);
@@ -54038,27 +54150,27 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
     __pyx_v_ind = __pyx_t_7;
     __pyx_t_7 = (__pyx_t_7 + 1);
 
-    /* "src_code/market/market.pyx":1366
+    /* "src_code/market/market.pyx":1376
  *     # Calculate final service value within the specified limit
  *     for ind, value in enumerate(service_value_rand):
  *         adjusted_value = (mu * max(min(value, abs(limit)), -abs(limit))) + noise_value[ind]             # <<<<<<<<<<<<<<
  *         final_service_value.append(adjusted_value)
  * 
  */
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_mu); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1366, __pyx_L1_error)
+    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_mu); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1376, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_5 = (-fabs(__pyx_v_limit));
     __pyx_t_11 = fabs(__pyx_v_limit);
     __Pyx_INCREF(__pyx_v_value);
     __pyx_t_2 = __pyx_v_value;
-    __pyx_t_6 = PyFloat_FromDouble(__pyx_t_11); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1366, __pyx_L1_error)
+    __pyx_t_6 = PyFloat_FromDouble(__pyx_t_11); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1376, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_9 = PyObject_RichCompare(__pyx_t_6, __pyx_t_2, Py_LT); __Pyx_XGOTREF(__pyx_t_9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1366, __pyx_L1_error)
+    __pyx_t_9 = PyObject_RichCompare(__pyx_t_6, __pyx_t_2, Py_LT); __Pyx_XGOTREF(__pyx_t_9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1376, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely((__pyx_t_12 < 0))) __PYX_ERR(0, 1366, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely((__pyx_t_12 < 0))) __PYX_ERR(0, 1376, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     if (__pyx_t_12) {
-      __pyx_t_9 = PyFloat_FromDouble(__pyx_t_11); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1366, __pyx_L1_error)
+      __pyx_t_9 = PyFloat_FromDouble(__pyx_t_11); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1376, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __pyx_t_8 = __pyx_t_9;
       __pyx_t_9 = 0;
@@ -54070,14 +54182,14 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
     __Pyx_INCREF(__pyx_t_8);
     __pyx_t_2 = __pyx_t_8;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_9 = PyFloat_FromDouble(__pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1366, __pyx_L1_error)
+    __pyx_t_9 = PyFloat_FromDouble(__pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1376, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_6 = PyObject_RichCompare(__pyx_t_9, __pyx_t_2, Py_GT); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1366, __pyx_L1_error)
+    __pyx_t_6 = PyObject_RichCompare(__pyx_t_9, __pyx_t_2, Py_GT); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1376, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely((__pyx_t_12 < 0))) __PYX_ERR(0, 1366, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely((__pyx_t_12 < 0))) __PYX_ERR(0, 1376, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     if (__pyx_t_12) {
-      __pyx_t_6 = PyFloat_FromDouble(__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1366, __pyx_L1_error)
+      __pyx_t_6 = PyFloat_FromDouble(__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1376, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __pyx_t_8 = __pyx_t_6;
       __pyx_t_6 = 0;
@@ -54086,33 +54198,33 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
       __pyx_t_8 = __pyx_t_2;
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyNumber_Multiply(__pyx_t_3, __pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1366, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_Multiply(__pyx_t_3, __pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1376, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     if (unlikely(__pyx_v_noise_value == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 1366, __pyx_L1_error)
+      __PYX_ERR(0, 1376, __pyx_L1_error)
     }
-    __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_noise_value, __pyx_v_ind, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1366, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_noise_value, __pyx_v_ind, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1376, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1366, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1376, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_XDECREF_SET(__pyx_v_adjusted_value, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src_code/market/market.pyx":1367
+    /* "src_code/market/market.pyx":1377
  *     for ind, value in enumerate(service_value_rand):
  *         adjusted_value = (mu * max(min(value, abs(limit)), -abs(limit))) + noise_value[ind]
  *         final_service_value.append(adjusted_value)             # <<<<<<<<<<<<<<
  * 
  *     # print(f'final_service_value: {final_service_value}')
  */
-    __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_final_service_value, __pyx_v_adjusted_value); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 1367, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_final_service_value, __pyx_v_adjusted_value); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 1377, __pyx_L1_error)
 
-    /* "src_code/market/market.pyx":1365
+    /* "src_code/market/market.pyx":1375
  *     cdef list noise_value = np.random.normal(0, .01, len(prices)).tolist()
  *     # Calculate final service value within the specified limit
  *     for ind, value in enumerate(service_value_rand):             # <<<<<<<<<<<<<<
@@ -54122,7 +54234,7 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1371
+  /* "src_code/market/market.pyx":1381
  *     # print(f'final_service_value: {final_service_value}')
  *     # Adjust prices without adding noise
  *     compare_price = [price + service_value for price, service_value in zip(prices, final_service_value)]             # <<<<<<<<<<<<<<
@@ -54130,9 +54242,9 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
  *     # Determine the winning company with the lowest adjusted price among those with non-zero quotes
  */
   { /* enter inner scope */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1371, __pyx_L8_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1381, __pyx_L8_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1371, __pyx_L8_error)
+    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1381, __pyx_L8_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_v_prices);
     __Pyx_GIVEREF(__pyx_v_prices);
@@ -54140,16 +54252,16 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
     __Pyx_INCREF(__pyx_v_final_service_value);
     __Pyx_GIVEREF(__pyx_v_final_service_value);
     PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_final_service_value);
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_3, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1371, __pyx_L8_error)
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_3, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1381, __pyx_L8_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if (likely(PyList_CheckExact(__pyx_t_8)) || PyTuple_CheckExact(__pyx_t_8)) {
       __pyx_t_3 = __pyx_t_8; __Pyx_INCREF(__pyx_t_3); __pyx_t_7 = 0;
       __pyx_t_14 = NULL;
     } else {
-      __pyx_t_7 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1371, __pyx_L8_error)
+      __pyx_t_7 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1381, __pyx_L8_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_14 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1371, __pyx_L8_error)
+      __pyx_t_14 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1381, __pyx_L8_error)
     }
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     for (;;) {
@@ -54157,17 +54269,17 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
         if (likely(PyList_CheckExact(__pyx_t_3))) {
           if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_3)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_8 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_7); __Pyx_INCREF(__pyx_t_8); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 1371, __pyx_L8_error)
+          __pyx_t_8 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_7); __Pyx_INCREF(__pyx_t_8); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 1381, __pyx_L8_error)
           #else
-          __pyx_t_8 = PySequence_ITEM(__pyx_t_3, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1371, __pyx_L8_error)
+          __pyx_t_8 = PySequence_ITEM(__pyx_t_3, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1381, __pyx_L8_error)
           __Pyx_GOTREF(__pyx_t_8);
           #endif
         } else {
           if (__pyx_t_7 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_8 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_7); __Pyx_INCREF(__pyx_t_8); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 1371, __pyx_L8_error)
+          __pyx_t_8 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_7); __Pyx_INCREF(__pyx_t_8); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 1381, __pyx_L8_error)
           #else
-          __pyx_t_8 = PySequence_ITEM(__pyx_t_3, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1371, __pyx_L8_error)
+          __pyx_t_8 = PySequence_ITEM(__pyx_t_3, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1381, __pyx_L8_error)
           __Pyx_GOTREF(__pyx_t_8);
           #endif
         }
@@ -54177,7 +54289,7 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 1371, __pyx_L8_error)
+            else __PYX_ERR(0, 1381, __pyx_L8_error)
           }
           break;
         }
@@ -54189,7 +54301,7 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 1371, __pyx_L8_error)
+          __PYX_ERR(0, 1381, __pyx_L8_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -54202,15 +54314,15 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
         __Pyx_INCREF(__pyx_t_2);
         __Pyx_INCREF(__pyx_t_6);
         #else
-        __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1371, __pyx_L8_error)
+        __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1381, __pyx_L8_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1371, __pyx_L8_error)
+        __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1381, __pyx_L8_error)
         __Pyx_GOTREF(__pyx_t_6);
         #endif
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_9 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1371, __pyx_L8_error)
+        __pyx_t_9 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1381, __pyx_L8_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __pyx_t_15 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_9);
@@ -54218,7 +54330,7 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
         __Pyx_GOTREF(__pyx_t_2);
         index = 1; __pyx_t_6 = __pyx_t_15(__pyx_t_9); if (unlikely(!__pyx_t_6)) goto __pyx_L11_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_6);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_9), 2) < 0) __PYX_ERR(0, 1371, __pyx_L8_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_9), 2) < 0) __PYX_ERR(0, 1381, __pyx_L8_error)
         __pyx_t_15 = NULL;
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         goto __pyx_L12_unpacking_done;
@@ -54226,16 +54338,16 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __pyx_t_15 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 1371, __pyx_L8_error)
+        __PYX_ERR(0, 1381, __pyx_L8_error)
         __pyx_L12_unpacking_done:;
       }
       __Pyx_XDECREF_SET(__pyx_9genexpr12__pyx_v_price, __pyx_t_2);
       __pyx_t_2 = 0;
       __Pyx_XDECREF_SET(__pyx_9genexpr12__pyx_v_service_value, __pyx_t_6);
       __pyx_t_6 = 0;
-      __pyx_t_8 = PyNumber_Add(__pyx_9genexpr12__pyx_v_price, __pyx_9genexpr12__pyx_v_service_value); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1371, __pyx_L8_error)
+      __pyx_t_8 = PyNumber_Add(__pyx_9genexpr12__pyx_v_price, __pyx_9genexpr12__pyx_v_service_value); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1381, __pyx_L8_error)
       __Pyx_GOTREF(__pyx_t_8);
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_8))) __PYX_ERR(0, 1371, __pyx_L8_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_8))) __PYX_ERR(0, 1381, __pyx_L8_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -54251,7 +54363,7 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
   __pyx_v_compare_price = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src_code/market/market.pyx":1374
+  /* "src_code/market/market.pyx":1384
  *     # print(f'compare_price: {compare_price} prices: {prices}')
  *     # Determine the winning company with the lowest adjusted price among those with non-zero quotes
  *     for i in range(len(prices)):             # <<<<<<<<<<<<<<
@@ -54260,14 +54372,14 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
  */
   if (unlikely(__pyx_v_prices == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 1374, __pyx_L1_error)
+    __PYX_ERR(0, 1384, __pyx_L1_error)
   }
-  __pyx_t_7 = PyList_GET_SIZE(__pyx_v_prices); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 1374, __pyx_L1_error)
+  __pyx_t_7 = PyList_GET_SIZE(__pyx_v_prices); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 1384, __pyx_L1_error)
   __pyx_t_10 = __pyx_t_7;
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_10; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "src_code/market/market.pyx":1375
+    /* "src_code/market/market.pyx":1385
  *     # Determine the winning company with the lowest adjusted price among those with non-zero quotes
  *     for i in range(len(prices)):
  *         if quotes[i] == 1 and compare_price[i] < winning_price:             # <<<<<<<<<<<<<<
@@ -54276,44 +54388,44 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
  */
     if (unlikely(__pyx_v_quotes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 1375, __pyx_L1_error)
+      __PYX_ERR(0, 1385, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_quotes, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1375, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_quotes, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1385, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_16 = (__Pyx_PyInt_BoolEqObjC(__pyx_t_1, __pyx_int_1, 1, 0)); if (unlikely((__pyx_t_16 < 0))) __PYX_ERR(0, 1375, __pyx_L1_error)
+    __pyx_t_16 = (__Pyx_PyInt_BoolEqObjC(__pyx_t_1, __pyx_int_1, 1, 0)); if (unlikely((__pyx_t_16 < 0))) __PYX_ERR(0, 1385, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (__pyx_t_16) {
     } else {
       __pyx_t_12 = __pyx_t_16;
       goto __pyx_L18_bool_binop_done;
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_compare_price, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1375, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_compare_price, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1385, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_winning_price); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1375, __pyx_L1_error)
+    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_winning_price); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1385, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_8 = PyObject_RichCompare(__pyx_t_1, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1375, __pyx_L1_error)
+    __pyx_t_8 = PyObject_RichCompare(__pyx_t_1, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1385, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely((__pyx_t_16 < 0))) __PYX_ERR(0, 1375, __pyx_L1_error)
+    __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely((__pyx_t_16 < 0))) __PYX_ERR(0, 1385, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __pyx_t_12 = __pyx_t_16;
     __pyx_L18_bool_binop_done:;
     if (__pyx_t_12) {
 
-      /* "src_code/market/market.pyx":1376
+      /* "src_code/market/market.pyx":1386
  *     for i in range(len(prices)):
  *         if quotes[i] == 1 and compare_price[i] < winning_price:
  *             winning_price = compare_price[i]             # <<<<<<<<<<<<<<
  *             winning_company = i
  *     # print(f'quotes: {quotes}')
  */
-      __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_compare_price, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1376, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_compare_price, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1386, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_5 = __pyx_PyFloat_AsDouble(__pyx_t_8); if (unlikely((__pyx_t_5 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1376, __pyx_L1_error)
+      __pyx_t_5 = __pyx_PyFloat_AsDouble(__pyx_t_8); if (unlikely((__pyx_t_5 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1386, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_v_winning_price = __pyx_t_5;
 
-      /* "src_code/market/market.pyx":1377
+      /* "src_code/market/market.pyx":1387
  *         if quotes[i] == 1 and compare_price[i] < winning_price:
  *             winning_price = compare_price[i]
  *             winning_company = i             # <<<<<<<<<<<<<<
@@ -54322,7 +54434,7 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
  */
       __pyx_v_winning_company = __pyx_v_i;
 
-      /* "src_code/market/market.pyx":1375
+      /* "src_code/market/market.pyx":1385
  *     # Determine the winning company with the lowest adjusted price among those with non-zero quotes
  *     for i in range(len(prices)):
  *         if quotes[i] == 1 and compare_price[i] < winning_price:             # <<<<<<<<<<<<<<
@@ -54332,25 +54444,25 @@ static __pyx_ctuple_int__and_double __pyx_f_8src_code_6market_6market_compare_pr
     }
   }
 
-  /* "src_code/market/market.pyx":1381
+  /* "src_code/market/market.pyx":1391
  *     # print(f'winning_company: {winning_company} winning_price: {prices[winning_company]}')
  * 
  *     return winning_company, prices[winning_company]             # <<<<<<<<<<<<<<
  */
   if (unlikely(__pyx_v_prices == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 1381, __pyx_L1_error)
+    __PYX_ERR(0, 1391, __pyx_L1_error)
   }
-  __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_prices, __pyx_v_winning_company, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1381, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_prices, __pyx_v_winning_company, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1391, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_5 = __pyx_PyFloat_AsDouble(__pyx_t_8); if (unlikely((__pyx_t_5 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1381, __pyx_L1_error)
+  __pyx_t_5 = __pyx_PyFloat_AsDouble(__pyx_t_8); if (unlikely((__pyx_t_5 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1391, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_17.f0 = __pyx_v_winning_company;
   __pyx_t_17.f1 = __pyx_t_5;
   __pyx_r = __pyx_t_17;
   goto __pyx_L0;
 
-  /* "src_code/market/market.pyx":1355
+  /* "src_code/market/market.pyx":1365
  * 
  * 
  * cdef (int, double) compare_price_c(list prices, list quotes, float price_srvc, float price_sens):             # <<<<<<<<<<<<<<
@@ -64073,7 +64185,8 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_shop_base, __pyx_k_shop_base, sizeof(__pyx_k_shop_base), 0, 0, 1, 1},
     {&__pyx_n_s_shop_prob, __pyx_k_shop_prob, sizeof(__pyx_k_shop_prob), 0, 0, 1, 1},
     {&__pyx_n_s_shop_sens, __pyx_k_shop_sens, sizeof(__pyx_k_shop_sens), 0, 0, 1, 1},
-    {&__pyx_n_s_shop_slpe, __pyx_k_shop_slpe, sizeof(__pyx_k_shop_slpe), 0, 0, 1, 1},
+    {&__pyx_n_s_shop_slpe_decrease, __pyx_k_shop_slpe_decrease, sizeof(__pyx_k_shop_slpe_decrease), 0, 0, 1, 1},
+    {&__pyx_n_s_shop_slpe_increase, __pyx_k_shop_slpe_increase, sizeof(__pyx_k_shop_slpe_increase), 0, 0, 1, 1},
     {&__pyx_n_s_sml_adj, __pyx_k_sml_adj, sizeof(__pyx_k_sml_adj), 0, 0, 1, 1},
     {&__pyx_n_s_sml_factor, __pyx_k_sml_factor, sizeof(__pyx_k_sml_factor), 0, 0, 1, 1},
     {&__pyx_n_s_sort, __pyx_k_sort, sizeof(__pyx_k_sort), 0, 0, 1, 1},
@@ -64127,9 +64240,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_min = __Pyx_GetBuiltinName(__pyx_n_s_min); if (!__pyx_builtin_min) __PYX_ERR(0, 777, __pyx_L1_error)
   __pyx_builtin_round = __Pyx_GetBuiltinName(__pyx_n_s_round); if (!__pyx_builtin_round) __PYX_ERR(0, 822, __pyx_L1_error)
   __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 916, __pyx_L1_error)
-  __pyx_builtin_sum = __Pyx_GetBuiltinName(__pyx_n_s_sum); if (!__pyx_builtin_sum) __PYX_ERR(0, 1206, __pyx_L1_error)
-  __pyx_builtin_any = __Pyx_GetBuiltinName(__pyx_n_s_any); if (!__pyx_builtin_any) __PYX_ERR(0, 1343, __pyx_L1_error)
-  __pyx_builtin_zip = __Pyx_GetBuiltinName(__pyx_n_s_zip); if (!__pyx_builtin_zip) __PYX_ERR(0, 1371, __pyx_L1_error)
+  __pyx_builtin_sum = __Pyx_GetBuiltinName(__pyx_n_s_sum); if (!__pyx_builtin_sum) __PYX_ERR(0, 1208, __pyx_L1_error)
+  __pyx_builtin_any = __Pyx_GetBuiltinName(__pyx_n_s_any); if (!__pyx_builtin_any) __PYX_ERR(0, 1353, __pyx_L1_error)
+  __pyx_builtin_zip = __Pyx_GetBuiltinName(__pyx_n_s_zip); if (!__pyx_builtin_zip) __PYX_ERR(0, 1381, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -64601,7 +64714,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_codeobj__75 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__74, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_process_mktg, 562, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__75)) __PYX_ERR(0, 562, __pyx_L1_error)
 
   /* "src_code/market/market.pyx":574
- *         financial_data_obj.mktg_var_expenses = (.01 * exp_ratio_mktg) * financial_data_obj.ann_prem_prior
+ *         financial_data_obj.mktg_var_expenses = (.001 * exp_ratio_mktg) * financial_data_obj.ann_prem_prior
  * 
  *     def get_company_quote_level(self, year):             # <<<<<<<<<<<<<<
  *         financial_data_obj = self.annual_data[year]['financial_data']
@@ -64979,223 +65092,223 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         old_year = new_year - 1
  *         sel_exp_ratio_mktg_min = 0.01 * sel_exp_ratio_mktg_min
  */
-  __pyx_tuple__132 = PyTuple_Pack(29, __pyx_n_s_self, __pyx_n_s_new_year, __pyx_n_s_sel_exp_ratio_mktg_min, __pyx_n_s_sel_exp_ratio_mktg_max, __pyx_n_s_old_year, __pyx_n_s_shop_base, __pyx_n_s_shop_slpe, __pyx_n_s_shop_sens, __pyx_n_s_mktg_spend_ind, __pyx_n_s_ann_prem_prior_ind, __pyx_n_s_client_id, __pyx_n_s_client_obj, __pyx_n_s_nco, __pyx_n_s_oco, __pyx_n_s_marketing, __pyx_n_s_wprem, __pyx_n_s_lottery_mult, __pyx_n_s_lottery_prem_wt, __pyx_n_s_lottery_adj_prem_wt, __pyx_n_s_quotes, __pyx_n_s_quote_premiums, __pyx_n_s_price_compare, __pyx_n_s_company_i, __pyx_n_s_company, __pyx_n_s_quote_data, __pyx_n_s_price_srvc, __pyx_n_s_price_sens, __pyx_n_s_new_company, __pyx_n_s_new_price); if (unlikely(!__pyx_tuple__132)) __PYX_ERR(0, 1047, __pyx_L1_error)
+  __pyx_tuple__132 = PyTuple_Pack(30, __pyx_n_s_self, __pyx_n_s_new_year, __pyx_n_s_sel_exp_ratio_mktg_min, __pyx_n_s_sel_exp_ratio_mktg_max, __pyx_n_s_old_year, __pyx_n_s_shop_base, __pyx_n_s_shop_slpe_increase, __pyx_n_s_shop_slpe_decrease, __pyx_n_s_shop_sens, __pyx_n_s_mktg_spend_ind, __pyx_n_s_ann_prem_prior_ind, __pyx_n_s_client_id, __pyx_n_s_client_obj, __pyx_n_s_nco, __pyx_n_s_oco, __pyx_n_s_marketing, __pyx_n_s_wprem, __pyx_n_s_lottery_mult, __pyx_n_s_lottery_prem_wt, __pyx_n_s_lottery_adj_prem_wt, __pyx_n_s_quotes, __pyx_n_s_quote_premiums, __pyx_n_s_price_compare, __pyx_n_s_company_i, __pyx_n_s_company, __pyx_n_s_quote_data, __pyx_n_s_price_srvc, __pyx_n_s_price_sens, __pyx_n_s_new_company, __pyx_n_s_new_price); if (unlikely(!__pyx_tuple__132)) __PYX_ERR(0, 1047, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__132);
   __Pyx_GIVEREF(__pyx_tuple__132);
-  __pyx_codeobj__133 = (PyObject*)__Pyx_PyCode_New(4, 0, 0, 29, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__132, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_process_shopping, 1047, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__133)) __PYX_ERR(0, 1047, __pyx_L1_error)
+  __pyx_codeobj__133 = (PyObject*)__Pyx_PyCode_New(4, 0, 0, 30, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__132, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_process_shopping, 1047, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__133)) __PYX_ERR(0, 1047, __pyx_L1_error)
 
-  /* "src_code/market/market.pyx":1120
+  /* "src_code/market/market.pyx":1122
  *                 # print(f'new_price: {new_price}')
  * 
  *     def process_mktg(self, int year):             # <<<<<<<<<<<<<<
  *         for company in self.company_list:
  *             company.process_mktg(year)
  */
-  __pyx_codeobj__134 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__130, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_process_mktg, 1120, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__134)) __PYX_ERR(0, 1120, __pyx_L1_error)
+  __pyx_codeobj__134 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__130, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_process_mktg, 1122, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__134)) __PYX_ERR(0, 1122, __pyx_L1_error)
 
-  /* "src_code/market/market.pyx":1124
+  /* "src_code/market/market.pyx":1126
  *             company.process_mktg(year)
  * 
  *     def process_mktg_ind(self, int year):             # <<<<<<<<<<<<<<
  *         mktg_spend_ind = 0
  *         for company in self.company_list:
  */
-  __pyx_tuple__135 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_mktg_spend_ind, __pyx_n_s_company); if (unlikely(!__pyx_tuple__135)) __PYX_ERR(0, 1124, __pyx_L1_error)
+  __pyx_tuple__135 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_mktg_spend_ind, __pyx_n_s_company); if (unlikely(!__pyx_tuple__135)) __PYX_ERR(0, 1126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__135);
   __Pyx_GIVEREF(__pyx_tuple__135);
-  __pyx_codeobj__136 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__135, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_process_mktg_ind, 1124, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__136)) __PYX_ERR(0, 1124, __pyx_L1_error)
+  __pyx_codeobj__136 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__135, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_process_mktg_ind, 1126, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__136)) __PYX_ERR(0, 1126, __pyx_L1_error)
 
-  /* "src_code/market/market.pyx":1132
+  /* "src_code/market/market.pyx":1134
  * 
  *     # perform claim initialization
  *     def process_claims(self, int year):             # <<<<<<<<<<<<<<
  *         for company in self.company_list:
  *             sel_aa_margin = company.annual_data[year]['decision_data'].sel_aa_margin
  */
-  __pyx_tuple__137 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_company, __pyx_n_s_sel_aa_margin); if (unlikely(!__pyx_tuple__137)) __PYX_ERR(0, 1132, __pyx_L1_error)
+  __pyx_tuple__137 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_company, __pyx_n_s_sel_aa_margin); if (unlikely(!__pyx_tuple__137)) __PYX_ERR(0, 1134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__137);
   __Pyx_GIVEREF(__pyx_tuple__137);
-  __pyx_codeobj__138 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__137, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_process_claims, 1132, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__138)) __PYX_ERR(0, 1132, __pyx_L1_error)
+  __pyx_codeobj__138 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__137, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_process_claims, 1134, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__138)) __PYX_ERR(0, 1134, __pyx_L1_error)
 
-  /* "src_code/market/market.pyx":1137
+  /* "src_code/market/market.pyx":1139
  *             company.process_claim_reserves(year, sel_aa_margin, self.resv_features)
  * 
  *     def process_financials(self, int year):             # <<<<<<<<<<<<<<
  *         for company in self.company_list:
  *             company.claim_financial_summary(year)
  */
-  __pyx_codeobj__139 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__130, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_process_financials, 1137, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__139)) __PYX_ERR(0, 1137, __pyx_L1_error)
+  __pyx_codeobj__139 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__130, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_process_financials, 1139, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__139)) __PYX_ERR(0, 1139, __pyx_L1_error)
 
-  /* "src_code/market/market.pyx":1146
+  /* "src_code/market/market.pyx":1148
  *             company.update_annual_data(year, self.get_expense_inflation_index(year))
  * 
  *     def process_clients(self, int new_year):             # <<<<<<<<<<<<<<
  *         old_year = new_year - 1
  *         terr_chg_test = random_between(self.init_client_features['terr_chg_min'], self.init_client_features['terr_chg_max'])
  */
-  __pyx_tuple__140 = PyTuple_Pack(11, __pyx_n_s_self, __pyx_n_s_new_year, __pyx_n_s_old_year, __pyx_n_s_terr_chg_test, __pyx_n_s_credit_chg_test, __pyx_n_s_client_id, __pyx_n_s_client_obj, __pyx_n_s_oco, __pyx_n_s_ann_prem, __pyx_n_s_new_client_features, __pyx_n_s_new_claim_features); if (unlikely(!__pyx_tuple__140)) __PYX_ERR(0, 1146, __pyx_L1_error)
+  __pyx_tuple__140 = PyTuple_Pack(11, __pyx_n_s_self, __pyx_n_s_new_year, __pyx_n_s_old_year, __pyx_n_s_terr_chg_test, __pyx_n_s_credit_chg_test, __pyx_n_s_client_id, __pyx_n_s_client_obj, __pyx_n_s_oco, __pyx_n_s_ann_prem, __pyx_n_s_new_client_features, __pyx_n_s_new_claim_features); if (unlikely(!__pyx_tuple__140)) __PYX_ERR(0, 1148, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__140);
   __Pyx_GIVEREF(__pyx_tuple__140);
-  __pyx_codeobj__141 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__140, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_process_clients, 1146, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__141)) __PYX_ERR(0, 1146, __pyx_L1_error)
+  __pyx_codeobj__141 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__140, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_process_clients, 1148, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__141)) __PYX_ERR(0, 1148, __pyx_L1_error)
 
-  /* "src_code/market/market.pyx":1161
+  /* "src_code/market/market.pyx":1163
  *             client_obj.new_client_year(new_year, ann_prem, oco, self.claim_trend)
  * 
  *     def process_pre_game_renewal(self, int new_year):             # <<<<<<<<<<<<<<
  *         old_year = new_year - 1
  *         # print(f'process_pre_game_renewal: {new_year} {old_year}')
  */
-  __pyx_tuple__142 = PyTuple_Pack(12, __pyx_n_s_self, __pyx_n_s_new_year, __pyx_n_s_old_year, __pyx_n_s_inflation, __pyx_n_s_company, __pyx_n_s_new_ddo, __pyx_n_s_old_ddo, __pyx_n_s_client_id, __pyx_n_s_client_obj, __pyx_n_s_nco, __pyx_n_s_quote_data, __pyx_n_s_renewal_prem); if (unlikely(!__pyx_tuple__142)) __PYX_ERR(0, 1161, __pyx_L1_error)
+  __pyx_tuple__142 = PyTuple_Pack(12, __pyx_n_s_self, __pyx_n_s_new_year, __pyx_n_s_old_year, __pyx_n_s_inflation, __pyx_n_s_company, __pyx_n_s_new_ddo, __pyx_n_s_old_ddo, __pyx_n_s_client_id, __pyx_n_s_client_obj, __pyx_n_s_nco, __pyx_n_s_quote_data, __pyx_n_s_renewal_prem); if (unlikely(!__pyx_tuple__142)) __PYX_ERR(0, 1163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__142);
   __Pyx_GIVEREF(__pyx_tuple__142);
-  __pyx_codeobj__143 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__142, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_process_pre_game_renewal, 1161, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__143)) __PYX_ERR(0, 1161, __pyx_L1_error)
+  __pyx_codeobj__143 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__142, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_process_pre_game_renewal, 1163, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__143)) __PYX_ERR(0, 1163, __pyx_L1_error)
 
-  /* "src_code/market/market.pyx":1178
+  /* "src_code/market/market.pyx":1180
  *             nco.update_renewal_prem(renewal_prem)
  * 
  *     def process_post_decision_renewals(self, int year):             # <<<<<<<<<<<<<<
  *         dec_year = year - 1
  *         for company in self.company_list:
  */
-  __pyx_tuple__144 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_dec_year, __pyx_n_s_company); if (unlikely(!__pyx_tuple__144)) __PYX_ERR(0, 1178, __pyx_L1_error)
+  __pyx_tuple__144 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_dec_year, __pyx_n_s_company); if (unlikely(!__pyx_tuple__144)) __PYX_ERR(0, 1180, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__144);
   __Pyx_GIVEREF(__pyx_tuple__144);
-  __pyx_codeobj__145 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__144, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_process_post_decision_renewals, 1178, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__145)) __PYX_ERR(0, 1178, __pyx_L1_error)
+  __pyx_codeobj__145 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__144, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_process_post_decision_renewals, 1180, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__145)) __PYX_ERR(0, 1180, __pyx_L1_error)
 
-  /* "src_code/market/market.pyx":1183
+  /* "src_code/market/market.pyx":1185
  *             company.process_renewals(dec_year)
  * 
  *     def get_client_dict(self):             # <<<<<<<<<<<<<<
  *         return self.client_dict
  * 
  */
-  __pyx_codeobj__146 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_get_client_dict, 1183, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__146)) __PYX_ERR(0, 1183, __pyx_L1_error)
+  __pyx_codeobj__146 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_get_client_dict, 1185, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__146)) __PYX_ERR(0, 1185, __pyx_L1_error)
 
-  /* "src_code/market/market.pyx":1186
+  /* "src_code/market/market.pyx":1188
  *         return self.client_dict
  * 
  *     def get_companies(self):             # <<<<<<<<<<<<<<
  *         return self.company_list
  * 
  */
-  __pyx_codeobj__147 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_get_companies, 1186, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__147)) __PYX_ERR(0, 1186, __pyx_L1_error)
+  __pyx_codeobj__147 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_get_companies, 1188, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__147)) __PYX_ERR(0, 1188, __pyx_L1_error)
 
-  /* "src_code/market/market.pyx":1189
+  /* "src_code/market/market.pyx":1191
  *         return self.company_list
  * 
  *     def get_mktg_spend_by_company(self, year):             # <<<<<<<<<<<<<<
  *         mktg_spend_by_company = []
  *         for company in self.company_list:
  */
-  __pyx_tuple__148 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_mktg_spend_by_company, __pyx_n_s_company); if (unlikely(!__pyx_tuple__148)) __PYX_ERR(0, 1189, __pyx_L1_error)
+  __pyx_tuple__148 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_mktg_spend_by_company, __pyx_n_s_company); if (unlikely(!__pyx_tuple__148)) __PYX_ERR(0, 1191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__148);
   __Pyx_GIVEREF(__pyx_tuple__148);
-  __pyx_codeobj__149 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__148, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_get_mktg_spend_by_company, 1189, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__149)) __PYX_ERR(0, 1189, __pyx_L1_error)
+  __pyx_codeobj__149 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__148, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_get_mktg_spend_by_company, 1191, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__149)) __PYX_ERR(0, 1191, __pyx_L1_error)
 
-  /* "src_code/market/market.pyx":1195
+  /* "src_code/market/market.pyx":1197
  *         return mktg_spend_by_company
  * 
  *     def get_ann_prem_prior_by_company(self, year):             # <<<<<<<<<<<<<<
  *         ann_prem_prior_by_company = []
  *         for company in self.company_list:
  */
-  __pyx_tuple__150 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_ann_prem_prior_by_company, __pyx_n_s_company); if (unlikely(!__pyx_tuple__150)) __PYX_ERR(0, 1195, __pyx_L1_error)
+  __pyx_tuple__150 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_ann_prem_prior_by_company, __pyx_n_s_company); if (unlikely(!__pyx_tuple__150)) __PYX_ERR(0, 1197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__150);
   __Pyx_GIVEREF(__pyx_tuple__150);
-  __pyx_codeobj__151 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__150, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_get_ann_prem_prior_by_company, 1195, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__151)) __PYX_ERR(0, 1195, __pyx_L1_error)
+  __pyx_codeobj__151 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__150, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_get_ann_prem_prior_by_company, 1197, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__151)) __PYX_ERR(0, 1197, __pyx_L1_error)
 
-  /* "src_code/market/market.pyx":1201
+  /* "src_code/market/market.pyx":1203
  *         return ann_prem_prior_by_company
  * 
  *     def process_in_force_ind(self, year):             # <<<<<<<<<<<<<<
  *         in_force_by_company = []
  *         for company in self.company_list:
  */
-  __pyx_tuple__152 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_in_force_by_company, __pyx_n_s_company, __pyx_n_s_fdo, __pyx_n_s_in_force_ind); if (unlikely(!__pyx_tuple__152)) __PYX_ERR(0, 1201, __pyx_L1_error)
+  __pyx_tuple__152 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_in_force_by_company, __pyx_n_s_company, __pyx_n_s_fdo, __pyx_n_s_in_force_ind); if (unlikely(!__pyx_tuple__152)) __PYX_ERR(0, 1203, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__152);
   __Pyx_GIVEREF(__pyx_tuple__152);
-  __pyx_codeobj__153 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__152, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_process_in_force_ind, 1201, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__153)) __PYX_ERR(0, 1201, __pyx_L1_error)
+  __pyx_codeobj__153 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__152, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_process_in_force_ind, 1203, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__153)) __PYX_ERR(0, 1203, __pyx_L1_error)
 
-  /* "src_code/market/market.pyx":1211
+  /* "src_code/market/market.pyx":1213
  *             fdo.in_force_ind = in_force_ind
  * 
  *     def get_mktg_spend_ind(self, year):             # <<<<<<<<<<<<<<
  *         mktg_spend_ind = 0
  *         for company in self.company_list:
  */
-  __pyx_codeobj__154 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__135, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_get_mktg_spend_ind, 1211, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__154)) __PYX_ERR(0, 1211, __pyx_L1_error)
+  __pyx_codeobj__154 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__135, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_get_mktg_spend_ind, 1213, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__154)) __PYX_ERR(0, 1213, __pyx_L1_error)
 
-  /* "src_code/market/market.pyx":1217
+  /* "src_code/market/market.pyx":1219
  *         return mktg_spend_ind
  * 
  *     def get_ann_prem_prior_ind(self, year):             # <<<<<<<<<<<<<<
  *         ann_prem_prior_ind = 0
  *         for company in self.company_list:
  */
-  __pyx_tuple__155 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_ann_prem_prior_ind, __pyx_n_s_company); if (unlikely(!__pyx_tuple__155)) __PYX_ERR(0, 1217, __pyx_L1_error)
+  __pyx_tuple__155 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_ann_prem_prior_ind, __pyx_n_s_company); if (unlikely(!__pyx_tuple__155)) __PYX_ERR(0, 1219, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__155);
   __Pyx_GIVEREF(__pyx_tuple__155);
-  __pyx_codeobj__156 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__155, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_get_ann_prem_prior_ind, 1217, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__156)) __PYX_ERR(0, 1217, __pyx_L1_error)
+  __pyx_codeobj__156 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__155, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_get_ann_prem_prior_ind, 1219, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__156)) __PYX_ERR(0, 1219, __pyx_L1_error)
 
-  /* "src_code/market/market.pyx":1223
+  /* "src_code/market/market.pyx":1225
  *         return ann_prem_prior_ind
  * 
  *     def get_financials(self, int year):             # <<<<<<<<<<<<<<
  *         company_data = list()
  *         for company in self.company_list:
  */
-  __pyx_tuple__157 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_company_data, __pyx_n_s_company, __pyx_n_s_player_id, __pyx_n_s_player_name); if (unlikely(!__pyx_tuple__157)) __PYX_ERR(0, 1223, __pyx_L1_error)
+  __pyx_tuple__157 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_company_data, __pyx_n_s_company, __pyx_n_s_player_id, __pyx_n_s_player_name); if (unlikely(!__pyx_tuple__157)) __PYX_ERR(0, 1225, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__157);
   __Pyx_GIVEREF(__pyx_tuple__157);
-  __pyx_codeobj__158 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__157, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_get_financials, 1223, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__158)) __PYX_ERR(0, 1223, __pyx_L1_error)
+  __pyx_codeobj__158 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__157, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_get_financials, 1225, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__158)) __PYX_ERR(0, 1225, __pyx_L1_error)
 
-  /* "src_code/market/market.pyx":1231
+  /* "src_code/market/market.pyx":1233
  *         return company_data
  * 
  *     def get_decisions(self, int year):             # <<<<<<<<<<<<<<
  *         company_data = list()
  *         for company in self.company_list:
  */
-  __pyx_tuple__159 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_company_data, __pyx_n_s_company, __pyx_n_s_player_id, __pyx_n_s_player_name, __pyx_n_s_decision_data); if (unlikely(!__pyx_tuple__159)) __PYX_ERR(0, 1231, __pyx_L1_error)
+  __pyx_tuple__159 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_company_data, __pyx_n_s_company, __pyx_n_s_player_id, __pyx_n_s_player_name, __pyx_n_s_decision_data); if (unlikely(!__pyx_tuple__159)) __PYX_ERR(0, 1233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__159);
   __Pyx_GIVEREF(__pyx_tuple__159);
-  __pyx_codeobj__160 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__159, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_get_decisions, 1231, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__160)) __PYX_ERR(0, 1231, __pyx_L1_error)
+  __pyx_codeobj__160 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__159, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_get_decisions, 1233, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__160)) __PYX_ERR(0, 1233, __pyx_L1_error)
 
-  /* "src_code/market/market.pyx":1240
+  /* "src_code/market/market.pyx":1242
  *         return company_data
  * 
  *     def update_decisions(self, int year, decisions):             # <<<<<<<<<<<<<<
  *         for company in self.company_list:
  *             for decision in decisions:
  */
-  __pyx_tuple__161 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_decisions, __pyx_n_s_company, __pyx_n_s_decision); if (unlikely(!__pyx_tuple__161)) __PYX_ERR(0, 1240, __pyx_L1_error)
+  __pyx_tuple__161 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_decisions, __pyx_n_s_company, __pyx_n_s_decision); if (unlikely(!__pyx_tuple__161)) __PYX_ERR(0, 1242, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__161);
   __Pyx_GIVEREF(__pyx_tuple__161);
-  __pyx_codeobj__162 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__161, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_update_decisions, 1240, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__162)) __PYX_ERR(0, 1240, __pyx_L1_error)
+  __pyx_codeobj__162 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__161, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_update_decisions, 1242, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__162)) __PYX_ERR(0, 1242, __pyx_L1_error)
 
-  /* "src_code/market/market.pyx":1247
+  /* "src_code/market/market.pyx":1249
  *                     break
  * 
  *     def get_indications(self, int year):             # <<<<<<<<<<<<<<
  *         company_data = list()
  *         for company in self.company_list:
  */
-  __pyx_tuple__163 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_company_data, __pyx_n_s_company, __pyx_n_s_player_id, __pyx_n_s_player_name, __pyx_n_s_indication_data); if (unlikely(!__pyx_tuple__163)) __PYX_ERR(0, 1247, __pyx_L1_error)
+  __pyx_tuple__163 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_company_data, __pyx_n_s_company, __pyx_n_s_player_id, __pyx_n_s_player_name, __pyx_n_s_indication_data); if (unlikely(!__pyx_tuple__163)) __PYX_ERR(0, 1249, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__163);
   __Pyx_GIVEREF(__pyx_tuple__163);
-  __pyx_codeobj__164 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__163, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_get_indications, 1247, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__164)) __PYX_ERR(0, 1247, __pyx_L1_error)
+  __pyx_codeobj__164 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__163, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_get_indications, 1249, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__164)) __PYX_ERR(0, 1249, __pyx_L1_error)
 
-  /* "src_code/market/market.pyx":1257
+  /* "src_code/market/market.pyx":1259
  *         return company_data
  * 
  *     def get_claim_triangles(self, int year):             # <<<<<<<<<<<<<<
  *         company_triangle_data = list()
  *         for company in self.company_list:
  */
-  __pyx_tuple__165 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_company_triangle_data, __pyx_n_s_company, __pyx_n_s_triangle_data, __pyx_n_s_player_id, __pyx_n_s_player_name); if (unlikely(!__pyx_tuple__165)) __PYX_ERR(0, 1257, __pyx_L1_error)
+  __pyx_tuple__165 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_year, __pyx_n_s_company_triangle_data, __pyx_n_s_company, __pyx_n_s_triangle_data, __pyx_n_s_player_id, __pyx_n_s_player_name); if (unlikely(!__pyx_tuple__165)) __PYX_ERR(0, 1259, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__165);
   __Pyx_GIVEREF(__pyx_tuple__165);
-  __pyx_codeobj__166 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__165, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_get_claim_triangles, 1257, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__166)) __PYX_ERR(0, 1257, __pyx_L1_error)
+  __pyx_codeobj__166 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__165, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_code_market_market_pyx, __pyx_n_s_get_claim_triangles, 1259, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__166)) __PYX_ERR(0, 1259, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
@@ -65245,6 +65358,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitConstants(void) {
   __pyx_float_0_0 = PyFloat_FromDouble(0.0); if (unlikely(!__pyx_float_0_0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_float_0_5 = PyFloat_FromDouble(0.5); if (unlikely(!__pyx_float_0_5)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_float_1_0 = PyFloat_FromDouble(1.0); if (unlikely(!__pyx_float_1_0)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_float__001 = PyFloat_FromDouble(.001); if (unlikely(!__pyx_float__001)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_float_0_01 = PyFloat_FromDouble(0.01); if (unlikely(!__pyx_float_0_01)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_0 = PyInt_FromLong(0); if (unlikely(!__pyx_int_0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_1 = PyInt_FromLong(1); if (unlikely(!__pyx_int_1)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -66474,7 +66588,7 @@ if (!__Pyx_RefNanny) {
   PyType_Modified(__pyx_ptype_8src_code_6market_6market_Company);
 
   /* "src_code/market/market.pyx":574
- *         financial_data_obj.mktg_var_expenses = (.01 * exp_ratio_mktg) * financial_data_obj.ann_prem_prior
+ *         financial_data_obj.mktg_var_expenses = (.001 * exp_ratio_mktg) * financial_data_obj.ann_prem_prior
  * 
  *     def get_company_quote_level(self, year):             # <<<<<<<<<<<<<<
  *         financial_data_obj = self.annual_data[year]['financial_data']
@@ -66954,250 +67068,250 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8src_code_6market_6market_Market);
 
-  /* "src_code/market/market.pyx":1120
+  /* "src_code/market/market.pyx":1122
  *                 # print(f'new_price: {new_price}')
  * 
  *     def process_mktg(self, int year):             # <<<<<<<<<<<<<<
  *         for company in self.company_list:
  *             company.process_mktg(year)
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_31process_mktg, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_process_mktg, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__134)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1120, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_31process_mktg, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_process_mktg, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__134)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_process_mktg, __pyx_t_2) < 0) __PYX_ERR(0, 1120, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_process_mktg, __pyx_t_2) < 0) __PYX_ERR(0, 1122, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8src_code_6market_6market_Market);
 
-  /* "src_code/market/market.pyx":1124
+  /* "src_code/market/market.pyx":1126
  *             company.process_mktg(year)
  * 
  *     def process_mktg_ind(self, int year):             # <<<<<<<<<<<<<<
  *         mktg_spend_ind = 0
  *         for company in self.company_list:
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_33process_mktg_ind, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_process_mktg_ind, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__136)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1124, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_33process_mktg_ind, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_process_mktg_ind, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__136)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_process_mktg_ind, __pyx_t_2) < 0) __PYX_ERR(0, 1124, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_process_mktg_ind, __pyx_t_2) < 0) __PYX_ERR(0, 1126, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8src_code_6market_6market_Market);
 
-  /* "src_code/market/market.pyx":1132
+  /* "src_code/market/market.pyx":1134
  * 
  *     # perform claim initialization
  *     def process_claims(self, int year):             # <<<<<<<<<<<<<<
  *         for company in self.company_list:
  *             sel_aa_margin = company.annual_data[year]['decision_data'].sel_aa_margin
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_35process_claims, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_process_claims, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__138)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1132, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_35process_claims, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_process_claims, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__138)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_process_claims, __pyx_t_2) < 0) __PYX_ERR(0, 1132, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_process_claims, __pyx_t_2) < 0) __PYX_ERR(0, 1134, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8src_code_6market_6market_Market);
 
-  /* "src_code/market/market.pyx":1137
+  /* "src_code/market/market.pyx":1139
  *             company.process_claim_reserves(year, sel_aa_margin, self.resv_features)
  * 
  *     def process_financials(self, int year):             # <<<<<<<<<<<<<<
  *         for company in self.company_list:
  *             company.claim_financial_summary(year)
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_37process_financials, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_process_financials, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__139)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1137, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_37process_financials, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_process_financials, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__139)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_process_financials, __pyx_t_2) < 0) __PYX_ERR(0, 1137, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_process_financials, __pyx_t_2) < 0) __PYX_ERR(0, 1139, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8src_code_6market_6market_Market);
 
-  /* "src_code/market/market.pyx":1146
+  /* "src_code/market/market.pyx":1148
  *             company.update_annual_data(year, self.get_expense_inflation_index(year))
  * 
  *     def process_clients(self, int new_year):             # <<<<<<<<<<<<<<
  *         old_year = new_year - 1
  *         terr_chg_test = random_between(self.init_client_features['terr_chg_min'], self.init_client_features['terr_chg_max'])
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_39process_clients, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_process_clients, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__141)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1146, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_39process_clients, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_process_clients, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__141)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1148, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_process_clients, __pyx_t_2) < 0) __PYX_ERR(0, 1146, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_process_clients, __pyx_t_2) < 0) __PYX_ERR(0, 1148, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8src_code_6market_6market_Market);
 
-  /* "src_code/market/market.pyx":1161
+  /* "src_code/market/market.pyx":1163
  *             client_obj.new_client_year(new_year, ann_prem, oco, self.claim_trend)
  * 
  *     def process_pre_game_renewal(self, int new_year):             # <<<<<<<<<<<<<<
  *         old_year = new_year - 1
  *         # print(f'process_pre_game_renewal: {new_year} {old_year}')
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_41process_pre_game_renewal, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_process_pre_game_renewal, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__143)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1161, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_41process_pre_game_renewal, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_process_pre_game_renewal, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__143)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_process_pre_game_renewal, __pyx_t_2) < 0) __PYX_ERR(0, 1161, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_process_pre_game_renewal, __pyx_t_2) < 0) __PYX_ERR(0, 1163, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8src_code_6market_6market_Market);
 
-  /* "src_code/market/market.pyx":1178
+  /* "src_code/market/market.pyx":1180
  *             nco.update_renewal_prem(renewal_prem)
  * 
  *     def process_post_decision_renewals(self, int year):             # <<<<<<<<<<<<<<
  *         dec_year = year - 1
  *         for company in self.company_list:
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_43process_post_decision_renewals, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_process_post_decision_ren, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__145)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1178, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_43process_post_decision_renewals, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_process_post_decision_ren, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__145)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1180, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_process_post_decision_renewals, __pyx_t_2) < 0) __PYX_ERR(0, 1178, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_process_post_decision_renewals, __pyx_t_2) < 0) __PYX_ERR(0, 1180, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8src_code_6market_6market_Market);
 
-  /* "src_code/market/market.pyx":1183
+  /* "src_code/market/market.pyx":1185
  *             company.process_renewals(dec_year)
  * 
  *     def get_client_dict(self):             # <<<<<<<<<<<<<<
  *         return self.client_dict
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_45get_client_dict, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_get_client_dict, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__146)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1183, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_45get_client_dict, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_get_client_dict, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__146)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1185, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_get_client_dict, __pyx_t_2) < 0) __PYX_ERR(0, 1183, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_get_client_dict, __pyx_t_2) < 0) __PYX_ERR(0, 1185, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8src_code_6market_6market_Market);
 
-  /* "src_code/market/market.pyx":1186
+  /* "src_code/market/market.pyx":1188
  *         return self.client_dict
  * 
  *     def get_companies(self):             # <<<<<<<<<<<<<<
  *         return self.company_list
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_47get_companies, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_get_companies, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__147)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1186, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_47get_companies, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_get_companies, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__147)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1188, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_get_companies, __pyx_t_2) < 0) __PYX_ERR(0, 1186, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_get_companies, __pyx_t_2) < 0) __PYX_ERR(0, 1188, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8src_code_6market_6market_Market);
 
-  /* "src_code/market/market.pyx":1189
+  /* "src_code/market/market.pyx":1191
  *         return self.company_list
  * 
  *     def get_mktg_spend_by_company(self, year):             # <<<<<<<<<<<<<<
  *         mktg_spend_by_company = []
  *         for company in self.company_list:
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_49get_mktg_spend_by_company, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_get_mktg_spend_by_company, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__149)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1189, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_49get_mktg_spend_by_company, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_get_mktg_spend_by_company, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__149)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_get_mktg_spend_by_company, __pyx_t_2) < 0) __PYX_ERR(0, 1189, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_get_mktg_spend_by_company, __pyx_t_2) < 0) __PYX_ERR(0, 1191, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8src_code_6market_6market_Market);
 
-  /* "src_code/market/market.pyx":1195
+  /* "src_code/market/market.pyx":1197
  *         return mktg_spend_by_company
  * 
  *     def get_ann_prem_prior_by_company(self, year):             # <<<<<<<<<<<<<<
  *         ann_prem_prior_by_company = []
  *         for company in self.company_list:
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_51get_ann_prem_prior_by_company, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_get_ann_prem_prior_by_com, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__151)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1195, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_51get_ann_prem_prior_by_company, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_get_ann_prem_prior_by_com, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__151)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_get_ann_prem_prior_by_company, __pyx_t_2) < 0) __PYX_ERR(0, 1195, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_get_ann_prem_prior_by_company, __pyx_t_2) < 0) __PYX_ERR(0, 1197, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8src_code_6market_6market_Market);
 
-  /* "src_code/market/market.pyx":1201
+  /* "src_code/market/market.pyx":1203
  *         return ann_prem_prior_by_company
  * 
  *     def process_in_force_ind(self, year):             # <<<<<<<<<<<<<<
  *         in_force_by_company = []
  *         for company in self.company_list:
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_53process_in_force_ind, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_process_in_force_ind, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__153)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1201, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_53process_in_force_ind, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_process_in_force_ind, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__153)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1203, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_process_in_force_ind, __pyx_t_2) < 0) __PYX_ERR(0, 1201, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_process_in_force_ind, __pyx_t_2) < 0) __PYX_ERR(0, 1203, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8src_code_6market_6market_Market);
 
-  /* "src_code/market/market.pyx":1211
+  /* "src_code/market/market.pyx":1213
  *             fdo.in_force_ind = in_force_ind
  * 
  *     def get_mktg_spend_ind(self, year):             # <<<<<<<<<<<<<<
  *         mktg_spend_ind = 0
  *         for company in self.company_list:
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_55get_mktg_spend_ind, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_get_mktg_spend_ind, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__154)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1211, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_55get_mktg_spend_ind, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_get_mktg_spend_ind, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__154)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_get_mktg_spend_ind, __pyx_t_2) < 0) __PYX_ERR(0, 1211, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_get_mktg_spend_ind, __pyx_t_2) < 0) __PYX_ERR(0, 1213, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8src_code_6market_6market_Market);
 
-  /* "src_code/market/market.pyx":1217
+  /* "src_code/market/market.pyx":1219
  *         return mktg_spend_ind
  * 
  *     def get_ann_prem_prior_ind(self, year):             # <<<<<<<<<<<<<<
  *         ann_prem_prior_ind = 0
  *         for company in self.company_list:
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_57get_ann_prem_prior_ind, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_get_ann_prem_prior_ind, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__156)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1217, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_57get_ann_prem_prior_ind, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_get_ann_prem_prior_ind, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__156)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1219, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_get_ann_prem_prior_ind, __pyx_t_2) < 0) __PYX_ERR(0, 1217, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_get_ann_prem_prior_ind, __pyx_t_2) < 0) __PYX_ERR(0, 1219, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8src_code_6market_6market_Market);
 
-  /* "src_code/market/market.pyx":1223
+  /* "src_code/market/market.pyx":1225
  *         return ann_prem_prior_ind
  * 
  *     def get_financials(self, int year):             # <<<<<<<<<<<<<<
  *         company_data = list()
  *         for company in self.company_list:
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_59get_financials, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_get_financials, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__158)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1223, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_59get_financials, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_get_financials, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__158)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1225, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_get_financials, __pyx_t_2) < 0) __PYX_ERR(0, 1223, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_get_financials, __pyx_t_2) < 0) __PYX_ERR(0, 1225, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8src_code_6market_6market_Market);
 
-  /* "src_code/market/market.pyx":1231
+  /* "src_code/market/market.pyx":1233
  *         return company_data
  * 
  *     def get_decisions(self, int year):             # <<<<<<<<<<<<<<
  *         company_data = list()
  *         for company in self.company_list:
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_61get_decisions, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_get_decisions, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__160)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1231, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_61get_decisions, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_get_decisions, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__160)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_get_decisions, __pyx_t_2) < 0) __PYX_ERR(0, 1231, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_get_decisions, __pyx_t_2) < 0) __PYX_ERR(0, 1233, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8src_code_6market_6market_Market);
 
-  /* "src_code/market/market.pyx":1240
+  /* "src_code/market/market.pyx":1242
  *         return company_data
  * 
  *     def update_decisions(self, int year, decisions):             # <<<<<<<<<<<<<<
  *         for company in self.company_list:
  *             for decision in decisions:
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_63update_decisions, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_update_decisions, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__162)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1240, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_63update_decisions, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_update_decisions, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__162)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1242, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_update_decisions, __pyx_t_2) < 0) __PYX_ERR(0, 1240, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_update_decisions, __pyx_t_2) < 0) __PYX_ERR(0, 1242, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8src_code_6market_6market_Market);
 
-  /* "src_code/market/market.pyx":1247
+  /* "src_code/market/market.pyx":1249
  *                     break
  * 
  *     def get_indications(self, int year):             # <<<<<<<<<<<<<<
  *         company_data = list()
  *         for company in self.company_list:
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_65get_indications, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_get_indications, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__164)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1247, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_65get_indications, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_get_indications, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__164)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1249, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_get_indications, __pyx_t_2) < 0) __PYX_ERR(0, 1247, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_get_indications, __pyx_t_2) < 0) __PYX_ERR(0, 1249, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8src_code_6market_6market_Market);
 
-  /* "src_code/market/market.pyx":1257
+  /* "src_code/market/market.pyx":1259
  *         return company_data
  * 
  *     def get_claim_triangles(self, int year):             # <<<<<<<<<<<<<<
  *         company_triangle_data = list()
  *         for company in self.company_list:
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_67get_claim_triangles, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_get_claim_triangles, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__166)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1257, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8src_code_6market_6market_6Market_67get_claim_triangles, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Market_get_claim_triangles, NULL, __pyx_n_s_src_code_market_market, __pyx_d, ((PyObject *)__pyx_codeobj__166)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1259, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_get_claim_triangles, __pyx_t_2) < 0) __PYX_ERR(0, 1257, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8src_code_6market_6market_Market->tp_dict, __pyx_n_s_get_claim_triangles, __pyx_t_2) < 0) __PYX_ERR(0, 1259, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8src_code_6market_6market_Market);
 

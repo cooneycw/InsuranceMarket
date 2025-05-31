@@ -27,6 +27,8 @@ class GamePrefs(Base):
     sel_type_03 = Column(Integer)
     human_player_cnt = Column(Integer, default=1)
     game_observable = Column(Boolean)
+    default_selection_type = Column(String(8))
+    game_difficulty = Column(String(10), default='Novice')
     timestamp = Column(DateTime)
 
     user = relationship("User", back_populates="game_prefs")

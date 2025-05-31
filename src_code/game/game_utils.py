@@ -3,7 +3,7 @@ import numpy as np
 import copy
 import math
 import random
-from src_code.models.db_utils import write_message
+from src_code.models.db_utils import write_message, get_game_difficulty
 from sklearn.linear_model import LinearRegression
 
 
@@ -18,7 +18,7 @@ def process_default_decisions(config, game_id, player_id, player_name, year):
 
 
 def process_indications(config, game_id, player_id, player_name, player_type, profile, year, orig_year, init_years, claimtrend_dict, claims_data_dict,
-                        financial_data, financial_indication_data, indication_data_dict, decision_data, selected=True):
+                        financial_data, financial_indication_data, indication_data_dict, decision_data, selected=True, game_difficulty=None):
     decisions = dict()
     decisions_locked = False
 
@@ -46,10 +46,20 @@ def process_indications(config, game_id, player_id, player_name, player_type, pr
         acc_yrs = [f'Acc Yr {acc_yr}' for acc_yr in clm_yrs]
         devl_mths = indication_data_dict['devl_mths']
 
+        # Get game difficulty if not provided
+        if game_difficulty is None:
+            game_difficulty = get_game_difficulty(config, game_id)
+        
+        is_novice = game_difficulty == 'Novice'
+
         # test player type for assumptions:
         if pass_capital_test == 'Fail':
-            sel_profit_margin = 8
-            sel_loss_margin = 3
+            if is_novice:
+                sel_profit_margin = 100  # 10.0% for novice penalty
+                sel_loss_margin = 0     # No loss trend complexity for novice
+            else:
+                sel_profit_margin = 80  # 8.0% for non-novice penalty
+                sel_loss_margin = 20    # 2.0% loss trend penalty for non-novice
             sel_mktg_expense = 0
             if player_type == 'user':
                 decisions_locked = False
@@ -57,25 +67,25 @@ def process_indications(config, game_id, player_id, player_name, player_type, pr
                 decisions_locked = True
         else:
             if player_type == 'user' and selected is True:
-                sel_profit_margin = 5
+                sel_profit_margin = 50
                 sel_loss_margin = 0
                 sel_mktg_expense = 0
                 decisions_locked = False
             else:
                 if profile == 'growth':
-                    sel_profit_margin = random.randint(1, 5)
-                    sel_loss_margin = random.randint(0, 1)
-                    sel_mktg_expense = random.randint(0, 5)
+                    sel_profit_margin = random.randint(10, 50)  # Reverted to original range
+                    sel_loss_margin = random.randint(0, 10)    # Reverted to original range
+                    sel_mktg_expense = random.randint(0, 50)
                     decisions_locked = True
                 elif profile == 'profitability':
-                    sel_profit_margin = random.randint(3, 6)
-                    sel_loss_margin = random.randint(0, 1)
-                    sel_mktg_expense = random.randint(0, 2)
+                    sel_profit_margin = random.randint(30, 60)  # Reverted to original range
+                    sel_loss_margin = random.randint(0, 10)     # Reverted to original range
+                    sel_mktg_expense = random.randint(0, 20)
                     decisions_locked = True
                 elif profile == 'balanced':
-                    sel_profit_margin = random.randint(2, 5)
-                    sel_loss_margin = random.randint(0, 1)
-                    sel_mktg_expense = random.randint(0, 3)
+                    sel_profit_margin = random.randint(20, 50)  # Reverted to original range
+                    sel_loss_margin = random.randint(0, 10)     # Reverted to original range
+                    sel_mktg_expense = random.randint(0, 30)
                     decisions_locked = True
 
         decisions['decisions_locked'] = decisions_locked
@@ -187,7 +197,7 @@ def process_indications(config, game_id, player_id, player_name, player_type, pr
         display_df.iloc[wtd_i + 2, 0] = round(expos_var_cost, 2)
         display_df.iloc[wtd_i + 3, 0] = round(prem_var_cost * 100, 1)
 
-        sel_avg_prem = round(((wtd_lcost + expos_var_cost + fixed_cost) / (1 - prem_var_cost - (int(sel_mktg_expense) / 100) - (int(sel_profit_margin) / 100))), 2)
+        sel_avg_prem = round(((wtd_lcost + expos_var_cost + fixed_cost) / (1 - prem_var_cost - (int(sel_mktg_expense) / 1000) - (int(sel_profit_margin) / 1000))), 2)
 
         return curr_avg_prem, sel_avg_prem, decisions
 
@@ -229,7 +239,7 @@ def perform_logistic_regression_indication(data, reform_fact, sel_loss_cost_marg
         model.fit(X, y)
     except:
         cwc = 0
-    exp_list = [(1 + .01 * int(sel_loss_cost_margin)) ** (1 + max(acc_yrs) - yr) for yr in acc_yrs]
+    exp_list = [(1 + .001 * int(sel_loss_cost_margin)) ** (1 + max(acc_yrs) - yr) for yr in acc_yrs]
 
     if reform:
         pred_df = df.drop(columns=['Ln_Value', 'Value'])

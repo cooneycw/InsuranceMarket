@@ -4,7 +4,7 @@ from config_secrets import get_secrets, DEV
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from src_code.models.models import IndivGames, Players, MktgSales, Financials, Industry, Valuation, Triangles, ClaimTrends, Indications, Decisions, Decisionsns, ChatMessage
+from src_code.models.models import IndivGames, Players, MktgSales, Financials, Industry, Valuation, Triangles, ClaimTrends, Indications, Decisions, Decisionsns, ChatMessage, GamePrefs
 
 
 class Config:
@@ -20,7 +20,7 @@ class Config:
         self.clients = 200000
         self.companies = 6
         self.init_years = 5
-        self.sim_years = 35
+        self.sim_years = 45
         self.curr_year = 2025
         self.orig_year = self.curr_year - self.init_years
         self.end_year = self.curr_year + self.sim_years
@@ -56,11 +56,13 @@ class Config:
         self.mkt_features['claim_epsilon'] = 0.10
         self.mkt_features['prem_init'] = 1525
         self.mkt_features['renewal_prem_infl_init'] = 0.02
-        self.mkt_features['shop_base'] = 0.28 # was 0.35 originally
-        self.mkt_features['shop_slpe'] = -6.0 # was -8.0 originally
-        self.mkt_features['shop_sens'] = 2.0
-        self.mkt_features['lottery_mult'] = 2.9
-        self.mkt_features['lottery_prem_wt'] = 0.025
+        self.mkt_features['shop_base'] = 0.25 # was 0.28 / 0.35 originally
+        self.mkt_features['shop_slpe_increase'] = -8.0
+        self.mkt_features['shop_slpe_decrease'] = -12.0
+        # self.mkt_features['shop_slpe'] = -8.0 # was -6.0 / -8.0 originally
+        self.mkt_features['shop_sens'] = 1.7 # was 2.0
+        self.mkt_features['lottery_mult'] =1.8 # was 2.9
+        self.mkt_features['lottery_prem_wt'] = 0.04 # was 0.025
         self.mkt_features['price_srvc'] = 0.35 # was 0.25
         self.mkt_features['price_sens'] = 0.2 # was 0.2
         self.mkt_features['irr_rate'] = 0.105
@@ -126,20 +128,26 @@ class Config:
         self.init_decisions['sel_avg_prem'] = self.mkt_features['prem_init']
         self.init_decisions['sel_exp_ratio_mktg'] = 0
         self.init_decisions['sel_exp_ratio_mktg_min'] = 0
-        self.init_decisions['sel_exp_ratio_mktg_max'] = 5
+        self.init_decisions['sel_exp_ratio_mktg_max'] = 50
 
         self.init_decisions['sel_exp_ratio_data'] = 0
         self.init_decisions['sel_exp_ratio_data_min'] = 0
         self.init_decisions['sel_exp_ratio_data_max'] = 3
 
         self.init_decisions['sel_loss_trend_margin'] = 0
-        self.init_decisions['sel_loss_trend_margin_min'] = -3
-        self.init_decisions['sel_loss_trend_margin_max'] = 3
+        self.init_decisions['sel_loss_trend_margin_min'] = -30
+        self.init_decisions['sel_loss_trend_margin_max'] = 30
 
         self.init_decisions['sel_profit_margin_min'] = 0
-        self.init_decisions['sel_profit_margin_init'] = 5
-        self.init_decisions['sel_profit_margin_max'] = 8
+        self.init_decisions['sel_profit_margin_init'] = 50
+        self.init_decisions['sel_profit_margin_max'] = 80
         self.init_decisions['sel_profit_margin'] = self.init_decisions['sel_profit_margin_init']
+        
+        # Store both novice and non-novice ranges
+        self.init_decisions_novice = self.init_decisions.copy()
+        self.init_decisions_novice['sel_profit_margin_max'] = 100  # 10.0% max for novice
+        self.init_decisions_novice['sel_loss_trend_margin_min'] = 0  # No loss trend for novice
+        self.init_decisions_novice['sel_loss_trend_margin_max'] = 0  # No loss trend for novice
 
         self.DEV = DEV
         self.verbose = False
@@ -174,3 +182,11 @@ class Config:
         self.Decisions = Decisions
         self.Decisionsns = Decisionsns  # ns = "not selected"
         self.ChatMessage = ChatMessage
+        self.GamePrefs = GamePrefs
+
+    def get_decisions_for_difficulty(self, game_difficulty):
+        """Get the appropriate decision ranges based on game difficulty"""
+        if game_difficulty == 'Novice':
+            return self.init_decisions_novice
+        else:
+            return self.init_decisions

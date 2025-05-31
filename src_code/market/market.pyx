@@ -569,7 +569,7 @@ cdef class Company:
             exp_ratio_mktg = decision_obj.get_sel_exp_ratio_mktg()
         financial_data_obj = self.annual_data[year]['financial_data']
         # print(f'process_mktg {self.player_name} - year: {year} exp_ratio_mktg: {exp_ratio_mktg} ann_prem_prior: {financial_data_obj.ann_prem_prior}')
-        financial_data_obj.mktg_var_expenses = (.01 * exp_ratio_mktg) * financial_data_obj.ann_prem_prior
+        financial_data_obj.mktg_var_expenses = (.001 * exp_ratio_mktg) * financial_data_obj.ann_prem_prior
 
     def get_company_quote_level(self, year):
         financial_data_obj = self.annual_data[year]['financial_data']
@@ -1049,7 +1049,8 @@ cdef class Market:
         sel_exp_ratio_mktg_min = 0.01 * sel_exp_ratio_mktg_min
         sel_exp_ratio_mktg_max = 0.01 * sel_exp_ratio_mktg_max
         shop_base = self.mkt_features['shop_base']
-        shop_slpe = self.mkt_features['shop_slpe']
+        shop_slpe_increase = self.mkt_features['shop_slpe_increase']
+        shop_slpe_decrease = self.mkt_features['shop_slpe_decrease']
         shop_sens =  self.mkt_features['shop_sens']
         mktg_spend_ind = self.get_mktg_spend_ind(new_year)
         ann_prem_prior_ind = self.get_ann_prem_prior_ind(new_year)
@@ -1065,7 +1066,8 @@ cdef class Market:
                                          sel_exp_ratio_mktg_max=sel_exp_ratio_mktg_max,
                                          sel_exp_ratio_mktg_min=sel_exp_ratio_mktg_min,
                                          shop_base=shop_base,
-                                         shop_slpe=shop_slpe,
+                                         shop_slpe_increase=shop_slpe_increase,
+                                         shop_slpe_decrease=shop_slpe_decrease,
                                          shop_sens=shop_sens,
                                          sum_ind_mktg_spend=mktg_spend_ind,
                                          sum_ind_prem=ann_prem_prior_ind)
@@ -1299,14 +1301,22 @@ cdef double normal_c(float mu, float sigma):
     cdef double uncapped_norm = np.random.normal(mu, sigma)
     return uncapped_norm
 
-
 cdef float shop_ratio_c(float old_price, float new_price,
                         float sel_exp_ratio_mktg_max, float sel_exp_ratio_mktg_min,
-                        float shop_base, float shop_slpe, float shop_sens,
+                        float shop_base, float shop_slpe_increase, float shop_slpe_decrease, float shop_sens,
                         float sum_ind_mktg_spend, float sum_ind_prem):
     cdef float rate_change = (new_price / old_price) - 1
-    cdef float logistic_value = shop_base / (1 + math.exp(-1 * shop_slpe * (-1 * rate_change)))
-    cdef float shop_value = 1 + (shop_sens - 1) * math.log(1 + ((sum_ind_mktg_spend / sum_ind_prem) - sel_exp_ratio_mktg_min) / (sel_exp_ratio_mktg_max - sel_exp_ratio_mktg_min))
+    cdef float effective_slpe
+
+    if rate_change >= 0:
+        effective_slpe = shop_slpe_increase
+    else:
+        effective_slpe = shop_slpe_decrease
+
+    cdef float logistic_value = shop_base / (1 + math.exp(-1 * effective_slpe * (-1 * rate_change)))
+    cdef float shop_value = 1 + (shop_sens - 1) * math.log(
+        1 + ((sum_ind_mktg_spend / sum_ind_prem) - sel_exp_ratio_mktg_min) / (
+                    sel_exp_ratio_mktg_max - sel_exp_ratio_mktg_min))
     cdef float final_value = logistic_value * shop_value
 
     return final_value

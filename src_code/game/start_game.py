@@ -3,7 +3,7 @@ import time
 from datetime import datetime, timedelta
 from copy import deepcopy
 from src_code.admin.admin import Admin
-from src_code.models.db_utils import load_players, update_status, load_decisions, load_decisions_unlocked, load_decisions_locked, load_decisions_ns, save_updated_decisions, update_mktgsales, update_financials, update_industry, update_valuation, update_indications, update_decisions, update_decisions_not_selected, update_triangles, update_claimtrends
+from src_code.models.db_utils import load_players, update_status, load_decisions, load_decisions_unlocked, load_decisions_locked, load_decisions_ns, save_updated_decisions, update_mktgsales, update_financials, update_industry, update_valuation, update_indications, update_decisions, update_decisions_not_selected, update_triangles, update_claimtrends, get_game_difficulty
 from src_code.game.game_utils import messages, process_indications
 from src_code.market.market import Market
 
@@ -27,6 +27,10 @@ class Game:
         self.game_admin = Admin(self.game_id, self.config.clients)
         self.decisions_time_stamp = None
         self.decisions_game_stage = None
+        
+        # Get game difficulty and set appropriate decision ranges
+        self.game_difficulty = get_game_difficulty(config, game_id)
+        self.decision_ranges = config.get_decisions_for_difficulty(self.game_difficulty)
 
     def update_game_stage(self):
         if self.curr_year < self.orig_year + self.config.init_years - 1:
@@ -73,7 +77,7 @@ class Game:
                              self.config.claim_features,
                              self.config.resv_features,
                              self.config.reg_features,
-                             self.config.init_decisions)
+                             self.decision_ranges)
         self.market.init_capital(self.orig_year)
         self.market.process_mktg(self.orig_year)
         self.market.process_mktg_ind(self.orig_year)
@@ -118,7 +122,7 @@ class Game:
             self.market.process_post_decision_renewals(self.curr_year)
             self.market.process_mktg(self.curr_year)
             self.market.process_mktg_ind(self.curr_year)
-            self.market.process_shopping(self.curr_year, self.config.init_decisions['sel_exp_ratio_mktg_min'], self.config.init_decisions['sel_exp_ratio_mktg_max'])
+            self.market.process_shopping(self.curr_year, self.decision_ranges['sel_exp_ratio_mktg_min'], self.decision_ranges['sel_exp_ratio_mktg_max'])
             self.market.process_in_force_ind(self.curr_year)
             self.market.process_claims(self.curr_year)
             self.market.process_financials(self.curr_year)
@@ -162,7 +166,8 @@ class Game:
                                                                            financial_data[player_i][2],
                                                                            financial_indication_data[player_i],
                                                                            indication_data[player_i][2],
-                                                                           decision_data[player_i][2])
+                                                                           decision_data[player_i][2],
+                                                                           self.game_difficulty)
                 update_decisions(self.config, self.game_id, player['player_id_id'], player['player_name'],
                                  self.curr_year,
                                  decision_data[player_i][2], curr_avg_prem, sel_avg_prem, decisions,
@@ -181,7 +186,8 @@ class Game:
                                                                                  financial_indication_data[player_i],
                                                                                  indication_data[player_i][2],
                                                                                  decision_data[player_i][2],
-                                                                                 selected=False)
+                                                                                 selected=False,
+                                                                                 game_difficulty=self.game_difficulty)
                     update_decisions_not_selected(self.config, self.game_id, player['player_id_id'], player['player_name'],
                                  self.curr_year,
                                  sel_avg_prem_default, decisions_default)
@@ -203,7 +209,7 @@ class Game:
             self.market.process_mktg_ind(self.curr_year)
             if self.curr_year != self.config.orig_year:
                 print(f'process_shopping: {self.curr_year}')
-                self.market.process_shopping(self.curr_year, self.config.init_decisions['sel_exp_ratio_mktg_min'], self.config.init_decisions['sel_exp_ratio_mktg_max'])
+                self.market.process_shopping(self.curr_year, self.decision_ranges['sel_exp_ratio_mktg_min'], self.decision_ranges['sel_exp_ratio_mktg_max'])
                 self.market.process_in_force_ind(self.curr_year)
             print(f'process_claims: {self.curr_year}')
             self.market.process_claims(self.curr_year)
@@ -252,7 +258,8 @@ class Game:
                                                                            financial_data[player_i][2],
                                                                            financial_indication_data[player_i],
                                                                            indication_data[player_i][2],
-                                                                           decision_data[player_i][2])
+                                                                           decision_data[player_i][2],
+                                                                           self.game_difficulty)
                 update_decisions(self.config, self.game_id, player['player_id_id'], player['player_name'],
                                  self.curr_year,
                                  decision_data[player_i][2], curr_avg_prem, sel_avg_prem, decisions,
@@ -271,7 +278,8 @@ class Game:
                                                                                  financial_indication_data[player_i],
                                                                                  indication_data[player_i][2],
                                                                                  decision_data[player_i][2],
-                                                                                 selected=False)
+                                                                                 selected=False,
+                                                                                 game_difficulty=self.game_difficulty)
                     update_decisions_not_selected(self.config, self.game_id, player['player_id_id'], player['player_name'],
                                  self.curr_year,
                                  sel_avg_prem_default, decisions_default)

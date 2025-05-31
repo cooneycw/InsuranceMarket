@@ -334,3 +334,23 @@ def test_sql(Session, Players):
         print(player)
 
     session.close()
+
+
+def get_game_difficulty(config, game_id):
+    """Get the game difficulty setting from the game initiator's preferences"""
+    session = config.Session()
+    
+    # Get the game to find the initiator
+    game = session.query(config.IndivGames).filter_by(game_id=game_id).first()
+    if not game:
+        session.close()
+        return 'Novice'  # Default fallback
+    
+    # Get the initiator's game preferences
+    game_prefs = session.query(config.GamePrefs).filter_by(user_id=game.initiator_id).first()
+    session.close()
+    
+    if game_prefs and game_prefs.game_difficulty:
+        return game_prefs.game_difficulty
+    else:
+        return 'Novice'  # Default fallback
